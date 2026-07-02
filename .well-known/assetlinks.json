@@ -1,0 +1,22 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.vitpapps.solvyn",
+      "sha256_cert_fingerprints": [
+        "E2:32:94:48:FA:0F:2F:C4:51:F6:4F:4F:7B:59:AF:D2:A5:DB:2C:D7:29:D6:E0:30:21:55:18:82:C5:7F:E3:2A"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.vitpapps.solvyn.dev",
+      "sha256_cert_fingerprints": [
+        "E2:32:94:48:FA:0F:2F:C4:51:F6:4F:4F:7B:59:AF:D2:A5:DB:2C:D7:29:D6:E0:30:21:55:18:82:C5:7F:E3:2A"
+      ]
+    }
+  }
+]

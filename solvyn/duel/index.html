@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solvyn — Duel invite</title>
+    <style>
+      /* Self-contained page; palette and card look match the other Solvyn
+         pages (light gray backdrop, white card, Segoe UI, #2c3e50 ink). */
+      html {
+        background-color: #f0f2f5;
+      }
+      body {
+        max-width: 480px;
+        margin: 20px auto;
+        padding: 42px 34px;
+        background: #ffffff;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        border: 1px solid #dcdfe3;
+        font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #2c3e50;
+        line-height: 1.5;
+        text-align: center;
+      }
+      h1 {
+        font-size: 24px;
+        color: #1a1a1a;
+        margin: 0 0 6px;
+      }
+      p.sub {
+        margin: 0 0 26px;
+        color: #6b7683;
+        font-size: 14px;
+      }
+      .open-btn {
+        display: inline-block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 14px 20px;
+        background: #3498db;
+        color: #ffffff;
+        border: 0;
+        border-radius: 8px;
+        font-size: 17px;
+        font-weight: 700;
+        font-family: inherit;
+        cursor: pointer;
+      }
+      .open-btn:hover {
+        background: #2f89c5;
+      }
+      .code-block {
+        margin: 26px 0 6px;
+        padding: 14px 10px;
+        background: #f6f8fa;
+        border: 1px dashed #c9d2da;
+        border-radius: 8px;
+        font-family: "Consolas", "Menlo", monospace;
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: 6px;
+        color: #1a1a1a;
+        user-select: all;
+      }
+      .copy-btn {
+        padding: 7px 16px;
+        background: #ffffff;
+        border: 1px solid #c9d2da;
+        border-radius: 6px;
+        font-size: 13px;
+        font-family: inherit;
+        color: #2c3e50;
+        cursor: pointer;
+      }
+      .copy-btn:hover {
+        background: #f6f8fa;
+      }
+      .hint {
+        font-size: 12.5px;
+        color: #6b7683;
+        margin-top: 10px;
+      }
+      #install {
+        display: none;
+        margin-top: 28px;
+        padding-top: 22px;
+        border-top: 1px solid #ecf0f3;
+      }
+      #install.visible {
+        display: block;
+      }
+      #install h2 {
+        font-size: 16px;
+        margin: 0 0 14px;
+        color: #34495e;
+      }
+      .store-badge {
+        display: inline-block;
+        margin: 4px 6px;
+        padding: 11px 18px;
+        border-radius: 8px;
+        background: #aab4bd;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        pointer-events: none; /* disabled until the store listings exist */
+        opacity: 0.75;
+      }
+      .store-badge small {
+        display: block;
+        font-size: 10.5px;
+        font-weight: 400;
+        opacity: 0.9;
+      }
+      .no-code {
+        display: none;
+        color: #e74c3c;
+        font-weight: 600;
+      }
+      footer {
+        margin-top: 30px;
+        font-size: 13px;
+      }
+      footer a {
+        color: #3498db;
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>You've been challenged to a Solvyn duel! 🧩</h1>
+    <p class="sub">Same puzzle, best time wins. Ready?</p>
+
+    <div id="challenge">
+      <button class="open-btn" id="open" type="button">Open in Solvyn</button>
+
+      <div class="code-block" id="code"></div>
+      <button class="copy-btn" id="copy" type="button">Copy code</button>
+      <p class="hint">
+        Already have the app? Open it and enter this code under
+        &ldquo;Join with code&rdquo; in the Duels tab.
+      </p>
+    </div>
+    <p class="no-code" id="no-code">
+      This invite link is missing its code — ask your friend to share it again.
+    </p>
+
+    <div id="install">
+      <h2>Don't have Solvyn yet?</h2>
+      <!-- Store listings are not live yet: greyed placeholders, links to be
+           filled in at launch. -->
+      <a class="store-badge" href="#" aria-disabled="true">
+        Google Play <small>coming soon</small>
+      </a>
+      <a class="store-badge" href="#" aria-disabled="true">
+        App Store <small>coming soon</small>
+      </a>
+    </div>
+
+    <footer><a href="..">Solvyn</a></footer>
+
+    <script>
+      // Invite codes are 8 chars from A-Z2-9 minus O/0/I/1; sanitize whatever
+      // arrived in the query string before showing it or building the URI.
+      var raw = new URLSearchParams(location.search).get("c") || "";
+      var code = raw
+        .toUpperCase()
+        .replace(/[^ABCDEFGHJKLMNPQRSTUVWXYZ23456789]/g, "")
+        .slice(0, 8);
+
+      var codeEl = document.getElementById("code");
+      var copyBtn = document.getElementById("copy");
+      var openBtn = document.getElementById("open");
+
+      if (code) {
+        codeEl.textContent = code;
+      } else {
+        document.getElementById("challenge").style.display = "none";
+        document.getElementById("no-code").style.display = "block";
+        document.getElementById("install").classList.add("visible");
+      }
+
+      openBtn.addEventListener("click", function () {
+        // Try the app via its custom scheme; if nothing grabs it within
+        // 1.5s (app not installed), reveal the install section.
+        location.href = "solvyn://duel?c=" + encodeURIComponent(code);
+        setTimeout(function () {
+          document.getElementById("install").classList.add("visible");
+        }, 1500);
+      });
+
+      copyBtn.addEventListener("click", function () {
+        function done() {
+          copyBtn.textContent = "Copied ✓";
+          setTimeout(function () {
+            copyBtn.textContent = "Copy code";
+          }, 1600);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(code).then(done);
+        } else {
+          // Ancient-browser fallback: select the code for a manual copy.
+          var range = document.createRange();
+          range.selectNodeContents(codeEl);
+          var sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          done();
+        }
+      });
+    </script>
+  </body>
+</html>

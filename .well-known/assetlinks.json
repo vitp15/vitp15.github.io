@@ -1,21 +1,26 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.vitpapps.solvyn",
+      "package_name": "com.vitpapps.solvyx",
       "sha256_cert_fingerprints": [
-        "E2:32:94:48:FA:0F:2F:C4:51:F6:4F:4F:7B:59:AF:D2:A5:DB:2C:D7:29:D6:E0:30:21:55:18:82:C5:7F:E3:2A"
+        "23:4A:31:89:72:0A:20:9B:73:F0:4F:45:DA:5A:0C:02:57:54:CF:54:E7:57:72:21:70:18:16:C5:4D:F7:95:96",
+        "6A:D8:F2:15:9F:E3:3A:59:2A:0F:B5:75:26:A3:7F:DA:BD:D2:50:7E:76:5A:DD:A1:C3:A0:B5:DE:BD:9A:D6:3E"
       ]
     }
   },
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.vitpapps.solvyn.dev",
+      "package_name": "com.vitpapps.solvyx.dev",
       "sha256_cert_fingerprints": [
-        "E2:32:94:48:FA:0F:2F:C4:51:F6:4F:4F:7B:59:AF:D2:A5:DB:2C:D7:29:D6:E0:30:21:55:18:82:C5:7F:E3:2A"
+        "6A:D8:F2:15:9F:E3:3A:59:2A:0F:B5:75:26:A3:7F:DA:BD:D2:50:7E:76:5A:DD:A1:C3:A0:B5:DE:BD:9A:D6:3E"
       ]
     }
   }

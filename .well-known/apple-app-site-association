@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "LD43W2RLCP.com.vitpapps.solvyx",
+        "paths": ["/solvyx/duel/*", "/solvyx/duel"]
+      }
+    ]
+  }
+}

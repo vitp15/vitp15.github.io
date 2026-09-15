@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solvyn — Duel invite</title>
+    <title>Solvyx — Duel invite</title>
     <style>
-      /* Self-contained page; palette and card look match the other Solvyn
+      /* Self-contained page; palette and card look match the other Solvyx
          pages (light gray backdrop, white card, Segoe UI, #2c3e50 ink). */
       html {
         background-color: #f0f2f5;
@@ -100,13 +100,11 @@
         margin: 4px 6px;
         padding: 11px 18px;
         border-radius: 8px;
-        background: #aab4bd;
+        background: #2c3e50;
         color: #ffffff;
         font-size: 14px;
         font-weight: 700;
         text-decoration: none;
-        pointer-events: none; /* disabled until the store listings exist */
-        opacity: 0.75;
       }
       .store-badge small {
         display: block;
@@ -133,11 +131,11 @@
     </style>
   </head>
   <body>
-    <h1>You've been challenged to a Solvyn duel! 🧩</h1>
+    <h1>You've been challenged to a Solvyx duel! 🧩</h1>
     <p class="sub">Same puzzle, best time wins. Ready?</p>
 
     <div id="challenge">
-      <button class="open-btn" id="open" type="button">Open in Solvyn</button>
+      <button class="open-btn" id="open" type="button">Open in Solvyx</button>
 
       <div class="code-block" id="code"></div>
       <button class="copy-btn" id="copy" type="button">Copy code</button>
@@ -151,18 +149,16 @@
     </p>
 
     <div id="install">
-      <h2>Don't have Solvyn yet?</h2>
-      <!-- Store listings are not live yet: greyed placeholders, links to be
-           filled in at launch. -->
-      <a class="store-badge" href="#" aria-disabled="true">
-        Google Play <small>coming soon</small>
+      <h2>Don't have Solvyx yet?</h2>
+      <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.vitpapps.solvyx">
+        Google Play <small>Get it on</small>
       </a>
-      <a class="store-badge" href="#" aria-disabled="true">
-        App Store <small>coming soon</small>
+      <a class="store-badge" href="https://apps.apple.com/app/id6790561356">
+        App Store <small>Download on the</small>
       </a>
     </div>
 
-    <footer><a href="..">Solvyn</a></footer>
+    <footer><a href="..">Solvyx</a></footer>
 
     <script>
       // Invite codes are 8 chars from A-Z2-9 minus O/0/I/1; sanitize whatever
@@ -188,7 +184,7 @@
       openBtn.addEventListener("click", function () {
         // Try the app via its custom scheme; if nothing grabs it within
         // 1.5s (app not installed), reveal the install section.
-        location.href = "solvyn://duel?c=" + encodeURIComponent(code);
+        location.href = "solvyx://duel?c=" + encodeURIComponent(code);
         setTimeout(function () {
           document.getElementById("install").classList.add("visible");
         }, 1500);

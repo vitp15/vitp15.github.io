@@ -1,0 +1,12 @@
+{
+  "ads_grace_days": 2,
+  "ads_grace_levels": 12,
+  "interstitial_every_wins": 3,
+  "interstitial_min_gap_s": 180,
+  "interstitial_daily_cap": 12,
+  "long_interstitial_every": 10,
+  "promo_after_levels": 10,
+  "review_after_levels": 8,
+  "reminder_offer_after_levels": 5,
+  "min_version": "0.0.0"
+}

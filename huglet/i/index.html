@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Huglet invite</title>
+<meta name="description" content="Someone wants to connect with you on Huglet. Install the app and enter this code.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FCF6F1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1C1418" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Connect with me on Huglet">
+<meta property="og:description" content="Little drawings and notes, right on your home screen.">
+<style>
+  :root{
+    --ground:#FCF6F1; --surface:#FFFCF9; --surface2:#F5EAE2; --line:#EBDCD2;
+    --text:#33222A; --muted:#6E5B64; --brand:#C7485F; --on-brand:#FFFCF9;
+    --brand-container:#FBE1E6; --accent:#6C60C4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ground:#1C1418; --surface:#281E24; --surface2:#332830; --line:#453641;
+      --text:#F3E8EC; --muted:#B3A2AB; --brand:#F0899C; --on-brand:#33121B;
+      --brand-container:#46242D; --accent:#A99BF0;
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--ground); color:var(--text);
+    font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    display:flex; align-items:center; justify-content:center;
+    min-height:100dvh; padding:24px 16px;
+  }
+  main{width:100%; max-width:420px}
+  .mark{
+    display:flex; align-items:center; gap:8px; justify-content:center;
+    color:var(--brand); font-weight:700; letter-spacing:.02em; margin-bottom:20px;
+  }
+  .mark svg{display:block}
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:20px;
+    padding:28px 24px; text-align:center;
+  }
+  h1{font-size:23px; line-height:1.25; margin:0 0 8px; letter-spacing:-.01em}
+  .sub{color:var(--muted); margin:0 0 22px; font-size:15px}
+  .code-label{
+    font-size:12px; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--muted); margin-bottom:8px;
+  }
+  .code{
+    background:var(--brand-container); border-radius:14px; padding:16px 12px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:30px; font-weight:700; letter-spacing:.14em; color:var(--text);
+    word-break:break-all;
+  }
+  .copy{
+    margin-top:10px; background:none; border:0; color:var(--accent);
+    font:inherit; font-weight:600; cursor:pointer; padding:8px 12px; border-radius:8px;
+  }
+  .copy:hover{background:var(--surface2)}
+  .steps{text-align:left; margin:24px 0 4px; padding:0; list-style:none; counter-reset:s}
+  .steps li{
+    counter-increment:s; position:relative; padding-left:34px; margin-bottom:12px;
+    color:var(--muted); font-size:15px;
+  }
+  .steps li::before{
+    content:counter(s); position:absolute; left:0; top:-1px;
+    width:24px; height:24px; border-radius:50%;
+    background:var(--brand-container); color:var(--brand);
+    font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center;
+  }
+  .stores{display:flex; flex-direction:column; gap:10px; margin-top:24px}
+  a.btn{
+    display:block; padding:15px 20px; border-radius:14px; text-decoration:none;
+    font-weight:700; font-size:15px;
+    background:var(--brand); color:var(--on-brand);
+  }
+  a.btn.secondary{background:var(--surface2); color:var(--text)}
+  .foot{margin-top:20px; text-align:center; color:var(--muted); font-size:13px; line-height:1.5}
+  .foot a{color:var(--muted)}
+  .hint{margin-top:14px; font-size:13px; color:var(--muted)}
+  [hidden]{display:none !important}
+</style>
+</head>
+<body>
+<main>
+  <div class="mark">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 21s-7.5-4.7-9.3-9A5.2 5.2 0 0 1 12 6.8 5.2 5.2 0 0 1 21.3 12c-1.8 4.3-9.3 9-9.3 9z"/>
+    </svg>
+    Huglet
+  </div>
+
+  <div class="card">
+    <h1 id="title">Someone wants to connect with you</h1>
+    <p class="sub" id="sub">Huglet lets one person put little drawings and notes straight onto your home screen.</p>
+
+    <div id="code-block">
+      <div class="code-label" id="code-label">Your invite code</div>
+      <div class="code" id="code">--------</div>
+      <button class="copy" id="copy" type="button">Copy code</button>
+    </div>
+
+    <ol class="steps" id="steps"></ol>
+
+    <div class="stores" id="stores"></div>
+
+    <p class="hint" id="hint">Already have Huglet? Opening this link on your phone takes you straight into the app.</p>
+  </div>
+
+  <p class="foot">
+    <a href="/vitp-apps-policies/huglet/privacy">Privacy</a> ·
+    <a href="/vitp-apps-policies/huglet/terms">Terms</a>
+  </p>
+</main>
+
+<script>
+(function () {
+  var PLAY = 'https://play.google.com/store/apps/details?id=com.vitpapps.huglet';
+  var APPSTORE = 'https://apps.apple.com/app/id6790552584';
+
+  var STRINGS = {
+    en: {
+      title: 'Someone wants to connect with you',
+      titleNoCode: 'Connect with your person on Huglet',
+      sub: 'Huglet lets one person put little drawings and notes straight onto your home screen.',
+      codeLabel: 'Your invite code',
+      copy: 'Copy code',
+      copied: 'Copied',
+      steps: ['Install Huglet on your phone.', 'Open it and tap “I have a code”.', 'Enter the code above.'],
+      play: 'Get it on Google Play',
+      appstore: 'Download on the App Store',
+      hint: 'Already have Huglet? Opening this link on your phone takes you straight into the app.',
+      hintDesktop: 'Huglet is a phone app — open this link on your phone to get started.',
+      privacy: 'Privacy', terms: 'Terms'
+    },
+    ro: {
+      title: 'Cineva vrea să se conecteze cu tine',
+      titleNoCode: 'Conectează-te cu persoana ta pe Huglet',
+      sub: 'Huglet lasă o singură persoană să-ți pună desene și bilețele direct pe ecranul de start.',
+      codeLabel: 'Codul tău de invitație',
+      copy: 'Copiază codul',
+      copied: 'Copiat',
+      steps: ['Instalează Huglet pe telefon.', 'Deschide-l și apasă „Am un cod”.', 'Introdu codul de mai sus.'],
+      play: 'Descarcă de pe Google Play',
+      appstore: 'Descarcă din App Store',
+      hint: 'Ai deja Huglet? Dacă deschizi linkul pe telefon, intri direct în aplicație.',
+      hintDesktop: 'Huglet e o aplicație de telefon — deschide linkul pe telefon ca să începi.',
+      privacy: 'Confidențialitate', terms: 'Termeni'
+    }
+  };
+
+  var lang = (navigator.language || 'en').slice(0, 2).toLowerCase();
+  var t = STRINGS[lang] || STRINGS.en;
+  document.documentElement.lang = STRINGS[lang] ? lang : 'en';
+
+  // The invite code travels as ?c=CODE. Anything that is not the app's
+  // unambiguous 8-char alphabet is treated as no code at all.
+  var raw = new URLSearchParams(location.search).get('c') || '';
+  var code = raw.trim().toUpperCase();
+  var valid = /^[A-HJ-NP-Z2-9]{8}$/.test(code);
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  $('sub').textContent = t.sub;
+  $('hint').textContent = t.hint;
+  $('code-label').textContent = t.codeLabel;
+  $('copy').textContent = t.copy;
+
+  if (valid) {
+    $('title').textContent = t.title;
+    $('code').textContent = code;
+  } else {
+    $('title').textContent = t.titleNoCode;
+    $('code-block').hidden = true;
+  }
+
+  var steps = $('steps');
+  t.steps.forEach(function (text, i) {
+    // Without a code, "enter the code above" would be a lie.
+    if (!valid && i === 2) return;
+    var li = document.createElement('li');
+    li.textContent = text;
+    steps.appendChild(li);
+  });
+
+  // Show the store the visitor can actually use first; keep the other one
+  // reachable, since people do share these links across platforms.
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/.test(ua);
+
+  var buttons = [
+    { href: APPSTORE, label: t.appstore, key: 'ios' },
+    { href: PLAY, label: t.play, key: 'android' }
+  ];
+  if (isAndroid) buttons.reverse();
+  var stores = $('stores');
+  buttons.forEach(function (b, i) {
+    var a = document.createElement('a');
+    a.className = 'btn' + (i === 0 ? '' : ' secondary');
+    a.href = b.href;
+    a.rel = 'noopener';
+    a.textContent = b.label;
+    stores.appendChild(a);
+  });
+  if (!isIOS && !isAndroid) {
+    // No real "your store" on desktop, so neither button gets primary weight;
+    // the hint says what to do instead of faking a call to action.
+    stores.firstChild.className = 'btn secondary';
+    $('hint').textContent = t.hintDesktop;
+  }
+
+  $('copy').addEventListener('click', function () {
+    var done = function () {
+      $('copy').textContent = t.copied;
+      setTimeout(function () { $('copy').textContent = t.copy; }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(done, function () {});
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = code;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+  });
+
+  var foot = document.querySelector('.foot');
+  foot.children[0].textContent = t.privacy;
+  foot.children[1].textContent = t.terms;
+})();
+</script>
+</body>
+</html>

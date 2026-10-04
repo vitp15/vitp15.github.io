@@ -23,5 +23,30 @@
         "6A:D8:F2:15:9F:E3:3A:59:2A:0F:B5:75:26:A3:7F:DA:BD:D2:50:7E:76:5A:DD:A1:C3:A0:B5:DE:BD:9A:D6:3E"
       ]
     }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.vitpapps.huglet",
+      "sha256_cert_fingerprints": [
+        "EE:CB:51:3B:2D:0D:16:39:2B:CA:95:11:75:C9:8E:B2:75:17:2E:DD:59:C1:0E:35:CD:2D:F2:FA:25:3F:E1:B8",
+        "5A:BD:C2:0B:F3:6F:79:91:10:54:7F:2C:AF:8D:F1:8E:7F:7B:0D:A3:89:3D:19:28:1B:03:7F:CF:4B:2E:E8:27"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.vitpapps.huglet.dev",
+      "sha256_cert_fingerprints": [
+        "E2:32:94:48:FA:0F:2F:C4:51:F6:4F:4F:7B:59:AF:D2:A5:DB:2C:D7:29:D6:E0:30:21:55:18:82:C5:7F:E3:2A"
+      ]
+    }
   }
 ]

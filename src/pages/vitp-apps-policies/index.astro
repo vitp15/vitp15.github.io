@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import { apps } from '../../data/apps';
+---
+
+<Base title="Legal documents for VitpApps" description="Privacy policies, terms and data-deletion pages for every VitpApps app.">
+  <section class="section">
+    <div class="wrap">
+      <ol class="crumbs"><li><a href="/">Home</a></li><li>Legal documents</li></ol>
+      <h1>Legal documents</h1>
+      <p class="muted intro">Every app published by Vadim Plămădeală (VitpApps) has its privacy policy, terms and a data-deletion page here. The pages apply to the Android and iOS versions alike.</p>
+      <div class="table">
+        {apps.map((a) => (
+          <div class="row" style={`--app-light:${a.color};--app-dark:${a.colorDark}`}>
+            <a class="name" href={`/vitp-apps-policies/${a.slug}/`}><img src={`/img/apps/${a.slug}/icon-256.png`} width="40" height="40" alt="" loading="lazy" />{a.name}</a>
+            <ul>{a.legal.map((d) => <li><a href={`/vitp-apps-policies/${a.slug}/${d.slug}`}>{d.title}</a></li>)}</ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  h1 { margin-bottom: 12px; }
+  .intro { max-width: 64ch; margin-bottom: 36px; }
+  .table { border-top: 1px solid var(--line); }
+  .row { display: grid; grid-template-columns: 220px 1fr; gap: 16px 24px; padding: 18px 0; border-bottom: 1px solid var(--line); align-items: center; }
+  .name { display: flex; align-items: center; gap: 12px; font-weight: 700; text-decoration: none; font-size: 1.1rem; }
+  .name img { border-radius: 10px; }
+  ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; }
+  ul a { color: var(--text-2); font-weight: 500; }
+  ul a:hover { color: var(--text); text-decoration-color: var(--app); }
+  @media (max-width: 640px) { .row { grid-template-columns: 1fr; gap: 10px; } }
+</style>

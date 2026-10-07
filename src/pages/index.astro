@@ -1,0 +1,188 @@
+---
+import Base from '../layouts/Base.astro';
+import AppCard from '../components/AppCard.astro';
+import { apps } from '../data/apps';
+import { site } from '../data/site';
+import { experience, education, skills, languages } from '../data/cv';
+
+const work = [
+  {
+    job: experience[0],
+    text: 'Parcel delivery for online shops: couriers, lockers and the integrations that connect them to a store’s checkout. I own the shipping modules for WooCommerce, PrestaShop, Magento 2 and OpenCart and the PHP library they share, build checkout features end to end, and work on the TypeScript platform behind them: public API, Prisma and MySQL, Redis, payments. I set up the CI/CD and Playwright suites across the repositories, prototyped a locker scanning station in Python, and did some C++ on a real helicopter project.',
+  },
+  {
+    job: experience[1],
+    text: 'A five-person team building a web product for GoAhead Venture, a US client found through freelancing: React on the front, FastAPI and SQL behind it, Git-based CI/CD, and direct contact with the client on scope and delivery.',
+  },
+  {
+    job: experience[2],
+    text: 'Sona, an Android app that hears car malfunctions in the engine sound, with its machine-learning server on Google Cloud. Biblia Noul Testament audio, an audio Bible shipped on both Android and iOS.',
+  },
+];
+---
+
+<Base title="Vadim Plămădeală, full-stack software engineer">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="copy">
+        <p class="hello">Vadim Plămădeală. Bucharest, Romania.</p>
+        <h1>Full-stack engineer who ships.</h1>
+        <p class="lede">
+          By day I build the shipping integrations and the TypeScript platform behind
+          <strong>Colete-Online</strong>, a parcel-delivery service for online shops.
+          Evenings go to <strong>VitpApps</strong>: six apps and games for Android and iOS
+          that I design, build and publish myself.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href={site.cvPdf} download>Download CV (PDF)</a>
+          <a class="btn" href="/apps/">See the six apps</a>
+        </div>
+        <p class="links">
+          <a href={site.github} rel="me">GitHub</a>
+          <a href={site.linkedin} rel="me">LinkedIn</a>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </p>
+      </div>
+      <ul class="tiles" aria-label="The six apps">
+        {apps.map((a, i) => (
+          <li style={`--i:${i}`}>
+            <a href={`/${a.slug}/`}>
+              <img src={`/img/apps/${a.slug}/icon-256.png`} width="112" height="112" alt="" />
+              <span>{a.name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Work</h2>
+        <p>Two years in production code, from checkout plugins used by real shops to the platform API behind them.</p>
+      </div>
+      <ol class="timeline">
+        {work.map(({ job, text }) => (
+          <li>
+            <div class="when">{job.start} – {job.end}</div>
+            <div class="what">
+              <h3>{job.role}, {job.company}</h3>
+              <p>{text}</p>
+              <ul class="chips">{job.stack.map((s) => <li>{s}</li>)}</ul>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="apps">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Six apps, one developer</h2>
+        <p>Product, code, stores, 18 languages, monetisation and the legal pages. Each one has its own page with screenshots and download links.</p>
+      </div>
+      <div class="grid">
+        {apps.map((a, i) => <AppCard app={a} index={i} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="wrap two-col">
+      <div>
+        <h2>What I work with</h2>
+        <dl class="skills">
+          {skills.map((g) => (
+            <>
+              <dt>{g.group}</dt>
+              <dd>{g.items.join(', ')}</dd>
+            </>
+          ))}
+        </dl>
+      </div>
+      <div>
+        <h2>Education</h2>
+        {education.map((e) => (
+          <div class="edu">
+            <h3>{e.degree}</h3>
+            <p class="muted">{e.school}, {e.start}–{e.end}</p>
+            {e.notes && <p class="small">{e.notes}</p>}
+          </div>
+        ))}
+        <h2 class="lang-h">Languages</h2>
+        <p>{languages.map((l) => `${l.name} (${l.level})`).join(', ')}.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="wrap">
+      <h2>Hiring, or want to talk about an app?</h2>
+      <p class="muted">Write to <a href={`mailto:${site.email}`}>{site.email}</a>, or <a href={site.cvPdf} download>download the CV</a> and pass it on.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { position: relative; overflow: hidden; padding-block: clamp(56px, 10vw, 120px) clamp(48px, 8vw, 96px); }
+  .hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background:
+      repeating-linear-gradient(60deg, var(--grid) 0 1px, transparent 1px 44px),
+      repeating-linear-gradient(-60deg, var(--grid) 0 1px, transparent 1px 44px),
+      repeating-linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 44px);
+    -webkit-mask-image: radial-gradient(ellipse 70% 80% at 72% 45%, #000 10%, transparent 70%);
+    mask-image: radial-gradient(ellipse 70% 80% at 72% 45%, #000 10%, transparent 70%);
+  }
+  .hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+  .hello { margin: 0 0 18px; color: var(--muted); font-weight: 500; }
+  .lede { font-size: clamp(1.1rem, 1.7vw, 1.3rem); line-height: 1.55; color: var(--text-2); max-width: 54ch; margin: 24px 0 30px; }
+  .lede strong { color: var(--text); font-weight: 600; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .links { margin: 26px 0 0; display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--text-2); }
+
+  .tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 2.4vw, 26px); }
+  .tiles li { animation: deal 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(140ms + var(--i) * 85ms); }
+  .tiles li:nth-child(3n + 2) { transform: translateY(26px); }
+  .tiles a { display: grid; justify-items: center; gap: 10px; text-decoration: none; color: var(--text-2); font-weight: 600; font-size: 0.95rem; }
+  .tiles img { width: clamp(84px, 9vw, 112px); height: auto; border-radius: 24%; box-shadow: var(--shadow); transition: transform 0.25s ease; }
+  .tiles a:hover img, .tiles a:focus-visible img { transform: translateY(-4px) rotate(-2deg); }
+  @keyframes deal { from { opacity: 0; translate: 0 28px; scale: 0.92; } to { opacity: 1; translate: 0 0; scale: 1; } }
+  @media (prefers-reduced-motion: reduce) { .tiles li { animation: none; } }
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .tiles { grid-template-columns: repeat(6, 1fr); gap: 10px; order: -1; margin-bottom: 8px; }
+    .tiles li:nth-child(3n + 2) { transform: none; }
+    .tiles span { display: none; }
+    .tiles img { width: 100%; }
+  }
+
+  .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .timeline > li { display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 26px 0; border-top: 1px solid var(--line); }
+  .timeline > li:first-child { border-top: 0; padding-top: 0; }
+  .timeline .chips { margin-top: 14px; }
+  .timeline .when { color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; padding-top: 3px; }
+  .timeline h3 { font-size: 1.3rem; margin-bottom: 8px; }
+  .timeline p { color: var(--text-2); max-width: 72ch; }
+  @media (max-width: 700px) { .timeline > li { grid-template-columns: 1fr; gap: 6px; } }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 1000px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+  .two-col { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 6vw, 80px); }
+  .two-col h2 { margin-bottom: 22px; }
+  .skills { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 12px 22px; }
+  .skills dt { font-weight: 700; }
+  .skills dd { margin: 0; color: var(--text-2); }
+  .edu { margin-bottom: 22px; }
+  .edu h3 { font-size: 1.15rem; margin-bottom: 4px; }
+  .edu .small { color: var(--text-2); }
+  .lang-h { margin-top: 32px; font-size: 1.5rem; }
+  @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; } .skills { grid-template-columns: 1fr; gap: 4px; } .skills dd { margin-bottom: 12px; } }
+
+  .cta h2 { margin-bottom: 10px; }
+  .cta a { color: var(--text); }
+</style>

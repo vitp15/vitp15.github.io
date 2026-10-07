@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro';
+import StoreButtons from '../../components/StoreButtons.astro';
+import Shots from '../../components/Shots.astro';
+import { apps } from '../../data/apps';
+
+export function getStaticPaths() {
+  return apps.map((app) => ({ params: { app: app.slug }, props: { app } }));
+}
+const { app } = Astro.props;
+const accent = { light: app.color, dark: app.colorDark, tintLight: app.tint, tintDark: app.tintDark };
+---
+
+<Base title={`${app.name}: ${app.tagline}`} description={app.description} image={`/img/apps/${app.slug}/feature.webp`} accent={accent}>
+  <section class="hero">
+    <div class="wrap">
+      <img class="icon" src={`/img/apps/${app.slug}/icon.webp`} width="128" height="128" alt="" />
+      <div class="copy">
+        <h1>{app.name}</h1>
+        <p class="tag">{app.tagline}</p>
+        <p class="meta">{app.kind === 'game' ? 'Game' : 'App'} for Android and iOS. {app.languages} languages.</p>
+        <StoreButtons app={app} />
+      </div>
+    </div>
+  </section>
+
+  <Shots app={app} />
+
+  <section class="section">
+    <div class="wrap two">
+      <div>
+        <h2>What it does</h2>
+        <p class="desc">{app.description}</p>
+        <ul class="features">{app.bullets.map((b) => <li>{b}</li>)}</ul>
+      </div>
+      <aside>
+        <h2 class="h3">Built with</h2>
+        <ul class="chips">{app.stack.map((s) => <li>{s}</li>)}</ul>
+        <h2 class="h3">Support and legal</h2>
+        <ul class="plain">
+          <li><a href={`/${app.slug}/support/`}>Support and help</a></li>
+          {app.legal.map((d) => <li><a href={`/vitp-apps-policies/${app.slug}/${d.slug}`}>{d.title}</a></li>)}
+        </ul>
+        <p class="small muted">Made in Romania by <a href="/">Vadim Plămădeală</a>. <a href="/apps/">All apps</a>.</p>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding-block: clamp(40px, 7vw, 88px) clamp(24px, 4vw, 40px); background: linear-gradient(180deg, var(--tint), var(--bg) 100%); }
+  .hero .wrap { display: grid; grid-template-columns: 128px 1fr; gap: 28px; align-items: center; }
+  .icon { border-radius: 30px; box-shadow: var(--shadow); }
+  h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); }
+  .tag { margin: 8px 0 6px; font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--text-2); font-weight: 500; }
+  .meta { margin: 0 0 22px; color: var(--muted); }
+  @media (max-width: 640px) { .hero .wrap { grid-template-columns: 1fr; gap: 16px; } .icon { width: 96px; height: 96px; border-radius: 24px; } }
+
+  .two { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(32px, 6vw, 80px); }
+  .two h2 { margin-bottom: 16px; }
+  .desc { color: var(--text-2); font-size: 1.08rem; max-width: 62ch; }
+  .features { padding-left: 1.1em; max-width: 62ch; }
+  .features li { margin-bottom: 10px; color: var(--text-2); }
+  .features li::marker { color: var(--app); }
+  .h3 { font-size: 1.2rem; margin: 0 0 12px; }
+  .h3 + .chips { margin-bottom: 30px; }
+  .plain { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 8px; }
+  .plain a { font-weight: 600; text-decoration-color: var(--line-strong); }
+  .plain a:hover { text-decoration-color: var(--app); }
+  @media (max-width: 860px) { .two { grid-template-columns: 1fr; } }
+</style>

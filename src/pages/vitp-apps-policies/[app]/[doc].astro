@@ -1,0 +1,32 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { apps } from '../../../data/apps';
+
+// The documents are imported verbatim from the former vitp-apps-policies
+// repository (see scripts/import-legal.mjs); only the page chrome is new.
+const docs = import.meta.glob<string>('../../../content/legal/*/*.html', { query: '?raw', import: 'default', eager: true });
+
+export function getStaticPaths() {
+  return apps.flatMap((app) => app.legal.map((d) => ({ params: { app: app.slug, doc: d.slug }, props: { app, doc: d } })));
+}
+const { app, doc } = Astro.props;
+const html = docs[`../../../content/legal/${app.slug}/${doc.slug}.html`];
+if (!html) throw new Error(`Missing legal document ${app.slug}/${doc.slug}`);
+const accent = { light: app.color, dark: app.colorDark, tintLight: app.tint, tintDark: app.tintDark };
+---
+
+<Base title={`${app.name}: ${doc.title}`} description={`${doc.title} for the ${app.name} app by Vadim Plămădeală.`} accent={accent}>
+  <section class="section">
+    <article class="narrow prose legal">
+      <ol class="crumbs"><li><a href="/">Home</a></li><li><a href="/vitp-apps-policies/">Legal documents</a></li><li><a href={`/vitp-apps-policies/${app.slug}/`}>{app.name}</a></li><li>{doc.title}</li></ol>
+      <Fragment set:html={html} />
+    </article>
+  </section>
+</Base>
+
+<style is:global>
+  .legal > strong:first-of-type, .legal > h1:first-of-type { font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.1; letter-spacing: -0.03em; margin: 0 0 0.5em; display: block; }
+  .legal > strong:first-of-type + p { font-size: 1.08rem; }
+  .legal h3 { font-size: 1.15rem; }
+  .legal .btn { background: var(--app); color: var(--bg); }
+</style>

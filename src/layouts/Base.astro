@@ -1,0 +1,84 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  noindex?: boolean;
+  image?: string;
+  /** Per-app accent colours; set on <html> so every component can use var(--app). */
+  accent?: { light: string; dark: string; tintLight: string; tintDark: string };
+}
+const { title, description = site.description, noindex = false, image = '/img/photo.jpg', accent } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const accentVars = accent
+  ? `--app-light:${accent.light};--app-dark:${accent.dark};--tint-light:${accent.tintLight};--tint-dark:${accent.tintDark}`
+  : undefined;
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark" style={accentVars}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/BricolageGrotesque-Variable.woff2" as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, Astro.site).href} />
+    <meta name="theme-color" content="#121826" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f3f5f9" media="(prefers-color-scheme: light)" />
+    <script is:inline>
+      // Theme: saved choice wins; otherwise follow the system; dark when neither says anything.
+      (function () {
+        var t = 'dark';
+        try {
+          var s = localStorage.getItem('theme');
+          t = s === 'light' || s === 'dark' ? s : matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        } catch (e) {}
+        document.documentElement.dataset.theme = t;
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <Nav />
+    <main id="main"><slot /></main>
+    <Footer />
+    <script is:inline>
+      (function () {
+        var root = document.documentElement;
+        document.querySelectorAll('.theme-toggle').forEach(function (b) {
+          b.addEventListener('click', function () {
+            var t = root.dataset.theme === 'dark' ? 'light' : 'dark';
+            root.dataset.theme = t;
+            try { localStorage.setItem('theme', t); } catch (e) {}
+          });
+        });
+        try {
+          matchMedia('(prefers-color-scheme: light)').addEventListener('change', function (e) {
+            try { if (localStorage.getItem('theme')) return; } catch (err) {}
+            root.dataset.theme = e.matches ? 'light' : 'dark';
+          });
+        } catch (e) {}
+      })();
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  /* Per-app accent: resolves to the light or dark variant with the theme. */
+  :root { --app: var(--app-dark, var(--gold)); --tint: var(--tint-dark, var(--surface)); }
+  :root[data-theme='light'] { --app: var(--app-light, var(--gold-text)); --tint: var(--tint-light, var(--surface)); }
+  .skip { position: absolute; left: 12px; top: -48px; padding: 8px 12px; background: var(--gold); color: var(--gold-ink); border-radius: 8px; z-index: 50; font-weight: 600; }
+  .skip:focus { top: 12px; }
+</style>

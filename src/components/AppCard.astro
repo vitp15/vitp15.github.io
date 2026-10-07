@@ -1,0 +1,35 @@
+---
+import type { App } from '../data/apps';
+interface Props { app: App; index?: number }
+const { app, index = 0 } = Astro.props;
+const platforms = ['Android', 'iOS'];
+const status = app.status === 'live' ? 'On Google Play' : app.status === 'beta' ? 'In testing' : 'Coming soon';
+---
+
+<a class="card" href={`/${app.slug}/`} style={`--c-light:${app.color};--c-dark:${app.colorDark};--t-light:${app.tint};--t-dark:${app.tintDark};--i:${index}`}>
+  <img class="icon" src={`/img/apps/${app.slug}/icon-256.png`} width="72" height="72" alt="" loading="lazy" />
+  <div class="text">
+    <h3>{app.name}</h3>
+    <p class="tag">{app.tagline}</p>
+    <p class="meta"><span>{platforms.join(' and ')}</span><span class="dot" aria-hidden="true"></span><span>{status}</span></p>
+  </div>
+</a>
+
+<style>
+  .card {
+    --c: var(--c-dark); --t: var(--t-dark);
+    display: flex; gap: 18px; align-items: flex-start;
+    padding: 22px; border-radius: var(--radius-l);
+    background: linear-gradient(160deg, var(--t), var(--surface) 70%);
+    border: 1px solid var(--line); text-decoration: none; color: inherit;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  :global(:root[data-theme='light']) .card { --c: var(--c-light); --t: var(--t-light); }
+  .card:hover, .card:focus-visible { border-color: var(--c); }
+  .icon { width: 72px; height: 72px; border-radius: 18px; flex: none; box-shadow: 0 10px 24px -14px rgba(0,0,0,.6); }
+  h3 { font-size: 1.35rem; letter-spacing: -0.02em; }
+  .tag { margin: 4px 0 10px; color: var(--text-2); line-height: 1.4; }
+  .meta { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 0.86rem; color: var(--muted); font-weight: 600; }
+  .meta span { white-space: nowrap; }
+  .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--c); display: inline-block; }
+</style>

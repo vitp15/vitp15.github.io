@@ -1,0 +1,54 @@
+---
+import Base from '../../layouts/Base.astro';
+import StoreButtons from '../../components/StoreButtons.astro';
+import { apps } from '../../data/apps';
+---
+
+<Base title="Apps by Vadim Plămădeală" description="Six apps and games for Android and iOS: Solvyx, Naova, Huglet, MoneyManager, Sliceward and Impossible Taxi.">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h1 class="h2">Apps</h1>
+        <p>Six products for Android and iOS, designed, built and published by one person. Each page has screenshots, download links, support and the legal documents.</p>
+      </div>
+      <div class="list">
+        {apps.map((a) => (
+          <article class="row" style={`--app-light:${a.color};--app-dark:${a.colorDark};--tint-light:${a.tint};--tint-dark:${a.tintDark}`}>
+            <a class="icon" href={`/${a.slug}/`}><img src={`/img/apps/${a.slug}/icon-256.png`} width="96" height="96" alt="" loading="lazy" /></a>
+            <div class="body">
+              <h2><a href={`/${a.slug}/`}>{a.name}</a></h2>
+              <p class="tag">{a.tagline}</p>
+              <p class="desc">{a.description}</p>
+              <ul class="chips">{a.stack.slice(0, 4).map((s) => <li>{s}</li>)}<li>{a.languages} languages</li></ul>
+              <div class="foot">
+                <StoreButtons app={a} compact />
+                <p class="links">
+                  <a href={`/${a.slug}/`}>Details</a>
+                  <a href={`/${a.slug}/support/`}>Support</a>
+                  <a href={`/vitp-apps-policies/${a.slug}/privacy`}>Privacy</a>
+                  <a href={`/vitp-apps-policies/${a.slug}/terms`}>Terms</a>
+                </p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .h2 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); }
+  .list { display: grid; gap: 18px; }
+  .row { display: grid; grid-template-columns: 96px 1fr; gap: 24px; padding: 26px; border-radius: var(--radius-l); border: 1px solid var(--line); background: linear-gradient(160deg, var(--tint), var(--surface) 60%); }
+  .icon img { border-radius: 24px; box-shadow: var(--shadow); }
+  h2 { font-size: 1.6rem; }
+  h2 a { text-decoration: none; }
+  h2 a:hover { text-decoration: underline; text-decoration-color: var(--app); }
+  .tag { margin: 4px 0 10px; color: var(--text-2); font-weight: 500; font-size: 1.05rem; }
+  .desc { color: var(--text-2); max-width: 70ch; }
+  .chips { margin: 14px 0 18px; }
+  .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
+  .links { margin: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-weight: 600; color: var(--text-2); }
+  @media (max-width: 640px) { .row { grid-template-columns: 1fr; gap: 14px; padding: 20px; } .icon img { width: 72px; height: 72px; } }
+</style>

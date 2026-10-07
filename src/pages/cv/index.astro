@@ -1,0 +1,87 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site } from '../../data/site';
+import { person, summary, experience, productsIntro, products, education, skills, languages } from '../../data/cv';
+---
+
+<Base title="CV, Vadim Plămădeală" description="Curriculum vitae of Vadim Plămădeală, full-stack software engineer in Bucharest. Download as PDF.">
+  <section class="section">
+    <div class="narrow cv">
+      <header class="head">
+        <img src="/img/photo-480.jpg" width="120" height="120" alt="Vadim Plămădeală" />
+        <div>
+          <h1>{person.name}</h1>
+          <p class="role">{person.title}</p>
+          <p class="contact muted">{person.location} · <a href={`tel:${person.phone.replace(/\s/g, '')}`}>{person.phone}</a> · <a href={`mailto:${person.email}`}>{person.email}</a></p>
+          <div class="dl">
+            <a class="btn primary" href={site.cvPdf} download>Download PDF</a>
+            <a class="btn" href={site.cvPdfNoPhoto} download>PDF without photo</a>
+          </div>
+        </div>
+      </header>
+
+      <h2>Summary</h2>
+      <p>{summary}</p>
+
+      <h2>Experience</h2>
+      {experience.map((j) => (
+        <section class="job">
+          <div class="row"><h3>{j.role}, {j.company}</h3><span class="when">{j.start} – {j.end}</span></div>
+          <p class="sub muted">{j.place}{j.blurb ? `. ${j.blurb}` : ''}</p>
+          <ul>{j.bullets.map((b) => <li>{b}</li>)}</ul>
+          <ul class="chips">{j.stack.map((s) => <li>{s}</li>)}</ul>
+        </section>
+      ))}
+
+      <h2>Independent products</h2>
+      <p>{productsIntro}</p>
+      {products.map((p) => (
+        <section class="job">
+          <h3><a href={`/${p.slug}/`}>{p.name}</a> <span class="kind muted">{p.kind}</span></h3>
+          <p>{p.line} <span class="muted">{p.tech}</span></p>
+        </section>
+      ))}
+
+      <h2>Education</h2>
+      {education.map((e) => (
+        <section class="job">
+          <div class="row"><h3>{e.degree}</h3><span class="when">{e.start} – {e.end}</span></div>
+          <p class="sub muted">{e.school}</p>
+          {e.notes && <p>{e.notes}</p>}
+        </section>
+      ))}
+
+      <h2>Skills</h2>
+      <dl class="skills">
+        {skills.map((g) => (<><dt>{g.group}</dt><dd>{g.items.join(', ')}</dd></>))}
+      </dl>
+
+      <h2>Languages</h2>
+      <p>{languages.map((l) => `${l.name} (${l.level})`).join(', ')}.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .head { display: grid; grid-template-columns: 120px 1fr; gap: 24px; align-items: center; margin-bottom: 40px; }
+  .head img { border-radius: 28px; box-shadow: var(--shadow); }
+  h1 { font-size: clamp(2rem, 4.5vw, 3rem); }
+  .role { margin: 6px 0 4px; font-size: 1.15rem; font-weight: 600; color: var(--text-2); }
+  .contact { margin: 0 0 16px; }
+  .contact a { color: var(--text-2); }
+  .dl { display: flex; flex-wrap: wrap; gap: 10px; }
+  .cv h2 { font-size: 1.5rem; margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .cv p, .cv li { color: var(--text-2); }
+  .cv h3 { font-size: 1.15rem; color: var(--text); }
+  .cv h3 a { text-decoration-color: var(--line-strong); }
+  .row { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+  .when { color: var(--muted); font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .job { margin-bottom: 22px; }
+  .sub { margin: 2px 0 8px; }
+  .kind { font-weight: 500; font-size: 1rem; }
+  .job .chips { margin-top: 8px; }
+  .skills { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 10px 20px; }
+  .skills dt { font-weight: 700; }
+  .skills dd { margin: 0; color: var(--text-2); }
+  @media (max-width: 600px) { .head { grid-template-columns: 1fr; } .head img { width: 96px; height: 96px; } .row { flex-direction: column; gap: 2px; } .skills { grid-template-columns: 1fr; gap: 2px; } .skills dd { margin-bottom: 10px; } }
+</style>

@@ -1,0 +1,62 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { apps } from '../../../data/apps';
+import { support } from '../../../data/support';
+import { site } from '../../../data/site';
+
+export function getStaticPaths() {
+  return apps.map((app) => ({ params: { app: app.slug }, props: { app } }));
+}
+const { app } = Astro.props;
+const s = support[app.slug];
+const accent = { light: app.color, dark: app.colorDark, tintLight: app.tint, tintDark: app.tintDark };
+const subject = encodeURIComponent(`${app.name} support`);
+---
+
+<Base title={`${app.name} support`} description={`Help, common questions and contact for ${app.name}.`} accent={accent}>
+  <section class="section">
+    <div class="narrow prose">
+      <ol class="crumbs">
+        <li><a href="/">Home</a></li>
+        <li><a href={`/${app.slug}/`}>{app.name}</a></li>
+        <li>Support</li>
+      </ol>
+      <h1>{app.name} support</h1>
+      <p>{s.intro}</p>
+      <p><a class="btn primary mail" href={`mailto:${site.supportEmail}?subject=${subject}`}>{site.supportEmail}</a></p>
+      {s.feedbackNote && <p set:html={s.feedbackNote} />}
+
+      <h2>Common questions</h2>
+      {s.faqs.map((f) => (
+        <details>
+          <summary>{f.q}</summary>
+          <div set:html={f.a} />
+        </details>
+      ))}
+
+      <h2>Legal</h2>
+      <p>
+        {app.legal.map((d, i) => (
+          <>
+            {i > 0 && ' · '}
+            <a href={`/vitp-apps-policies/${app.slug}/${d.slug}`}>{d.title}</a>
+          </>
+        ))}
+      </p>
+      <p class="small muted">{app.name} is made by a solo developer in Romania. <a href={`/${app.slug}/`}>Back to {app.name}</a>.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .mail { background: var(--app); color: var(--bg); }
+  details { border-top: 1px solid var(--line); padding: 14px 0; }
+  details:last-of-type { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; font-weight: 700; color: var(--text); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; color: var(--app); font-weight: 700; flex: none; transition: transform 0.2s ease; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details > div { padding-top: 8px; }
+  details :global(p), details :global(li) { color: var(--text-2); }
+  details :global(p:last-child) { margin-bottom: 0; }
+</style>

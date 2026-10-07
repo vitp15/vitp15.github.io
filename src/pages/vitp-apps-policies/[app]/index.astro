@@ -1,0 +1,30 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { apps } from '../../../data/apps';
+
+export function getStaticPaths() {
+  return apps.map((app) => ({ params: { app: app.slug }, props: { app } }));
+}
+const { app } = Astro.props;
+const accent = { light: app.color, dark: app.colorDark, tintLight: app.tint, tintDark: app.tintDark };
+---
+
+<Base title={`${app.name} legal documents`} description={`Privacy policy, terms and data deletion for ${app.name}.`} accent={accent}>
+  <section class="section">
+    <div class="narrow">
+      <ol class="crumbs"><li><a href="/">Home</a></li><li><a href="/vitp-apps-policies/">Legal documents</a></li><li>{app.name}</li></ol>
+      <h1>{app.name}</h1>
+      <p class="muted">Legal documents for the Android and iOS app. For help with the app itself, see <a href={`/${app.slug}/support/`}>support</a>.</p>
+      <ul class="docs">
+        {app.legal.map((d) => <li><a href={`/vitp-apps-policies/${app.slug}/${d.slug}`}>{d.title}</a></li>)}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  h1 { margin-bottom: 10px; }
+  .docs { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 10px; }
+  .docs a { display: block; padding: 16px 18px; border: 1px solid var(--line); border-radius: var(--radius-m); background: var(--surface); text-decoration: none; font-weight: 600; }
+  .docs a:hover { border-color: var(--app); }
+</style>

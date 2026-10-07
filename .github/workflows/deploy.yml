@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # Rebuild on 1 January so the "years" figures on the home page roll over.
+    - cron: '0 6 1 1 *'
 
 permissions:
   contents: read

@@ -5,10 +5,13 @@ import { apps, figures } from '../data/apps';
 import { site } from '../data/site';
 import { experience, education, skills, languages, otherProjects } from '../data/cv';
 
+// Years are computed at build time; the workflow also rebuilds every 1 January,
+// so the numbers stay current without manual edits.
+const year = new Date().getFullYear();
 const stats = [
-  { n: site.codingSince, label: 'writing code since', sub: '11th grade, first projects', count: false },
-  { n: site.workingSince, label: 'production software since', sub: 'freelance first, then two companies', count: false },
-  { n: figures.apps, label: 'apps and games', sub: [figures.live && `${figures.live} on Google Play`, figures.beta && `${figures.beta} in testing`, figures.soon && `${figures.soon} on the way`].filter(Boolean).join(', '), count: true },
+  { n: year - site.codingSince, suffix: '+', label: 'years writing code', sub: `since ${site.codingSince}, 11th grade`, count: true },
+  { n: year - site.workingSince, suffix: '', label: 'years of production software', sub: `since ${site.workingSince}, freelance first, then two companies`, count: true },
+  { n: figures.apps, suffix: '', label: 'apps and games', sub: [figures.live && `${figures.live} on Google Play`, figures.beta && `${figures.beta} in testing`, figures.soon && `${figures.soon} on the way`].filter(Boolean).join(', '), count: true },
 ];
 const logos = [
   ['typescript', 'TypeScript'], ['angular', 'Angular'], ['nodedotjs', 'Node.js'], ['php', 'PHP'], ['flutter', 'Flutter'],
@@ -62,7 +65,7 @@ const work = [
       {stats.map((s) => (
         <div class="tile stat">
           <p class="stat-label">{s.label}</p>
-          <p class="num mono">{s.count ? <span data-count={s.n}>{s.n}</span> : s.n}</p>
+          <p class="num mono">{s.count ? <span data-count={s.n}>{s.n}</span> : s.n}{s.suffix}</p>
           <p class="stat-sub">{s.sub}</p>
         </div>
       ))}

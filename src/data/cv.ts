@@ -102,7 +102,7 @@ export const products: Product[] = [
     name: 'Naova',
     slug: 'naova',
     kind: 'Health tracker',
-    line: 'Migraine and cycle self-management diary: one-tap attack logging, pattern insights, PDF report for the doctor, encrypted backup. Offline-first.',
+    line: 'Migraine and cycle self-management diary: attack logging in two taps, pattern insights, PDF report for the doctor, encrypted backup. Offline-first.',
     tech: 'Flutter, SQLite, RevenueCat subscriptions, PDF generation, 18 languages.',
   },
   {

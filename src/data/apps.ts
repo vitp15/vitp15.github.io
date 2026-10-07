@@ -72,12 +72,12 @@ export const apps: App[] = [
   {
     slug: 'naova',
     name: 'Naova',
-    storeName: 'Naova: Migraine & Cycle',
-    tagline: 'Log a migraine in one tap. See your own patterns.',
+    storeName: 'Naova: Migraine & Period Diary',
+    tagline: 'Log a migraine in seconds. See your own patterns.',
     description:
-      'A self-management diary for migraine and the menstrual cycle, built for the moment of an attack: Quick Save logs it with one press, details can wait. Over time Naova shows patterns in your own data and prepares a clean report for your doctor. It is a wellness tool, not a medical device.',
+      'A self-management diary for migraine and the menstrual cycle, built for the moment of an attack: Quick Save logs it in two taps, details can wait. Over time Naova shows patterns in your own data and prepares a clean report for your doctor. It is a wellness tool, not a medical device.',
     bullets: [
-      'Quick Save: one tap at 3 a.m. with your eyes half closed. Fill in the rest later.',
+      'Quick Save: two taps at 3 a.m. with your eyes half closed. Fill in the rest later.',
       'Cycle and hormonal view next to your attacks, the part most migraine apps leave out.',
       'A PDF report for the doctor and CSV export of everything you logged.',
       'Offline-first with encrypted backup. No ads. Designed for photosensitivity: no pure white, no flashes.',

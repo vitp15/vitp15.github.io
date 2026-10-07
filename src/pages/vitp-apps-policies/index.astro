@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { apps } from '../../data/apps';
+import { support } from '../../data/support';
 ---
 
 <Base title="Legal documents for VitpApps" description="Privacy policies, terms and data-deletion pages for every VitpApps app.">
@@ -8,12 +9,12 @@ import { apps } from '../../data/apps';
     <div class="wrap">
       <ol class="crumbs"><li><a href="/">Home</a></li><li>Legal documents</li></ol>
       <h1>Legal documents</h1>
-      <p class="muted intro">Every app published by Vadim Plămădeală (VitpApps) has its privacy policy, terms and a data-deletion page here. The pages apply to the Android and iOS versions alike.</p>
+      <p class="muted intro">Every app published by Vadim Plămădeală (VitpApps) has its privacy policy, terms, data-deletion page and support page here. They apply to the Android and iOS versions alike.</p>
       <div class="table">
         {apps.filter((a) => a.legal.length > 0).map((a) => (
           <div class="row" style={`--app-light:${a.color};--app-dark:${a.colorDark}`}>
             <a class="name" href={`/vitp-apps-policies/${a.slug}/`}><img src={`/img/apps/${a.slug}/icon-256.png`} width="40" height="40" alt="" />{a.name}</a>
-            <ul>{a.legal.map((d) => <li><a href={`/vitp-apps-policies/${a.slug}/${d.slug}`}>{d.title}</a></li>)}</ul>
+            <ul>{a.legal.map((d) => <li><a href={`/vitp-apps-policies/${a.slug}/${d.slug}`}>{d.title}</a></li>)}{support[a.slug] && <li><a href={`/${a.slug}/support/`}>Support and help</a></li>}</ul>
           </div>
         ))}
       </div>

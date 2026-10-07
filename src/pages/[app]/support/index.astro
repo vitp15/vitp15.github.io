@@ -16,11 +16,7 @@ const subject = encodeURIComponent(`${app.name} support`);
 <Base title={`${app.name} support`} description={`Help, common questions and contact for ${app.name}.`} accent={accent}>
   <section class="section">
     <div class="narrow prose">
-      <ol class="crumbs">
-        <li><a href="/">Home</a></li>
-        <li><a href={`/${app.slug}/`}>{app.name}</a></li>
-        <li>Support</li>
-      </ol>
+      <p class="back mono"><a href={`/${app.slug}/`}>← {app.name}</a></p>
       <h1>{app.name} support</h1>
       <p>{s.intro}</p>
       <p>Email: <a class="mail" href={`mailto:${site.supportEmail}?subject=${subject}`}>{site.supportEmail}</a></p>
@@ -50,6 +46,9 @@ const subject = encodeURIComponent(`${app.name} support`);
 
 <style>
   .mail { font-weight: 600; color: var(--text); text-decoration-color: var(--app); }
+  .back { margin: 0 0 18px; font-size: 0.85rem; }
+  .back a { color: var(--muted); text-decoration: none; }
+  .back a:hover { color: var(--text); }
   details { border-top: 1px solid var(--line); padding: 14px 0; }
   details:last-of-type { border-bottom: 1px solid var(--line); }
   summary { cursor: pointer; font-weight: 700; color: var(--text); list-style: none; display: flex; justify-content: space-between; gap: 16px; }

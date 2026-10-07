@@ -21,6 +21,12 @@ const accent = { light: app.color, dark: app.colorDark, tintLight: app.tint, tin
         <p class="tag">{app.tagline}</p>
         <p class="meta">{app.kind === 'game' ? 'Game' : 'App'} for {app.platforms.join(' and ')}.{app.languages > 1 ? ` ${app.languages} languages.` : ''} Since {app.since}.</p>
         <StoreButtons app={app} />
+        {(support[app.slug] || app.legal.length > 0) && (
+          <p class="quick mono">
+            {support[app.slug] && <a href={`/${app.slug}/support/`}>support</a>}
+            {app.legal.map((d) => <a href={`/vitp-apps-policies/${app.slug}/${d.slug}`}>{d.slug.replace('-', ' ')}</a>)}
+          </p>
+        )}
       </div>
     </div>
   </section>
@@ -60,6 +66,8 @@ const accent = { light: app.color, dark: app.colorDark, tintLight: app.tint, tin
   h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); }
   .tag { margin: 8px 0 6px; font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--text-2); font-weight: 500; }
   .meta { margin: 0 0 22px; color: var(--muted); }
+  .quick { margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.82rem; color: var(--muted); }
+  .quick a { color: var(--text-2); }
   @media (max-width: 640px) { .hero .wrap { grid-template-columns: 1fr; gap: 16px; } .icon { width: 96px; height: 96px; border-radius: 24px; } }
 
   .two { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(32px, 6vw, 80px); }

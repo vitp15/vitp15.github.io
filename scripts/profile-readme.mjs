@@ -45,7 +45,7 @@ const readme = `<h1 align="center">${site.name}</h1>
   <a href="mailto:${site.email}">${site.email}</a>
 </p>
 
-Tell me the problem and I will take it to production: choosing the stack, designing the architecture and the CI/CD, implementing and shipping it. Writing code since ${site.codingSince}, shipping to production since ${site.workingSince}.
+I can take a problem from the first conversation to production: choose the stack, design the architecture and the CI/CD, implement and ship. Writing code since ${site.codingSince}, production software since ${site.workingSince}.
 
 ## Apps and games
 
@@ -59,7 +59,7 @@ Every app has its own page with screenshots, download links, support and legal d
 
 ${job(experience[0], 'Shipping modules for WooCommerce, PrestaShop, Magento 2 and OpenCart and the PHP library they share: pickup points and lockers on a map widget, address autocomplete, cash on delivery, AWB generation, multi-currency pricing. Full-stack on the Angular + Node.js platform behind them (public API, Prisma and MySQL, Redis, payments). CI/CD with Playwright suites on self-hosted runners. Ran the technical interviews for the 2026 interns. A parcel-locker scanning prototype in Python (camera, laser measurement, motion control) and C++ work on a real helicopter project.')}
 
-${job(experience[1], 'Five-person team building a web product for GoAhead Venture, a US client: React, FastAPI, SQL, CI/CD.')}
+${job(experience[1], 'Small team building a web product for GoAhead Venture, a US client: React, FastAPI, SQL, CI/CD.')}
 
 ${job(experience[2], 'Sona, an Android app that detects car malfunctions from engine sound with an ML server on Google Cloud; Biblia Noul Testament audio for Android and iOS.')}
 
@@ -72,8 +72,9 @@ ${badges}
 ## Earlier projects
 
 - [Biblia Noul Testament audio](https://github.com/vitp15/NoulTestament_Android) for Android and [iOS](https://github.com/vitp15/NoulTestament_IOS)
-- [LogoSimilarity](https://github.com/vitp15/LogoSimilarity), unsupervised learning on logos
-- [GuessWordGame](https://github.com/vitp15/guess-word-game-telbot), a Telegram bot
+- [GuessWordGame](https://github.com/vitp15/guess-word-game-telbot), a Telegram bot with a word-guessing game
+- Physics simulations for YouTube Shorts: [collisionShow](https://github.com/vitp15/collisionShow), [SnakeGame](https://github.com/vitp15/SnakeGame) in the file explorer, a MIDI bouncing-square playground
+- [LogoSimilarity](https://github.com/vitp15/LogoSimilarity), unsupervised clustering of logos
 - University: a microservice backend on Docker Swarm with Keycloak, Prometheus and Grafana; a process scheduler in Rust; an async web server and a memory allocator in C; a Halite bot in C++
 
 <p align="center"><img src="https://github-readme-stats.vercel.app/api?username=vitp15&show_icons=true&hide_border=true&include_all_commits=true&count_private=true&theme=transparent" alt="GitHub stats"></p>

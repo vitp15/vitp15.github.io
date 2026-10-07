@@ -1,6 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import { apps } from '../../../data/apps';
+import { support } from '../../../data/support';
 
 export function getStaticPaths() {
   return apps.filter((app) => app.legal.length > 0).map((app) => ({ params: { app: app.slug }, props: { app } }));
@@ -17,6 +18,7 @@ const accent = { light: app.color, dark: app.colorDark, tintLight: app.tint, tin
       <p class="muted">Legal documents for the Android and iOS app. For help with the app itself, see <a href={`/${app.slug}/support/`}>support</a>.</p>
       <ul class="docs">
         {app.legal.map((d) => <li><a href={`/vitp-apps-policies/${app.slug}/${d.slug}`}>{d.title}</a></li>)}
+        {support[app.slug] && <li><a href={`/${app.slug}/support/`}>Support and help</a></li>}
       </ul>
     </div>
   </section>

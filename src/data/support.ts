@@ -19,12 +19,12 @@ export const support: Record<string, Support> = {
   naova: {
     intro: 'Naova is a self-management diary for migraine and the menstrual cycle. It is not medical advice and it never diagnoses. If something is broken or unclear, write to us and tell us your phone model and what you were trying to do.',
     faqs: [
-      { q: 'Do I need an account?', a: 'No. Naova works offline and your entries stay on your device. Backup and sync are optional features you can turn on in Settings.' },
-      { q: 'How do I log an attack quickly?', a: 'Tap <strong>Quick save</strong> on the home screen. One tap records the attack with the current time; you can add pain level, symptoms, triggers and medication later, when you feel better.' },
+      { q: 'Do I need an account?', a: 'No. Naova works offline and your entries stay on your phone. Encrypted cloud backup (Naova Pro) is optional: turn it on in <strong>Settings → Backup &amp; restore</strong>.' },
+      { q: 'How do I log an attack quickly?', a: 'Tap <strong>Quick save</strong> on the home screen, set how strong it is, and tap Save. It records the attack with the current time; add symptoms, triggers and medication later, when you feel better.' },
       { q: 'Does Naova predict attacks or tell me what to take?', a: 'No. Naova shows patterns in the data you logged, for example how often attacks fell on days with high stress or a given phase of your cycle. It does not predict, diagnose or recommend medication. Bring the report to your doctor and decide together.' },
-      { q: 'How do I share my diary with my doctor?', a: 'Open <strong>Doctor report</strong> to generate a PDF summary of a period you choose. You can also export everything as CSV.' },
-      { q: 'I subscribed to Naova Plus and it is not showing.', a: 'Open <strong>Settings → Restore purchases</strong> while online. Subscriptions follow your Apple Account or Google account, so sign in with the one you bought with.' },
-      { q: 'How do I delete my data?', a: `Your entries live on your device: deleting them in the app or uninstalling removes them. If you used backup, delete it from <strong>Settings → Backup</strong>, or follow the <a href="${dd('naova')}">data deletion page</a>.` },
+      { q: 'How do I share my diary with my doctor?', a: 'Open <strong>Doctor report</strong>, choose the period and tap <strong>Export PDF</strong>. Naova Pro can also export all your data as CSV.' },
+      { q: 'I subscribed to Naova Pro and it is not showing.', a: 'Open <strong>Settings → Naova Pro → Restore purchases</strong> while online. Subscriptions follow your Apple Account or Google account, so use the one you bought with.' },
+      { q: 'How do I delete my data?', a: `Your entries live on your phone: deleting them in the app or uninstalling removes them. If you used cloud backup, open <strong>Settings → Backup &amp; restore</strong>, tap <strong>Disconnect</strong> and choose <strong>Delete backup</strong>, or follow the <a href="${dd('naova')}">data deletion page</a>.` },
     ],
   },
   huglet: {

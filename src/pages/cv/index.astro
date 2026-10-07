@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { site } from '../../data/site';
-import { person, summary, experience, productsIntro, products, education, skills, languages } from '../../data/cv';
+import { person, summary, experience, productsIntro, products, education, otherProjects, skills, languages } from '../../data/cv';
 ---
 
 <Base title="CV, Vadim Plămădeală" description="Curriculum vitae of Vadim Plămădeală, full-stack software engineer in Bucharest. Download as PDF.">
@@ -50,6 +50,11 @@ import { person, summary, experience, productsIntro, products, education, skills
           {e.notes && <p>{e.notes}</p>}
         </section>
       ))}
+
+      <h2>Other projects</h2>
+      <ul>
+        {otherProjects.map((o) => <li>{o.url ? <a href={o.url}><strong>{o.name}</strong></a> : <strong>{o.name}</strong>}: {o.line}</li>)}
+      </ul>
 
       <h2>Skills</h2>
       <dl class="skills">

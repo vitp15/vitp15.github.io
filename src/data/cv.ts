@@ -5,7 +5,7 @@ export const person = {
   name: 'Vadim Plămădeală',
   asciiName: 'Vadim Plamadeala',
   title: 'Full-Stack Software Engineer',
-  location: 'Romania (remote)',
+  location: 'Romania',
   phone: '+40 771 155 169',
   email: 'vitp.work@gmail.com',
   linkedin: 'linkedin.com/in/vadim-plamadeala',
@@ -14,9 +14,9 @@ export const person = {
 };
 
 export const summary =
-  'Full-stack engineer with two years of professional experience, a Computer Science degree and projects ' +
-  'shipped since high school. I take a problem from the first conversation to production: I choose the stack, ' +
-  'design the architecture and the CI/CD, implement it and ship it. At Colete-Online I develop and maintain the ' +
+  'Full-stack engineer with a Computer Science degree, writing production software since 2024 and shipping ' +
+  'projects since high school (2020). I can take a problem from the first conversation to production: choose the ' +
+  'stack, design the architecture and the CI/CD, implement and ship. At Colete-Online I develop and maintain the ' +
   'shipping integrations for four e-commerce platforms and work on the Angular and Node.js platform behind them. ' +
   'On my own time I design, build and publish mobile apps and games for Android and iOS (Flutter, Godot). ' +
   'Comfortable moving between Java, TypeScript, Python, PHP and C++/embedded.';
@@ -36,7 +36,7 @@ export const experience: Job[] = [
   {
     role: 'Full-Stack Software Engineer',
     company: 'Colete-Online',
-    place: 'Bucharest, Romania (remote)',
+    place: 'Bucharest, Romania',
     start: 'Jul 2025',
     end: 'Present',
     blurb:
@@ -45,9 +45,9 @@ export const experience: Job[] = [
       'Develop and maintain the shipping modules for WooCommerce, PrestaShop, Magento 2 and OpenCart and the shared PHP library behind them: pickup-point and locker selection on an embeddable map widget (TypeScript), address autocomplete, cash on delivery, AWB generation, multi-currency pricing.',
       'Full-stack work on the main platform (Angular, Node.js, TypeScript, Prisma, MySQL, Redis): public order and price API, shipping-point endpoints, API-key management, Redis pub/sub cache invalidation, payments and subscriptions.',
       'Set up CI/CD across the repositories: GitHub Actions on self-hosted runners, Playwright end-to-end suites with nightly runs over several platform versions, release packaging.',
-      'Ran all technical interviews for the 2026 intern intake and take part in infrastructure decisions.',
+      'Ran all technical interviews for the 2026 interns and take part in infrastructure decisions.',
       'Prototyped a parcel-locker scanning station in Python: camera capture, laser-line detection to measure parcels, tray and arm motion control, kiosk UI on a portrait touchscreen.',
-      'Hands-on C++ and embedded work on a real helicopter project.',
+      'C++ and embedded work on a real helicopter project.',
     ],
     stack: ['TypeScript', 'Angular', 'Node.js', 'PHP', 'Prisma', 'MySQL', 'Redis', 'Docker', 'Playwright', 'GitHub Actions', 'Python', 'C++'],
   },
@@ -57,7 +57,7 @@ export const experience: Job[] = [
     place: 'Remote',
     start: 'Apr 2025',
     end: 'Sep 2025',
-    blurb: 'Five-person team building a web product for GoAhead Venture, a US client.',
+    blurb: 'Small team building a web product for GoAhead Venture, a US client.',
     bullets: [
       'Full-stack development: React front end, FastAPI (Python) services and SQL; Git-based CI/CD and direct contact with the client on scope and delivery.',
     ],
@@ -149,8 +149,7 @@ export const education = [
     start: '2022',
     end: '2026',
     notes:
-      'Coursework: algorithms, operating systems, parallel and distributed algorithms, networks, cloud and microservices (Docker Swarm, Kubernetes), security, machine learning. ' +
-      'Projects: RoomReserve (microservices, Nginx gateway, Keycloak, Prometheus and Grafana), a process scheduler in Rust, an async web server in C, a Halite bot in C++.',
+      'Coursework: algorithms, operating systems, parallel and distributed algorithms, networks, cloud and microservices (Docker Swarm, Kubernetes), security, machine learning.',
   },
   {
     degree: 'Mathematics and Computer Science profile',
@@ -161,13 +160,24 @@ export const education = [
   },
 ];
 
+export type OtherProject = { name: string; line: string; url: string };
+
+export const otherProjects: OtherProject[] = [
+  { name: 'GuessWordGame', line: 'Telegram bot with a word-guessing game (Python).', url: 'https://github.com/vitp15/guess-word-game-telbot' },
+  { name: 'Physics simulations for YouTube Shorts', line: 'Bouncing-ball and collision animations rendered in Python, plus a MIDI bouncing-square playground.', url: 'https://github.com/vitp15/collisionShow' },
+  { name: 'LogoSimilarity', line: 'Unsupervised clustering of company logos by visual similarity (Python).', url: 'https://github.com/vitp15/LogoSimilarity' },
+  { name: 'SnakeGame', line: 'Snake played inside the file explorer (Python).', url: 'https://github.com/vitp15/SnakeGame' },
+  { name: 'RoomReserve', line: 'Microservice backend on Docker Swarm: Nginx gateway, Keycloak, Prometheus and Grafana (university).', url: '' },
+  { name: 'Systems coursework', line: 'Process scheduler in Rust, asynchronous web server and memory allocator in C, Halite game bot in C++.', url: '' },
+];
+
 export const skills: { group: string; items: string[] }[] = [
   { group: 'Languages', items: ['TypeScript', 'JavaScript', 'PHP', 'Python', 'Java', 'C/C++', 'Rust', 'Dart', 'Swift', 'GDScript', 'SQL'] },
   { group: 'Backend', items: ['Node.js', 'Express', 'Prisma', 'MySQL', 'PostgreSQL', 'Redis', 'REST APIs', 'FastAPI', 'Django', 'Supabase', 'Firebase'] },
   { group: 'Web, e-commerce', items: ['Angular', 'React', 'Vite', 'HTML/CSS', 'WordPress/WooCommerce', 'PrestaShop', 'Magento 2', 'OpenCart'] },
   { group: 'Mobile and games', items: ['Flutter', 'Android (Java)', 'iOS (Swift)', 'Godot 4', 'home-screen widgets', 'push notifications', 'in-app purchases (StoreKit 2, Play Billing, RevenueCat)', 'AdMob'] },
   { group: 'DevOps and quality', items: ['Docker', 'Docker Compose/Swarm', 'Kubernetes', 'GitHub Actions', 'self-hosted runners', 'Codemagic', 'Xcode Cloud', 'Google Cloud', 'Playwright', 'Sentry'] },
-  { group: 'Practices', items: ['architecture and stack decisions', 'CI/CD design', 'technical interviews', 'code review', 'domain-driven design', 'dependency injection', 'property-based testing', 'Git', 'Jira', 'AI-assisted development (Claude Code)'] },
+  { group: 'Practices', items: ['architecture and stack decisions', 'CI/CD design', 'technical interviews', 'code review', 'domain-driven design', 'dependency injection', 'property-based testing', 'AI-assisted development (Claude Code)'] },
 ];
 
 export const languages = [

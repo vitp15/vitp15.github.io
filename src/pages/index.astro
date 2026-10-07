@@ -3,17 +3,12 @@ import Base from '../layouts/Base.astro';
 import AppCard from '../components/AppCard.astro';
 import { apps, figures } from '../data/apps';
 import { site } from '../data/site';
-import { experience, education, skills, languages } from '../data/cv';
+import { experience, education, skills, languages, otherProjects } from '../data/cv';
 
-const year = new Date().getFullYear();
-const yearsCoding = year - site.codingSince;
-const yearsProd = year - site.workingSince;
 const stats = [
-  { n: yearsCoding, suffix: '+', label: 'years writing code', sub: `since 11th grade, ${site.codingSince}` },
-  { n: yearsProd, suffix: '', label: 'years shipping to production', sub: 'freelance first, then two companies' },
-  { n: figures.apps, suffix: '', label: 'apps and games', sub: `${figures.live} on Google Play, the rest in testing` },
-  { n: figures.languages, suffix: '', label: 'store languages', sub: 'every listing, translated and checked' },
-  { n: 4, suffix: '', label: 'e-commerce platforms integrated', sub: 'WooCommerce, PrestaShop, Magento 2, OpenCart' },
+  { n: site.codingSince, label: 'writing code since', sub: '11th grade, first projects', count: false },
+  { n: site.workingSince, label: 'production software since', sub: 'freelance first, then two companies', count: false },
+  { n: figures.apps, label: 'apps and games', sub: `${figures.live} on Google Play, the rest in testing`, count: true },
 ];
 const logos = [
   ['typescript', 'TypeScript'], ['angular', 'Angular'], ['nodedotjs', 'Node.js'], ['php', 'PHP'], ['flutter', 'Flutter'],
@@ -41,7 +36,7 @@ const work = [
   <section class="hero">
     <div class="wrap bento">
       <div class="tile intro">
-        <p class="prompt mono" aria-hidden="true"><span class="user">{site.handle}@romania</span>:~$ <span class="typed">whoami</span></p>
+        <p class="prompt mono" aria-hidden="true"><span class="user">{site.handle}@localhost</span>:~$ <span class="typed">whoami</span></p>
         <h1>{site.name}</h1>
         <p class="role">Full-stack software engineer. Online as <span class="mono">{site.handle}</span>.</p>
         <p class="lede">
@@ -64,18 +59,10 @@ const work = [
         <img src="/img/photo.jpg" width="800" height="800" alt={site.name} />
       </div>
 
-      {stats.slice(0, 2).map((s) => (
+      {stats.map((s) => (
         <div class="tile stat">
-          <p class="num mono"><span data-count={s.n}>{s.n}</span>{s.suffix}</p>
           <p class="stat-label">{s.label}</p>
-          <p class="stat-sub">{s.sub}</p>
-        </div>
-      ))}
-
-      {stats.slice(2).map((s) => (
-        <div class="tile stat small">
-          <p class="num mono"><span data-count={s.n}>{s.n}</span>{s.suffix}</p>
-          <p class="stat-label">{s.label}</p>
+          <p class="num mono">{s.count ? <span data-count={s.n}>{s.n}</span> : s.n}</p>
           <p class="stat-sub">{s.sub}</p>
         </div>
       ))}
@@ -83,7 +70,7 @@ const work = [
       <div class="tile now">
         <p class="label"><span class="dot"></span>now</p>
         <h3>Full-stack engineer at Colete-Online</h3>
-        <p class="muted">Shipping modules for four e-commerce platforms and the Angular + Node.js platform behind them. Remote, from {site.location}.</p>
+        <p class="muted">Shipping modules for four e-commerce platforms and the Angular + Node.js platform behind them.</p>
         <a href="#work">What I do there</a>
       </div>
 
@@ -104,15 +91,7 @@ const work = [
         <a href={site.github} rel="me" class="chart-link">
           <img class="chart" src="https://ghchart.rshah.org/7aa2ff/vitp15" alt="GitHub contribution calendar of vitp15" loading="lazy" />
         </a>
-        <p class="muted small">Most of my work lives in private repositories (Colete-Online and the app repos), so this shows only part of it.</p>
-      </div>
-
-      <div class="tile contact">
-        <p class="label">contact</p>
-        <p class="contact-line"><a href={`mailto:${site.email}`}>{site.email}</a></p>
-        <p class="contact-line"><a href={site.linkedin} rel="me">linkedin.com/in/vadim-plamadeala</a></p>
-        <p class="contact-line"><a href={site.github} rel="me">github.com/vitp15</a></p>
-        <p class="muted small" style="margin:12px 0 0">Open to senior full-stack roles, remote or hybrid, and to app projects.</p>
+        <p class="muted small">Most of my work lives in private repositories (Colete-Online and the app repos), so this is only part of the picture.</p>
       </div>
     </div>
   </section>
@@ -147,6 +126,23 @@ const work = [
       <div class="grid">
         {apps.map((a, i) => <AppCard app={a} index={i} />)}
       </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Other projects</h2>
+        <p>Smaller things from university and before, most of them on GitHub.</p>
+      </div>
+      <ul class="others">
+        {otherProjects.map((o) => (
+          <li>
+            {o.url ? <a href={o.url}><strong>{o.name}</strong></a> : <strong>{o.name}</strong>}
+            <span>{o.line}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -241,26 +237,22 @@ const work = [
   .photo { grid-column: span 2; grid-row: span 2; padding: 0; }
   .photo img { width: 100%; height: 100%; object-fit: cover; }
 
-  .stat { grid-column: span 3; display: flex; flex-direction: column; justify-content: flex-end; }
-  .stat.small { grid-column: span 3; }
+  .stat { grid-column: span 3; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; }
   .num { margin: 0; font-size: clamp(2.4rem, 4vw, 3.4rem); font-weight: 600; line-height: 1; color: var(--num); letter-spacing: -0.04em; }
-  .stat-label { margin: 10px 0 2px; font-weight: 500; }
+  .stat-label { margin: 0; font-family: var(--mono); font-size: 0.78rem; color: var(--muted); }
   .stat-sub { margin: 0; color: var(--muted); font-size: 0.88rem; }
 
-  .now { grid-column: span 3; }
+  .now { grid-column: span 4; }
   .now h3 { font-size: 1.15rem; margin-bottom: 8px; }
   .now p.muted { font-size: 0.95rem; }
   .now a, .stack a { color: var(--text-2); font-size: 0.92rem; }
 
-  .stack { grid-column: span 4; }
+  .stack { grid-column: span 5; }
   .logos { list-style: none; margin: 0 0 14px; padding: 0; display: grid; grid-template-columns: repeat(10, 1fr); gap: 10px; }
   .logos li { display: grid; place-items: center; aspect-ratio: 1; border-radius: 10px; background: var(--tile-2); border: 1px solid var(--line); }
   .logos img { width: 22px; height: 22px; opacity: 0.85; }
 
-  .github { grid-column: span 5; }
-  .contact { grid-column: span 3; }
-  .contact-line { margin: 0 0 6px; font-size: 0.95rem; overflow-wrap: anywhere; }
-  .contact-line a { color: var(--text); }
+  .github { grid-column: span 12; }
   .chart-link { display: block; }
   .chart { width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px; }
   .github .small { margin: 0; font-size: 0.85rem; }
@@ -269,18 +261,24 @@ const work = [
     .bento { grid-template-columns: repeat(6, minmax(0, 1fr)); }
     .intro { grid-column: span 6; grid-row: auto; }
     .photo { grid-column: span 2; grid-row: span 2; }
-    .stat, .stat.small { grid-column: span 2; }
-    .now { grid-column: span 3; } .stack { grid-column: span 3; } .github { grid-column: span 6; } .contact { grid-column: span 6; }
+    .stat { grid-column: span 2; }
+    .now { grid-column: span 2; } .stack { grid-column: span 6; } .github { grid-column: span 6; }
     .logos { grid-template-columns: repeat(10, 1fr); }
   }
   @media (max-width: 640px) {
     .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
     .intro { grid-column: span 2; padding: 24px 20px; }
     .photo { grid-column: span 1; grid-row: span 1; aspect-ratio: 1; }
-    .stat, .stat.small, .now, .stack, .github, .contact { grid-column: span 2; }
+    .stat, .now, .stack, .github { grid-column: span 2; }
     .photo + .stat { grid-column: span 1; }
     .logos { grid-template-columns: repeat(5, 1fr); }
+    .actions .btn { flex: 1 1 auto; justify-content: center; }
   }
+  .others { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 32px; }
+  .others li { display: grid; gap: 2px; padding: 14px 0; border-top: 1px solid var(--line); }
+  .others li span { color: var(--text-2); font-size: 0.97rem; }
+  .others a { text-decoration-color: var(--line-strong); }
+  @media (max-width: 760px) { .others { grid-template-columns: 1fr; } }
 
   .timeline { list-style: none; margin: 0; padding: 0; }
   .timeline > li { display: grid; grid-template-columns: 170px 1fr; gap: 24px; padding: 26px 0; border-top: 1px solid var(--line); }

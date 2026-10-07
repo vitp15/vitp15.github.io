@@ -159,7 +159,7 @@ export const skills: { group: string; items: string[] }[] = [
   { group: 'Languages', items: ['TypeScript', 'JavaScript', 'PHP', 'Dart', 'Python', 'Java', 'Swift', 'C/C++', 'GDScript', 'Rust', 'SQL'] },
   { group: 'Backend', items: ['Node.js', 'Prisma', 'MySQL', 'PostgreSQL', 'Redis', 'REST APIs', 'FastAPI', 'Django', 'Supabase', 'Firebase'] },
   { group: 'Web, e-commerce', items: ['React', 'Vite', 'HTML/CSS', 'WordPress/WooCommerce', 'PrestaShop', 'Magento 2', 'OpenCart'] },
-  { group: 'Mobile and games', items: ['Flutter', 'Android (Java/Kotlin)', 'iOS (Swift)', 'Godot 4', 'home-screen widgets', 'push notifications', 'in-app purchases (StoreKit 2, Play Billing, RevenueCat)', 'AdMob'] },
+  { group: 'Mobile and games', items: ['Flutter', 'Android (Java)', 'iOS (Swift)', 'Godot 4', 'home-screen widgets', 'push notifications', 'in-app purchases (StoreKit 2, Play Billing, RevenueCat)', 'AdMob'] },
   { group: 'DevOps and quality', items: ['Docker', 'Docker Compose/Swarm', 'Kubernetes', 'GitHub Actions', 'self-hosted runners', 'Codemagic', 'Xcode Cloud', 'Google Cloud', 'Playwright', 'PHPStan', 'Trivy', 'Sentry'] },
   { group: 'Practices', items: ['Git', 'Jira', 'code review', 'domain-driven design', 'dependency injection', 'property-based testing', 'AI-assisted development (Claude Code)'] },
 ];

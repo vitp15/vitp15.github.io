@@ -26,9 +26,16 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run check:urls -- dist
-      - uses: actions/upload-pages-artifact@v4
+      # upload-pages-artifact drops hidden paths, and /.well-known/ is one of
+      # the files the apps depend on, so the archive is built here instead.
+      - name: Archive the site, hidden paths included
+        run: tar --dereference --hard-dereference --directory dist -cf "$RUNNER_TEMP/artifact.tar" --exclude=.git --exclude=.github .
+      - uses: actions/upload-artifact@v4
         with:
-          path: dist
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
 
   deploy:
     needs: build
@@ -39,3 +46,13 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  verify:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - run: sleep 20 && node scripts/check-urls.mjs --live

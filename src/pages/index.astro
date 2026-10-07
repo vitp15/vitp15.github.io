@@ -8,7 +8,7 @@ import { experience, education, skills, languages, otherProjects } from '../data
 const stats = [
   { n: site.codingSince, label: 'writing code since', sub: '11th grade, first projects', count: false },
   { n: site.workingSince, label: 'production software since', sub: 'freelance first, then two companies', count: false },
-  { n: figures.apps, label: 'apps and games', sub: `${figures.live} on Google Play, the rest in testing`, count: true },
+  { n: figures.apps, label: 'apps and games', sub: [figures.live && `${figures.live} on Google Play`, figures.beta && `${figures.beta} in testing`, figures.soon && `${figures.soon} on the way`].filter(Boolean).join(', '), count: true },
 ];
 const logos = [
   ['typescript', 'TypeScript'], ['angular', 'Angular'], ['nodedotjs', 'Node.js'], ['php', 'PHP'], ['flutter', 'Flutter'],
@@ -40,9 +40,9 @@ const work = [
         <h1>{site.name}</h1>
         <p class="role">Full-stack software engineer. Online as <span class="mono">{site.handle}</span>.</p>
         <p class="lede">
-          Tell me the problem and I will take it to production: choosing the stack, designing the architecture
-          and the CI/CD, implementing and shipping it. Weekdays at <strong>Colete-Online</strong>, on shipping
-          integrations and the platform behind them. The rest of the time on my own apps and games for Android and iOS.
+          I can take a problem from the first conversation to production: choose the stack, design the architecture
+          and the CI/CD, implement and ship. Weekdays at <strong>Colete-Online</strong>, on shipping integrations and
+          the platform behind them. The rest of the time on my own apps and games for Android and iOS.
         </p>
         <div class="actions">
           <a class="btn primary" href={site.cvPdf} download>Download CV</a>

@@ -250,6 +250,8 @@ export const bySlug = (slug: string) => apps.find((a) => a.slug === slug);
 export const figures = {
   apps: apps.length,
   live: apps.filter((a) => a.status === 'live').length,
+  beta: apps.filter((a) => a.status === 'beta').length,
+  soon: apps.filter((a) => a.status === 'soon').length,
   languages: Math.max(...apps.map((a) => a.languages)),
   platforms: [...new Set(apps.flatMap((a) => a.platforms))].length,
 };

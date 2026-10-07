@@ -24,6 +24,8 @@ export const summary =
 export type Job = {
   role: string;
   company: string;
+  /** Company website, shown as a link on the site only (never in the PDF). */
+  url?: string;
   place: string;
   start: string;
   end: string;
@@ -36,6 +38,7 @@ export const experience: Job[] = [
   {
     role: 'Full-Stack Software Engineer',
     company: 'Colete-Online',
+    url: 'https://www.colete-online.ro',
     place: 'Bucharest, Romania',
     start: 'Jul 2025',
     end: 'Present',

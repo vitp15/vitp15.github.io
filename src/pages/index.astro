@@ -110,7 +110,7 @@ const work = [
           <li>
             <div class="when mono">{job.start} – {job.end}</div>
             <div class="what">
-              <h3>{job.role}, {job.company}</h3>
+              <h3>{job.role}, {job.url ? <a class="co" href={job.url} rel="noopener">{job.company}</a> : job.company}</h3>
               <p>{text}</p>
               <ul class="chips">{job.stack.map((s) => <li>{s}</li>)}</ul>
             </div>
@@ -290,6 +290,8 @@ const work = [
   .timeline h3 { font-size: 1.25rem; margin-bottom: 8px; }
   .timeline p { color: var(--text-2); max-width: 74ch; }
   .timeline .chips { margin-top: 14px; }
+  .timeline .co { text-decoration-color: var(--line-strong); }
+  .timeline .co:hover { text-decoration-color: var(--accent); }
   @media (max-width: 700px) { .timeline > li { grid-template-columns: 1fr; gap: 6px; } }
 
   .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }

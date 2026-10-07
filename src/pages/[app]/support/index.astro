@@ -5,7 +5,7 @@ import { support } from '../../../data/support';
 import { site } from '../../../data/site';
 
 export function getStaticPaths() {
-  return apps.map((app) => ({ params: { app: app.slug }, props: { app } }));
+  return apps.filter((app) => support[app.slug]).map((app) => ({ params: { app: app.slug }, props: { app } }));
 }
 const { app } = Astro.props;
 const s = support[app.slug];
@@ -23,7 +23,7 @@ const subject = encodeURIComponent(`${app.name} support`);
       </ol>
       <h1>{app.name} support</h1>
       <p>{s.intro}</p>
-      <p><a class="btn primary mail" href={`mailto:${site.supportEmail}?subject=${subject}`}>{site.supportEmail}</a></p>
+      <p>Email: <a class="mail" href={`mailto:${site.supportEmail}?subject=${subject}`}>{site.supportEmail}</a></p>
       {s.feedbackNote && <p set:html={s.feedbackNote} />}
 
       <h2>Common questions</h2>
@@ -38,7 +38,7 @@ const subject = encodeURIComponent(`${app.name} support`);
       <p>
         {app.legal.map((d, i) => (
           <>
-            {i > 0 && ' · '}
+            {i > 0 && ', '}
             <a href={`/vitp-apps-policies/${app.slug}/${d.slug}`}>{d.title}</a>
           </>
         ))}
@@ -49,7 +49,7 @@ const subject = encodeURIComponent(`${app.name} support`);
 </Base>
 
 <style>
-  .mail { background: var(--app); color: var(--bg); }
+  .mail { font-weight: 600; color: var(--text); text-decoration-color: var(--app); }
   details { border-top: 1px solid var(--line); padding: 14px 0; }
   details:last-of-type { border-bottom: 1px solid var(--line); }
   summary { cursor: pointer; font-weight: 700; color: var(--text); list-style: none; display: flex; justify-content: space-between; gap: 16px; }

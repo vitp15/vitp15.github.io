@@ -105,7 +105,7 @@ h2.pb{break-before:page;margin-top:0}
 <h2>Experience</h2>
 ${experience.map(job).join('')}
 
-<h2 class="pb">Independent products</h2>
+<h2>Independent products</h2>
 <p class="summary" style="margin-bottom:1.8mm">${esc(productsIntro)}</p>
 ${products.map(product).join('')}
 

@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import StoreButtons from '../../components/StoreButtons.astro';
 import Shots from '../../components/Shots.astro';
 import { apps } from '../../data/apps';
+import { support } from '../../data/support';
 
 export function getStaticPaths() {
   return apps.map((app) => ({ params: { app: app.slug }, props: { app } }));
@@ -18,7 +19,7 @@ const accent = { light: app.color, dark: app.colorDark, tintLight: app.tint, tin
       <div class="copy">
         <h1>{app.name}</h1>
         <p class="tag">{app.tagline}</p>
-        <p class="meta">{app.kind === 'game' ? 'Game' : 'App'} for Android and iOS. {app.languages} languages.</p>
+        <p class="meta">{app.kind === 'game' ? 'Game' : 'App'} for {app.platforms.join(' and ')}.{app.languages > 1 ? ` ${app.languages} languages.` : ''} Since {app.since}.</p>
         <StoreButtons app={app} />
       </div>
     </div>
@@ -36,11 +37,15 @@ const accent = { light: app.color, dark: app.colorDark, tintLight: app.tint, tin
       <aside>
         <h2 class="h3">Built with</h2>
         <ul class="chips">{app.stack.map((s) => <li>{s}</li>)}</ul>
-        <h2 class="h3">Support and legal</h2>
-        <ul class="plain">
-          <li><a href={`/${app.slug}/support/`}>Support and help</a></li>
-          {app.legal.map((d) => <li><a href={`/vitp-apps-policies/${app.slug}/${d.slug}`}>{d.title}</a></li>)}
-        </ul>
+        {(support[app.slug] || app.legal.length > 0) && (
+          <>
+            <h2 class="h3">Support and legal</h2>
+            <ul class="plain">
+              {support[app.slug] && <li><a href={`/${app.slug}/support/`}>Support and help</a></li>}
+              {app.legal.map((d) => <li><a href={`/vitp-apps-policies/${app.slug}/${d.slug}`}>{d.title}</a></li>)}
+            </ul>
+          </>
+        )}
         <p class="small muted">Made in Romania by <a href="/">Vadim Plămădeală</a>. <a href="/apps/">All apps</a>.</p>
       </aside>
     </div>
@@ -48,9 +53,10 @@ const accent = { light: app.color, dark: app.colorDark, tintLight: app.tint, tin
 </Base>
 
 <style>
-  .hero { padding-block: clamp(40px, 7vw, 88px) clamp(24px, 4vw, 40px); background: linear-gradient(180deg, var(--tint), var(--bg) 100%); }
+  .hero { padding-block: clamp(40px, 7vw, 88px) clamp(24px, 4vw, 40px); }
   .hero .wrap { display: grid; grid-template-columns: 128px 1fr; gap: 28px; align-items: center; }
   .icon { border-radius: 30px; box-shadow: var(--shadow); }
+  .hero { background: linear-gradient(180deg, color-mix(in srgb, var(--tint) 55%, var(--bg)), var(--bg) 100%); }
   h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); }
   .tag { margin: 8px 0 6px; font-size: clamp(1.15rem, 2vw, 1.4rem); color: var(--text-2); font-weight: 500; }
   .meta { margin: 0 0 22px; color: var(--muted); }

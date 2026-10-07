@@ -1,5 +1,7 @@
-// The six VitpApps. This file feeds the home page, /apps/, every /<slug>/
-// page, the support pages, the legal index and the GitHub profile README.
+// Every app I have published or am about to. This file feeds the home page,
+// /apps/, each /<slug>/ page, the support and legal pages, the URL checklist
+// and the GitHub profile README. Counts on the site are derived from it, so
+// adding an app here is the only edit needed.
 // Store buttons only render when `live` is true, so a link never 404s.
 
 export type Store = { url: string; live: boolean };
@@ -12,7 +14,9 @@ export type App = {
   description: string;
   bullets: string[];
   stack: string[];
+  platforms: ('Android' | 'iOS')[];
   languages: number;
+  since: number;
   kind: 'app' | 'game';
   status: 'live' | 'beta' | 'soon';
   statusLine: string;
@@ -33,6 +37,7 @@ const LEGAL = [
   { slug: 'terms', title: 'Terms & Conditions' },
   { slug: 'data-deletion', title: 'Delete Account and Data' },
 ];
+const BOTH: App['platforms'] = ['Android', 'iOS'];
 
 export const apps: App[] = [
   {
@@ -49,11 +54,13 @@ export const apps: App[] = [
       'A cognitive canvas with five axes: speed, logic, focus, efficiency and calm.',
     ],
     stack: ['Flutter', 'Dart', 'Drift (SQLite)', 'Supabase', 'Android App Links', 'iOS Universal Links', 'AdMob', 'In-app purchases'],
+    platforms: BOTH,
     languages: 18,
+    since: 2026,
     kind: 'app',
     status: 'beta',
     statusLine: 'In closed testing on Google Play and TestFlight. Public release soon.',
-    color: '#f2c14e',
+    color: '#b98a12',
     colorDark: '#f2c14e',
     tint: '#fbf1d6',
     tintDark: '#2a2740',
@@ -76,7 +83,9 @@ export const apps: App[] = [
       'Offline-first with encrypted backup. No ads. Designed for photosensitivity: no pure white, no flashes.',
     ],
     stack: ['Flutter', 'Dart', 'SQLite', 'RevenueCat', 'PDF generation', 'Encrypted backup'],
+    platforms: BOTH,
     languages: 18,
+    since: 2026,
     kind: 'app',
     status: 'beta',
     statusLine: 'In closed testing on Google Play and TestFlight. Public release soon.',
@@ -103,7 +112,9 @@ export const apps: App[] = [
       'Consent, limits and quiet hours are enforced on the server and are always free.',
     ],
     stack: ['Flutter', 'Dart', 'Supabase', 'Firebase Cloud Messaging', 'WidgetKit', 'Android AppWidget', 'AdMob', 'In-app purchases'],
+    platforms: BOTH,
     languages: 18,
+    since: 2026,
     kind: 'app',
     status: 'beta',
     statusLine: 'In testing. Public release on Google Play and the App Store soon.',
@@ -122,15 +133,17 @@ export const apps: App[] = [
     storeName: 'MoneyManager: Expense Tracker',
     tagline: 'Expenses, budgets and 150+ currencies, in sync.',
     description:
-      'Track expenses and income in seconds, set monthly budgets linked to categories, keep accounts in different currencies with live rates, and see where the money goes in reports and forecasts. The first version shipped on Google Play in Java with Firebase sync; the second is a Flutter rewrite with local-first sync for Android and iOS.',
+      'Track expenses and income in seconds, set monthly budgets linked to categories, keep accounts in different currencies with live rates, and see where the money goes in reports and forecasts. The first version shipped on Google Play in Java with Firebase sync. The second is a Flutter rewrite for Android and iOS with local-first sync, shared spaces for families and AI-assisted capture of transactions from bank notifications.',
     bullets: [
+      'Shared spaces: a family or a couple keeps one budget, with per-member permissions.',
+      'Transactions captured from bank notifications and confirmed with one tap, so nothing is typed twice.',
       'Budgets that follow categories, with auto-allocation of a share of each income.',
-      'Recurring bills and templates: rent, salary, subscriptions, posted only after you confirm.',
-      'Accounts in 150+ currencies, converted on transfer with live exchange rates.',
-      'Reports, pie charts and a spending forecast for the rest of the month.',
+      'Accounts in 150+ currencies, converted on transfer with live exchange rates; reports, charts and a month-end forecast.',
     ],
-    stack: ['Flutter', 'Dart', 'PostgreSQL', 'Java (v1)', 'Firebase (v1)', 'Local-first sync'],
+    stack: ['Flutter', 'Dart', 'PostgreSQL', 'Local-first sync', 'Java (v1)', 'Firebase (v1)'],
+    platforms: BOTH,
     languages: 18,
+    since: 2025,
     kind: 'app',
     status: 'live',
     statusLine: 'Version 1 is on Google Play. Version 2, for Android and iOS, is in development.',
@@ -157,11 +170,13 @@ export const apps: App[] = [
       'Calm by design: no timer, no pay-to-win, one-handed portrait play.',
     ],
     stack: ['Godot 4', 'GDScript', 'Headless property tests', 'Deterministic trailer pipeline', 'AdMob', 'In-app purchases'],
+    platforms: BOTH,
     languages: 18,
+    since: 2026,
     kind: 'game',
     status: 'soon',
     statusLine: 'Coming to Google Play and the App Store.',
-    color: '#c99a16',
+    color: '#b8860b',
     colorDark: '#ffd94d',
     tint: '#f7ecc8',
     tintDark: '#2a2638',
@@ -184,12 +199,14 @@ export const apps: App[] = [
       'Deterministic physics checked by property-based and fuzz test suites.',
     ],
     stack: ['Godot 4', 'GDScript', 'Custom perspective-alignment engine', 'Property-based tests', 'AdMob', 'In-app purchases'],
+    platforms: BOTH,
     languages: 18,
+    since: 2026,
     kind: 'game',
     status: 'soon',
     statusLine: 'Coming to Google Play and the App Store.',
-    color: '#d4731a',
-    colorDark: '#ffd94d',
+    color: '#c2641a',
+    colorDark: '#ffb24d',
     tint: '#fde9d6',
     tintDark: '#3a2a2a',
     android: { url: PLAY('com.vitpapps.impossibletaxi'), live: false },
@@ -197,6 +214,42 @@ export const apps: App[] = [
     shots: 9,
     legal: LEGAL,
   },
+  {
+    slug: 'imnuri-tineret-cahul',
+    name: 'Imnuri Tineret Cahul',
+    storeName: 'Imnuri Tineret Cahul',
+    tagline: 'The youth hymn book of Cahul, with lyrics, sheet music and recordings.',
+    description:
+      'My first published app, built in Java while still in high school and on Google Play since 2021. The hymn book of the youth choir in Cahul, Moldova: lyrics organised by category, sheet music as PDF and audio recordings you can download for offline use.',
+    bullets: [
+      'Lyrics by category, with fast navigation by number.',
+      'Sheet music as PDF and recordings for every hymn, downloadable for offline use.',
+      'Built in Java for Android; still maintained and still on Google Play.',
+    ],
+    stack: ['Android', 'Java'],
+    platforms: ['Android'],
+    languages: 1,
+    since: 2021,
+    kind: 'app',
+    status: 'live',
+    statusLine: 'On Google Play since 2021.',
+    color: '#0e9aa0',
+    colorDark: '#2ee8ef',
+    tint: '#d9f6f7',
+    tintDark: '#16303a',
+    android: { url: PLAY('project.rew.imnuritineretcahul'), live: true },
+    ios: { url: '', live: false },
+    shots: 0,
+    legal: [],
+  },
 ];
 
 export const bySlug = (slug: string) => apps.find((a) => a.slug === slug);
+
+/** Figures shown on the home page, derived from the data above. */
+export const figures = {
+  apps: apps.length,
+  live: apps.filter((a) => a.status === 'live').length,
+  languages: Math.max(...apps.map((a) => a.languages)),
+  platforms: [...new Set(apps.flatMap((a) => a.platforms))].length,
+};

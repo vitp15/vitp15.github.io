@@ -3,7 +3,7 @@ import Base from '../../../layouts/Base.astro';
 import { apps } from '../../../data/apps';
 
 export function getStaticPaths() {
-  return apps.map((app) => ({ params: { app: app.slug }, props: { app } }));
+  return apps.filter((app) => app.legal.length > 0).map((app) => ({ params: { app: app.slug }, props: { app } }));
 }
 const { app } = Astro.props;
 const accent = { light: app.color, dark: app.colorDark, tintLight: app.tint, tintDark: app.tintDark };
@@ -25,6 +25,6 @@ const accent = { light: app.color, dark: app.colorDark, tintLight: app.tint, tin
 <style>
   h1 { margin-bottom: 10px; }
   .docs { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 10px; }
-  .docs a { display: block; padding: 16px 18px; border: 1px solid var(--line); border-radius: var(--radius-m); background: var(--surface); text-decoration: none; font-weight: 600; }
+  .docs a { display: block; padding: 16px 18px; border: 1px solid var(--line); border-radius: var(--r-m); background: var(--tile); text-decoration: none; font-weight: 600; }
   .docs a:hover { border-color: var(--app); }
 </style>

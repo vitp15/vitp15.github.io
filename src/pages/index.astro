@@ -1,14 +1,30 @@
 ---
 import Base from '../layouts/Base.astro';
 import AppCard from '../components/AppCard.astro';
-import { apps } from '../data/apps';
+import { apps, figures } from '../data/apps';
 import { site } from '../data/site';
 import { experience, education, skills, languages } from '../data/cv';
 
+const year = new Date().getFullYear();
+const yearsCoding = year - site.codingSince;
+const yearsProd = year - site.workingSince;
+const stats = [
+  { n: yearsCoding, suffix: '+', label: 'years writing code', sub: `since 11th grade, ${site.codingSince}` },
+  { n: yearsProd, suffix: '', label: 'years shipping to production', sub: 'freelance first, then two companies' },
+  { n: figures.apps, suffix: '', label: 'apps and games', sub: `${figures.live} on Google Play, the rest in testing` },
+  { n: figures.languages, suffix: '', label: 'store languages', sub: 'every listing, translated and checked' },
+  { n: 4, suffix: '', label: 'e-commerce platforms integrated', sub: 'WooCommerce, PrestaShop, Magento 2, OpenCart' },
+];
+const logos = [
+  ['typescript', 'TypeScript'], ['angular', 'Angular'], ['nodedotjs', 'Node.js'], ['php', 'PHP'], ['flutter', 'Flutter'],
+  ['dart', 'Dart'], ['godotengine', 'Godot 4'], ['python', 'Python'], ['openjdk', 'Java'], ['cplusplus', 'C++'],
+  ['mysql', 'MySQL'], ['postgresql', 'PostgreSQL'], ['redis', 'Redis'], ['prisma', 'Prisma'], ['supabase', 'Supabase'],
+  ['firebase', 'Firebase'], ['docker', 'Docker'], ['kubernetes', 'Kubernetes'], ['githubactions', 'GitHub Actions'], ['git', 'Git'],
+];
 const work = [
   {
     job: experience[0],
-    text: 'Parcel delivery for online shops: couriers, lockers and the integrations that connect them to a store’s checkout. I own the shipping modules for WooCommerce, PrestaShop, Magento 2 and OpenCart and the PHP library they share, build checkout features end to end, and work on the TypeScript platform behind them: public API, Prisma and MySQL, Redis, payments. I set up the CI/CD and Playwright suites across the repositories, prototyped a locker scanning station in Python, and did some C++ on a real helicopter project.',
+    text: 'Parcel delivery for online shops: couriers, lockers and the integrations that connect them to a store’s checkout. I develop and maintain the shipping modules for WooCommerce, PrestaShop, Magento 2 and OpenCart and the PHP library they share, and work full-stack on the Angular and Node.js platform behind them: public API, Prisma and MySQL, Redis, payments. I set up the CI/CD and Playwright suites across the repositories, ran the technical interviews for the 2026 interns, prototyped a locker scanning station in Python and did C++ work on a real helicopter project.',
   },
   {
     job: experience[1],
@@ -21,38 +37,83 @@ const work = [
 ];
 ---
 
-<Base title="Vadim Plămădeală, full-stack software engineer">
+<Base title={`${site.name} (${site.handle}), full-stack software engineer`}>
   <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="copy">
-        <p class="hello">Vadim Plămădeală. Bucharest, Romania.</p>
-        <h1>Full-stack engineer who ships.</h1>
+    <div class="wrap bento">
+      <div class="tile intro">
+        <p class="prompt mono" aria-hidden="true"><span class="user">{site.handle}@romania</span>:~$ <span class="typed">whoami</span></p>
+        <h1>{site.name}</h1>
+        <p class="role">Full-stack software engineer. Online as <span class="mono">{site.handle}</span>.</p>
         <p class="lede">
-          By day I build the shipping integrations and the TypeScript platform behind
-          <strong>Colete-Online</strong>, a parcel-delivery service for online shops.
-          Evenings go to <strong>VitpApps</strong>: six apps and games for Android and iOS
-          that I design, build and publish myself.
+          Tell me the problem and I will take it to production: choosing the stack, designing the architecture
+          and the CI/CD, implementing and shipping it. Weekdays at <strong>Colete-Online</strong>, on shipping
+          integrations and the platform behind them. The rest of the time on my own apps and games for Android and iOS.
         </p>
         <div class="actions">
-          <a class="btn primary" href={site.cvPdf} download>Download CV (PDF)</a>
-          <a class="btn" href="/apps/">See the six apps</a>
+          <a class="btn primary" href={site.cvPdf} download>Download CV</a>
+          <a class="btn" href="/apps/">See the apps</a>
         </div>
         <p class="links">
-          <a href={site.github} rel="me">GitHub</a>
+          <a href={site.github} rel="me">github.com/vitp15</a>
           <a href={site.linkedin} rel="me">LinkedIn</a>
           <a href={`mailto:${site.email}`}>{site.email}</a>
         </p>
       </div>
-      <ul class="tiles" aria-label="The six apps">
-        {apps.map((a, i) => (
-          <li style={`--i:${i}`}>
-            <a href={`/${a.slug}/`}>
-              <img src={`/img/apps/${a.slug}/icon-256.png`} width="112" height="112" alt="" />
-              <span>{a.name}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
+
+      <div class="tile photo">
+        <img src="/img/photo.jpg" width="800" height="800" alt={site.name} />
+      </div>
+
+      {stats.slice(0, 2).map((s) => (
+        <div class="tile stat">
+          <p class="num mono"><span data-count={s.n}>{s.n}</span>{s.suffix}</p>
+          <p class="stat-label">{s.label}</p>
+          <p class="stat-sub">{s.sub}</p>
+        </div>
+      ))}
+
+      {stats.slice(2).map((s) => (
+        <div class="tile stat small">
+          <p class="num mono"><span data-count={s.n}>{s.n}</span>{s.suffix}</p>
+          <p class="stat-label">{s.label}</p>
+          <p class="stat-sub">{s.sub}</p>
+        </div>
+      ))}
+
+      <div class="tile now">
+        <p class="label"><span class="dot"></span>now</p>
+        <h3>Full-stack engineer at Colete-Online</h3>
+        <p class="muted">Shipping modules for four e-commerce platforms and the Angular + Node.js platform behind them. Remote, from {site.location}.</p>
+        <a href="#work">What I do there</a>
+      </div>
+
+      <div class="tile stack">
+        <p class="label">stack</p>
+        <ul class="logos" aria-label="Technologies I work with">
+          {logos.map(([slug, name]) => (
+            <li title={name}>
+              <img src={`https://cdn.simpleicons.org/${slug}/8a93a6`} width="26" height="26" alt={name} loading="lazy" />
+            </li>
+          ))}
+        </ul>
+        <a href="#skills">The full list</a>
+      </div>
+
+      <div class="tile github">
+        <p class="label">github.com/vitp15 · contributions</p>
+        <a href={site.github} rel="me" class="chart-link">
+          <img class="chart" src="https://ghchart.rshah.org/7aa2ff/vitp15" alt="GitHub contribution calendar of vitp15" loading="lazy" />
+        </a>
+        <p class="muted small">Most of my work lives in private repositories (Colete-Online and the app repos), so this shows only part of it.</p>
+      </div>
+
+      <div class="tile contact">
+        <p class="label">contact</p>
+        <p class="contact-line"><a href={`mailto:${site.email}`}>{site.email}</a></p>
+        <p class="contact-line"><a href={site.linkedin} rel="me">linkedin.com/in/vadim-plamadeala</a></p>
+        <p class="contact-line"><a href={site.github} rel="me">github.com/vitp15</a></p>
+        <p class="muted small" style="margin:12px 0 0">Open to senior full-stack roles, remote or hybrid, and to app projects.</p>
+      </div>
     </div>
   </section>
 
@@ -60,12 +121,12 @@ const work = [
     <div class="wrap">
       <div class="section-head">
         <h2>Work</h2>
-        <p>Two years in production code, from checkout plugins used by real shops to the platform API behind them.</p>
+        <p>Production code since {site.workingSince}, from checkout plugins used by real shops to the platform API behind them. Projects since high school.</p>
       </div>
       <ol class="timeline">
         {work.map(({ job, text }) => (
           <li>
-            <div class="when">{job.start} – {job.end}</div>
+            <div class="when mono">{job.start} – {job.end}</div>
             <div class="what">
               <h3>{job.role}, {job.company}</h3>
               <p>{text}</p>
@@ -80,8 +141,8 @@ const work = [
   <section class="section" id="apps">
     <div class="wrap">
       <div class="section-head">
-        <h2>Six apps, one developer</h2>
-        <p>Product, code, stores, 18 languages, monetisation and the legal pages. Each one has its own page with screenshots and download links.</p>
+        <h2>Apps and games</h2>
+        <p>{figures.apps} products for Android and iOS, designed, built and published by one person. Each has its own page with screenshots, download links, support and legal documents.</p>
       </div>
       <div class="grid">
         {apps.map((a, i) => <AppCard app={a} index={i} />)}
@@ -123,64 +184,126 @@ const work = [
       <p class="muted">Write to <a href={`mailto:${site.email}`}>{site.email}</a>, or <a href={site.cvPdf} download>download the CV</a> and pass it on.</p>
     </div>
   </section>
+
+  <script is:inline>
+    // Count the figures up on first view. The final numbers are already in the
+    // HTML, so this only adds motion when the visitor allows it.
+    (function () {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var els = document.querySelectorAll('[data-count]');
+      var ease = function (t) { return 1 - Math.pow(1 - t, 3); };
+      els.forEach(function (el, i) {
+        var target = Number(el.getAttribute('data-count'));
+        var start = null, dur = 900 + i * 120;
+        el.textContent = '0';
+        function step(ts) {
+          if (start === null) start = ts;
+          var p = Math.min(1, (ts - start) / dur);
+          el.textContent = String(Math.round(ease(p) * target));
+          if (p < 1) requestAnimationFrame(step);
+        }
+        setTimeout(function () { requestAnimationFrame(step); }, 250 + i * 90);
+      });
+    })();
+  </script>
 </Base>
 
 <style>
-  .hero { position: relative; overflow: hidden; padding-block: clamp(56px, 10vw, 120px) clamp(48px, 8vw, 96px); }
+  .hero { padding-block: clamp(24px, 4vw, 48px) clamp(40px, 6vw, 72px); position: relative; }
   .hero::before {
-    content: ''; position: absolute; inset: 0; pointer-events: none;
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: -1;
     background:
-      repeating-linear-gradient(60deg, var(--grid) 0 1px, transparent 1px 44px),
-      repeating-linear-gradient(-60deg, var(--grid) 0 1px, transparent 1px 44px),
-      repeating-linear-gradient(0deg, var(--grid) 0 1px, transparent 1px 44px);
-    -webkit-mask-image: radial-gradient(ellipse 70% 80% at 72% 45%, #000 10%, transparent 70%);
-    mask-image: radial-gradient(ellipse 70% 80% at 72% 45%, #000 10%, transparent 70%);
+      radial-gradient(700px 400px at 20% 0%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%),
+      radial-gradient(600px 400px at 90% 20%, color-mix(in srgb, var(--num) 10%, transparent), transparent 70%);
   }
-  .hero-grid { position: relative; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
-  .hello { margin: 0 0 18px; color: var(--muted); font-weight: 500; }
-  .lede { font-size: clamp(1.1rem, 1.7vw, 1.3rem); line-height: 1.55; color: var(--text-2); max-width: 54ch; margin: 24px 0 30px; }
+  .bento { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-rows: minmax(120px, auto); gap: 14px; }
+  .bento .tile { animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .bento .tile:nth-child(1) { animation-delay: 0ms; } .bento .tile:nth-child(2) { animation-delay: 60ms; }
+  .bento .tile:nth-child(3) { animation-delay: 120ms; } .bento .tile:nth-child(4) { animation-delay: 180ms; }
+  .bento .tile:nth-child(5) { animation-delay: 240ms; } .bento .tile:nth-child(6) { animation-delay: 300ms; }
+  .bento .tile:nth-child(7) { animation-delay: 360ms; } .bento .tile:nth-child(8) { animation-delay: 420ms; }
+  .bento .tile:nth-child(9) { animation-delay: 480ms; } .bento .tile:nth-child(10) { animation-delay: 540ms; }
+  @keyframes rise { from { opacity: 0; translate: 0 14px; } to { opacity: 1; translate: 0 0; } }
+
+  .intro { grid-column: span 7; grid-row: span 2; padding: 30px 32px; display: flex; flex-direction: column; justify-content: center; }
+  .prompt { margin: 0 0 22px; font-size: 0.85rem; color: var(--muted); }
+  .prompt .user { color: var(--accent); }
+  .prompt .typed { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom; border-right: 2px solid var(--accent); width: 0; animation: type 0.9s steps(6) 0.5s forwards, caret 1s steps(2) 1.4s infinite; color: var(--text); }
+  @keyframes type { to { width: 6.4ch; } }
+  @keyframes caret { 50% { border-color: transparent; } }
+  .role { margin: 12px 0 0; color: var(--text-2); font-size: 1.05rem; }
+  .role .mono { color: var(--accent); }
+  .lede { margin: 18px 0 26px; max-width: 58ch; color: var(--text-2); font-size: 1.05rem; line-height: 1.6; }
   .lede strong { color: var(--text); font-weight: 600; }
-  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
-  .links { margin: 26px 0 0; display: flex; flex-wrap: wrap; gap: 8px 22px; color: var(--text-2); }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .links { margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.95rem; color: var(--text-2); }
 
-  .tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(14px, 2.4vw, 26px); }
-  .tiles li { animation: deal 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(140ms + var(--i) * 85ms); }
-  .tiles li:nth-child(3n + 2) { transform: translateY(26px); }
-  .tiles a { display: grid; justify-items: center; gap: 10px; text-decoration: none; color: var(--text-2); font-weight: 600; font-size: 0.95rem; }
-  .tiles img { width: clamp(84px, 9vw, 112px); height: auto; border-radius: 24%; box-shadow: var(--shadow); transition: transform 0.25s ease; }
-  .tiles a:hover img, .tiles a:focus-visible img { transform: translateY(-4px) rotate(-2deg); }
-  @keyframes deal { from { opacity: 0; translate: 0 28px; scale: 0.92; } to { opacity: 1; translate: 0 0; scale: 1; } }
-  @media (prefers-reduced-motion: reduce) { .tiles li { animation: none; } }
-  @media (max-width: 860px) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .tiles { grid-template-columns: repeat(6, 1fr); gap: 10px; order: -1; margin-bottom: 8px; }
-    .tiles li:nth-child(3n + 2) { transform: none; }
-    .tiles span { display: none; }
-    .tiles img { width: 100%; }
+  .photo { grid-column: span 2; grid-row: span 2; padding: 0; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; }
+
+  .stat { grid-column: span 3; display: flex; flex-direction: column; justify-content: flex-end; }
+  .stat.small { grid-column: span 3; }
+  .num { margin: 0; font-size: clamp(2.4rem, 4vw, 3.4rem); font-weight: 600; line-height: 1; color: var(--num); letter-spacing: -0.04em; }
+  .stat-label { margin: 10px 0 2px; font-weight: 500; }
+  .stat-sub { margin: 0; color: var(--muted); font-size: 0.88rem; }
+
+  .now { grid-column: span 3; }
+  .now h3 { font-size: 1.15rem; margin-bottom: 8px; }
+  .now p.muted { font-size: 0.95rem; }
+  .now a, .stack a { color: var(--text-2); font-size: 0.92rem; }
+
+  .stack { grid-column: span 4; }
+  .logos { list-style: none; margin: 0 0 14px; padding: 0; display: grid; grid-template-columns: repeat(10, 1fr); gap: 10px; }
+  .logos li { display: grid; place-items: center; aspect-ratio: 1; border-radius: 10px; background: var(--tile-2); border: 1px solid var(--line); }
+  .logos img { width: 22px; height: 22px; opacity: 0.85; }
+
+  .github { grid-column: span 5; }
+  .contact { grid-column: span 3; }
+  .contact-line { margin: 0 0 6px; font-size: 0.95rem; overflow-wrap: anywhere; }
+  .contact-line a { color: var(--text); }
+  .chart-link { display: block; }
+  .chart { width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px; }
+  .github .small { margin: 0; font-size: 0.85rem; }
+
+  @media (max-width: 1000px) {
+    .bento { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .intro { grid-column: span 6; grid-row: auto; }
+    .photo { grid-column: span 2; grid-row: span 2; }
+    .stat, .stat.small { grid-column: span 2; }
+    .now { grid-column: span 3; } .stack { grid-column: span 3; } .github { grid-column: span 6; } .contact { grid-column: span 6; }
+    .logos { grid-template-columns: repeat(10, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .intro { grid-column: span 2; padding: 24px 20px; }
+    .photo { grid-column: span 1; grid-row: span 1; aspect-ratio: 1; }
+    .stat, .stat.small, .now, .stack, .github, .contact { grid-column: span 2; }
+    .photo + .stat { grid-column: span 1; }
+    .logos { grid-template-columns: repeat(5, 1fr); }
   }
 
-  .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-  .timeline > li { display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding: 26px 0; border-top: 1px solid var(--line); }
+  .timeline { list-style: none; margin: 0; padding: 0; }
+  .timeline > li { display: grid; grid-template-columns: 170px 1fr; gap: 24px; padding: 26px 0; border-top: 1px solid var(--line); }
   .timeline > li:first-child { border-top: 0; padding-top: 0; }
+  .timeline .when { color: var(--muted); font-size: 0.85rem; padding-top: 5px; }
+  .timeline h3 { font-size: 1.25rem; margin-bottom: 8px; }
+  .timeline p { color: var(--text-2); max-width: 74ch; }
   .timeline .chips { margin-top: 14px; }
-  .timeline .when { color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; padding-top: 3px; }
-  .timeline h3 { font-size: 1.3rem; margin-bottom: 8px; }
-  .timeline p { color: var(--text-2); max-width: 72ch; }
   @media (max-width: 700px) { .timeline > li { grid-template-columns: 1fr; gap: 6px; } }
 
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
   @media (max-width: 1000px) { .grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
 
   .two-col { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 6vw, 80px); }
   .two-col h2 { margin-bottom: 22px; }
   .skills { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 12px 22px; }
-  .skills dt { font-weight: 700; }
+  .skills dt { font-weight: 600; }
   .skills dd { margin: 0; color: var(--text-2); }
   .edu { margin-bottom: 22px; }
-  .edu h3 { font-size: 1.15rem; margin-bottom: 4px; }
+  .edu h3 { font-size: 1.1rem; margin-bottom: 4px; }
   .edu .small { color: var(--text-2); }
-  .lang-h { margin-top: 32px; font-size: 1.5rem; }
+  .lang-h { margin-top: 32px; font-size: 1.4rem; }
   @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; } .skills { grid-template-columns: 1fr; gap: 4px; } .skills dd { margin-bottom: 12px; } }
 
   .cta h2 { margin-bottom: 10px; }

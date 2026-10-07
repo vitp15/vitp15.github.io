@@ -10,7 +10,7 @@ import { apps } from '../../data/apps';
       <h1>Legal documents</h1>
       <p class="muted intro">Every app published by Vadim Plămădeală (VitpApps) has its privacy policy, terms and a data-deletion page here. The pages apply to the Android and iOS versions alike.</p>
       <div class="table">
-        {apps.map((a) => (
+        {apps.filter((a) => a.legal.length > 0).map((a) => (
           <div class="row" style={`--app-light:${a.color};--app-dark:${a.colorDark}`}>
             <a class="name" href={`/vitp-apps-policies/${a.slug}/`}><img src={`/img/apps/${a.slug}/icon-256.png`} width="40" height="40" alt="" />{a.name}</a>
             <ul>{a.legal.map((d) => <li><a href={`/vitp-apps-policies/${a.slug}/${d.slug}`}>{d.title}</a></li>)}</ul>

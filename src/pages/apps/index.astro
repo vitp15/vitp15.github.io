@@ -1,32 +1,32 @@
 ---
 import Base from '../../layouts/Base.astro';
 import StoreButtons from '../../components/StoreButtons.astro';
-import { apps } from '../../data/apps';
+import { support } from '../../data/support';
+import { apps, figures } from '../../data/apps';
 ---
 
-<Base title="Apps by Vadim Plămădeală" description="Six apps and games for Android and iOS: Solvyx, Naova, Huglet, MoneyManager, Sliceward and Impossible Taxi.">
+<Base title="Apps by Vadim Plămădeală" description={`Apps and games for Android and iOS: ${apps.map((a) => a.name).join(', ')}.`}>
   <section class="section">
     <div class="wrap">
       <div class="section-head">
         <h1 class="h2">Apps</h1>
-        <p>Six products for Android and iOS, designed, built and published by one person. Each page has screenshots, download links, support and the legal documents.</p>
+        <p>{figures.apps} products for Android and iOS, designed, built and published by one person. Each page has screenshots, download links, support and the legal documents.</p>
       </div>
       <div class="list">
         {apps.map((a) => (
-          <article class="row" style={`--app-light:${a.color};--app-dark:${a.colorDark};--tint-light:${a.tint};--tint-dark:${a.tintDark}`}>
+          <article class="row tile" style={`--app-light:${a.color};--app-dark:${a.colorDark};--tint-light:${a.tint};--tint-dark:${a.tintDark}`}>
             <a class="icon" href={`/${a.slug}/`}><img src={`/img/apps/${a.slug}/icon-256.png`} width="96" height="96" alt="" /></a>
             <div class="body">
               <h2><a href={`/${a.slug}/`}>{a.name}</a></h2>
               <p class="tag">{a.tagline}</p>
               <p class="desc">{a.description}</p>
-              <ul class="chips">{a.stack.slice(0, 4).map((s) => <li>{s}</li>)}<li>{a.languages} languages</li></ul>
+              <ul class="chips">{a.stack.slice(0, 4).map((s) => <li>{s}</li>)}<li>{a.platforms.join(' + ')}</li>{a.languages > 1 && <li>{a.languages} languages</li>}<li>since {a.since}</li></ul>
               <div class="foot">
                 <StoreButtons app={a} compact />
                 <p class="links">
                   <a href={`/${a.slug}/`}>Details</a>
-                  <a href={`/${a.slug}/support/`}>Support</a>
-                  <a href={`/vitp-apps-policies/${a.slug}/privacy`}>Privacy</a>
-                  <a href={`/vitp-apps-policies/${a.slug}/terms`}>Terms</a>
+                  {support[a.slug] && <a href={`/${a.slug}/support/`}>Support</a>}
+                  {a.legal.map((d) => <a href={`/vitp-apps-policies/${a.slug}/${d.slug}`}>{d.title.replace(' Policy', '').replace(' & Conditions', '')}</a>)}
                 </p>
               </div>
             </div>
@@ -40,7 +40,7 @@ import { apps } from '../../data/apps';
 <style>
   .h2 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); }
   .list { display: grid; gap: 18px; }
-  .row { display: grid; grid-template-columns: 96px 1fr; gap: 24px; padding: 26px; border-radius: var(--radius-l); border: 1px solid var(--line); background: linear-gradient(160deg, var(--tint), var(--surface) 60%); }
+  .row { display: grid; grid-template-columns: 96px 1fr; gap: 24px; padding: 26px; background: linear-gradient(150deg, color-mix(in srgb, var(--tint) 70%, var(--tile)), var(--tile) 60%); }
   .icon img { border-radius: 24px; box-shadow: var(--shadow); }
   h2 { font-size: 1.6rem; }
   h2 a { text-decoration: none; }

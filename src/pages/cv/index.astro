@@ -12,7 +12,7 @@ import { person, summary, experience, productsIntro, products, education, skills
         <div>
           <h1>{person.name}</h1>
           <p class="role">{person.title}</p>
-          <p class="contact muted">{person.location} · <a href={`tel:${person.phone.replace(/\s/g, '')}`}>{person.phone}</a> · <a href={`mailto:${person.email}`}>{person.email}</a></p>
+          <p class="contact muted">{person.location}, <a href={`tel:${person.phone.replace(/\s/g, '')}`}>{person.phone}</a>, <a href={`mailto:${person.email}`}>{person.email}</a></p>
           <div class="dl">
             <a class="btn primary" href={site.cvPdf} download>Download PDF</a>
             <a class="btn" href={site.cvPdfNoPhoto} download>PDF without photo</a>

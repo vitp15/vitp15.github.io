@@ -7,7 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "cv:pdf": "node --experimental-strip-types scripts/cv-pdf.mjs",
-    "check:urls": "node scripts/check-urls.mjs"
+    "check:urls": "node --experimental-strip-types scripts/check-urls.mjs",
+    "profile": "node --experimental-strip-types scripts/profile-readme.mjs"
   },
   "type": "module",
   "dependencies": {

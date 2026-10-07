@@ -5,21 +5,21 @@ export const person = {
   name: 'Vadim Plămădeală',
   asciiName: 'Vadim Plamadeala',
   title: 'Full-Stack Software Engineer',
-  location: 'Bucharest, Romania',
+  location: 'Romania (remote)',
   phone: '+40 771 155 169',
-  email: 'vadim2003plamadeala@gmail.com',
+  email: 'vitp.work@gmail.com',
   linkedin: 'linkedin.com/in/vadim-plamadeala',
   github: 'github.com/vitp15',
   site: 'vitp15.github.io',
 };
 
 export const summary =
-  'Full-stack engineer with two years of professional experience and a Computer Science degree. ' +
-  'At Colete-Online I own the shipping integrations for four e-commerce platforms and work on the ' +
-  'TypeScript delivery platform behind them, from checkout UI to public API, CI/CD and test suites. ' +
-  'On my own time I design, build and publish mobile apps and games for Android and iOS (Flutter, Godot), ' +
-  'handling everything from architecture to store release. Comfortable moving between PHP, TypeScript, ' +
-  'Dart, Python and a bit of C++/embedded when the job needs it.';
+  'Full-stack engineer with two years of professional experience, a Computer Science degree and projects ' +
+  'shipped since high school. I take a problem from the first conversation to production: I choose the stack, ' +
+  'design the architecture and the CI/CD, implement it and ship it. At Colete-Online I develop and maintain the ' +
+  'shipping integrations for four e-commerce platforms and work on the Angular and Node.js platform behind them. ' +
+  'On my own time I design, build and publish mobile apps and games for Android and iOS (Flutter, Godot). ' +
+  'Comfortable moving between Java, TypeScript, Python, PHP and C++/embedded.';
 
 export type Job = {
   role: string;
@@ -36,20 +36,20 @@ export const experience: Job[] = [
   {
     role: 'Full-Stack Software Engineer',
     company: 'Colete-Online',
-    place: 'Bucharest, Romania',
-    start: 'Sep 2025',
+    place: 'Bucharest, Romania (remote)',
+    start: 'Jul 2025',
     end: 'Present',
     blurb:
       'Parcel-delivery platform for online shops: couriers, lockers and e-commerce integrations.',
     bullets: [
-      'Own the shipping modules for WooCommerce, PrestaShop, Magento 2 and OpenCart, plus the shared PHP library behind all four; around 900 commits across these repositories.',
-      'Built checkout features end to end: pickup-point and locker selection with an embeddable map widget (TypeScript, Vite), address autocomplete, cash-on-delivery and extra-service pricing, AWB generation, multi-currency conversion.',
-      'Backend work on the main platform (Node.js, TypeScript, Prisma, MySQL, Redis): public order and price API, shipping-point endpoints, API-key management, Redis pub/sub cache invalidation, payment and subscription fixes.',
-      'Set up CI/CD and quality gates across the repositories: GitHub Actions on self-hosted runners, Playwright end-to-end suites with nightly runs over several platform versions, PHPStan, Trivy security scans, Dependabot, release packaging.',
+      'Develop and maintain the shipping modules for WooCommerce, PrestaShop, Magento 2 and OpenCart and the shared PHP library behind them: pickup-point and locker selection on an embeddable map widget (TypeScript), address autocomplete, cash on delivery, AWB generation, multi-currency pricing.',
+      'Full-stack work on the main platform (Angular, Node.js, TypeScript, Prisma, MySQL, Redis): public order and price API, shipping-point endpoints, API-key management, Redis pub/sub cache invalidation, payments and subscriptions.',
+      'Set up CI/CD across the repositories: GitHub Actions on self-hosted runners, Playwright end-to-end suites with nightly runs over several platform versions, release packaging.',
+      'Ran all technical interviews for the 2026 intern intake and take part in infrastructure decisions.',
       'Prototyped a parcel-locker scanning station in Python: camera capture, laser-line detection to measure parcels, tray and arm motion control, kiosk UI on a portrait touchscreen.',
-      'Hands-on C++ and embedded work on a real helicopter project; take part in internal technical interviews and infrastructure decisions.',
+      'Hands-on C++ and embedded work on a real helicopter project.',
     ],
-    stack: ['TypeScript', 'Node.js', 'PHP', 'Prisma', 'MySQL', 'Redis', 'Docker', 'Playwright', 'GitHub Actions', 'Python', 'C++'],
+    stack: ['TypeScript', 'Angular', 'Node.js', 'PHP', 'Prisma', 'MySQL', 'Redis', 'Docker', 'Playwright', 'GitHub Actions', 'Python', 'C++'],
   },
   {
     role: 'Software Engineer',
@@ -59,8 +59,7 @@ export const experience: Job[] = [
     end: 'Sep 2025',
     blurb: 'Five-person team building a web product for GoAhead Venture, a US client.',
     bullets: [
-      'Full-stack development: React front end, FastAPI (Python) services and SQL data layer.',
-      'Git-based workflow with code review and CI/CD pipelines; worked directly with the client on scope and delivery.',
+      'Full-stack development: React front end, FastAPI (Python) services and SQL; Git-based CI/CD and direct contact with the client on scope and delivery.',
     ],
     stack: ['React', 'FastAPI', 'Python', 'SQL', 'CI/CD'],
   },
@@ -87,8 +86,8 @@ export type Product = {
 };
 
 export const productsIntro =
-  'Six apps for Android and iOS, published under the VitpApps name as a solo developer: product design, ' +
-  'code, CI/CD to both stores, store listings in 18 languages, monetisation and legal compliance (GDPR, ' +
+  'Mobile apps and games for Android and iOS, published under the VitpApps name as a solo developer: product ' +
+  'design, code, CI/CD to both stores, store listings in 18 languages, monetisation and legal compliance (GDPR, ' +
   'App Tracking Transparency, data-deletion flows).';
 
 export const products: Product[] = [
@@ -117,7 +116,7 @@ export const products: Product[] = [
     name: 'MoneyManager',
     slug: 'moneymanager',
     kind: 'Finance app',
-    line: 'Expense tracker with budgets, recurring bills, 150+ currencies with live rates, reports and cloud sync. First version in Java and Firebase on Google Play; second version rebuilt in Flutter with local-first sync.',
+    line: 'Expense tracker with budgets, recurring bills, 150+ currencies with live rates, reports and cloud sync. First version in Java and Firebase on Google Play; second version rebuilt in Flutter with local-first sync, shared spaces for families and AI-assisted capture of transactions from bank notifications.',
     tech: 'Flutter, Postgres with trigger-maintained totals, Firebase (v1), 18 languages.',
   },
   {
@@ -134,6 +133,13 @@ export const products: Product[] = [
     line: 'Perspective-illusion puzzle: a taxi that cannot turn crosses Penrose-style worlds; roads that look connected on screen are connected. Deterministic physics verified by property-based and fuzz test suites.',
     tech: 'Godot 4, GDScript, custom perspective-alignment engine, AdMob, in-app purchases.',
   },
+  {
+    name: 'Imnuri Tineret Cahul',
+    slug: 'imnuri-tineret-cahul',
+    kind: 'Hymn book app, 2021',
+    line: 'My first published app, written in high school and still on Google Play: the hymn book of the youth choir in Cahul with lyrics by category, sheet music as PDF and downloadable recordings.',
+    tech: 'Android, Java.',
+  },
 ];
 
 export const education = [
@@ -143,8 +149,8 @@ export const education = [
     start: '2022',
     end: '2026',
     notes:
-      'Coursework: data structures and algorithms, operating systems, parallel and distributed algorithms, computer networks, cloud and microservices (Docker Swarm, Kubernetes), cybersecurity, machine learning. ' +
-      'Projects: RoomReserve, a microservice backend with an Nginx gateway, Keycloak, Prometheus and Grafana; a process scheduler in Rust; an asynchronous web server in C; a Halite game bot in C++.',
+      'Coursework: algorithms, operating systems, parallel and distributed algorithms, networks, cloud and microservices (Docker Swarm, Kubernetes), security, machine learning. ' +
+      'Projects: RoomReserve (microservices, Nginx gateway, Keycloak, Prometheus and Grafana), a process scheduler in Rust, an async web server in C, a Halite bot in C++.',
   },
   {
     degree: 'Mathematics and Computer Science profile',
@@ -156,12 +162,12 @@ export const education = [
 ];
 
 export const skills: { group: string; items: string[] }[] = [
-  { group: 'Languages', items: ['TypeScript', 'JavaScript', 'PHP', 'Dart', 'Python', 'Java', 'Swift', 'C/C++', 'GDScript', 'Rust', 'SQL'] },
-  { group: 'Backend', items: ['Node.js', 'Prisma', 'MySQL', 'PostgreSQL', 'Redis', 'REST APIs', 'FastAPI', 'Django', 'Supabase', 'Firebase'] },
-  { group: 'Web, e-commerce', items: ['React', 'Vite', 'HTML/CSS', 'WordPress/WooCommerce', 'PrestaShop', 'Magento 2', 'OpenCart'] },
+  { group: 'Languages', items: ['TypeScript', 'JavaScript', 'PHP', 'Python', 'Java', 'C/C++', 'Rust', 'Dart', 'Swift', 'GDScript', 'SQL'] },
+  { group: 'Backend', items: ['Node.js', 'Express', 'Prisma', 'MySQL', 'PostgreSQL', 'Redis', 'REST APIs', 'FastAPI', 'Django', 'Supabase', 'Firebase'] },
+  { group: 'Web, e-commerce', items: ['Angular', 'React', 'Vite', 'HTML/CSS', 'WordPress/WooCommerce', 'PrestaShop', 'Magento 2', 'OpenCart'] },
   { group: 'Mobile and games', items: ['Flutter', 'Android (Java)', 'iOS (Swift)', 'Godot 4', 'home-screen widgets', 'push notifications', 'in-app purchases (StoreKit 2, Play Billing, RevenueCat)', 'AdMob'] },
-  { group: 'DevOps and quality', items: ['Docker', 'Docker Compose/Swarm', 'Kubernetes', 'GitHub Actions', 'self-hosted runners', 'Codemagic', 'Xcode Cloud', 'Google Cloud', 'Playwright', 'PHPStan', 'Trivy', 'Sentry'] },
-  { group: 'Practices', items: ['Git', 'Jira', 'code review', 'domain-driven design', 'dependency injection', 'property-based testing', 'AI-assisted development (Claude Code)'] },
+  { group: 'DevOps and quality', items: ['Docker', 'Docker Compose/Swarm', 'Kubernetes', 'GitHub Actions', 'self-hosted runners', 'Codemagic', 'Xcode Cloud', 'Google Cloud', 'Playwright', 'Sentry'] },
+  { group: 'Practices', items: ['architecture and stack decisions', 'CI/CD design', 'technical interviews', 'code review', 'domain-driven design', 'dependency injection', 'property-based testing', 'Git', 'Jira', 'AI-assisted development (Claude Code)'] },
 ];
 
 export const languages = [

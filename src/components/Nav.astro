@@ -1,18 +1,18 @@
 ---
 import { site } from '../data/site';
 const path = Astro.url.pathname;
-const is = (p: string) => (p === '/' ? path === '/' : path.startsWith(p));
+const is = (p: string) => path.startsWith(p);
 ---
 
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="Home">
-      <span class="mark" aria-hidden="true">VP</span>
-      <span class="name">{site.name}</span>
+    <a class="brand" href="/" title={site.handleMeaning} aria-label={`${site.handle}, home`}>
+      <span>{site.handle}</span><span class="cursor" aria-hidden="true"></span>
+      <span class="full">{site.name}</span>
     </a>
     <nav aria-label="Main">
       <ul class="nav-links">
-        <li><a href="/#work" aria-current={is('/') && path === '/' ? undefined : undefined}>Work</a></li>
+        <li><a href="/#work">Work</a></li>
         <li><a href="/apps/" aria-current={is('/apps') ? 'page' : undefined}>Apps</a></li>
         <li><a href="/cv/" aria-current={is('/cv') ? 'page' : undefined}>CV</a></li>
         <li>

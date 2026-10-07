@@ -29,14 +29,15 @@ const accentVars = accent
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preload" href="/fonts/BricolageGrotesque-Variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL(image, Astro.site).href} />
-    <meta name="theme-color" content="#121826" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#f3f5f9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0d14" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f5f6fa" media="(prefers-color-scheme: light)" />
     <script is:inline>
       // Theme: saved choice wins; otherwise follow the system; dark when neither says anything.
       (function () {
@@ -64,6 +65,13 @@ const accentVars = accent
             try { localStorage.setItem('theme', t); } catch (e) {}
           });
         });
+        document.addEventListener('pointermove', function (e) {
+          var t = e.target && e.target.closest ? e.target.closest('.tile') : null;
+          if (!t) return;
+          var r = t.getBoundingClientRect();
+          t.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+          t.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        }, { passive: true });
         try {
           matchMedia('(prefers-color-scheme: light)').addEventListener('change', function (e) {
             try { if (localStorage.getItem('theme')) return; } catch (err) {}
@@ -77,8 +85,8 @@ const accentVars = accent
 
 <style is:global>
   /* Per-app accent: resolves to the light or dark variant with the theme. */
-  :root { --app: var(--app-dark, var(--gold)); --tint: var(--tint-dark, var(--surface)); }
-  :root[data-theme='light'] { --app: var(--app-light, var(--gold-text)); --tint: var(--tint-light, var(--surface)); }
-  .skip { position: absolute; left: 12px; top: -48px; padding: 8px 12px; background: var(--gold); color: var(--gold-ink); border-radius: 8px; z-index: 50; font-weight: 600; }
+  :root { --app: var(--app-dark, var(--accent)); --tint: var(--tint-dark, var(--tile)); }
+  :root[data-theme='light'] { --app: var(--app-light, var(--accent)); --tint: var(--tint-light, var(--tile)); }
+  .skip { position: absolute; left: 12px; top: -48px; padding: 8px 12px; background: var(--accent); color: var(--accent-ink); border-radius: 8px; z-index: 50; font-weight: 600; }
   .skip:focus { top: 12px; }
 </style>

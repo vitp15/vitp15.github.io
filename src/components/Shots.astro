@@ -5,22 +5,24 @@ const { app } = Astro.props;
 const n = Array.from({ length: app.shots }, (_, i) => String(i + 1).padStart(2, '0'));
 ---
 
-<div class="shots" tabindex="0" aria-label={`${app.name} screenshots, scroll sideways`}>
-  {n.map((k, i) => (
-    <img src={`/img/apps/${app.slug}/shots/${k}.webp`} width="720" height="1564" alt={`${app.name} screenshot ${i + 1}`} loading={i < 2 ? 'eager' : 'lazy'} decoding="async" />
-  ))}
-</div>
+{app.shots > 0 && (
+  <div class="shots" tabindex="0" aria-label={`${app.name} screenshots, scroll sideways`}>
+    {n.map((k, i) => (
+      <img src={`/img/apps/${app.slug}/shots/${k}.webp`} width="720" height="1564" alt={`${app.name} screenshot ${i + 1}`} loading={i < 2 ? 'eager' : 'lazy'} decoding="async" />
+    ))}
+  </div>
+)}
 
 <style>
   .shots {
     display: flex; gap: 16px; overflow-x: auto; padding: 6px 20px 18px;
     scroll-snap-type: x proximity; scroll-padding-inline: 20px;
-    margin-inline: calc(50% - 50vw); padding-inline: max(20px, calc(50vw - 560px));
+    margin-inline: calc(50% - 50vw); padding-inline: max(20px, calc(50vw - 580px));
     scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent;
   }
   .shots img {
     flex: none; width: clamp(200px, 26vw, 300px); height: auto; aspect-ratio: 1320 / 2868;
     border-radius: 22px; border: 1px solid var(--line); scroll-snap-align: start;
-    background: var(--surface); box-shadow: var(--shadow);
+    background: var(--tile); box-shadow: var(--shadow);
   }
 </style>

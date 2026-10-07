@@ -33,13 +33,16 @@ const job = (j, text) => `**${j.company}** (${j.start} – ${j.end}), ${j.role.t
 const readme = `<h1 align="center">${site.name}</h1>
 
 <p align="center">
+  <a href="${SITE}"><img src="https://img.shields.io/badge/My_website-vitp15.github.io-7aa2ff?style=for-the-badge&logo=googlechrome&logoColor=white" alt="My website: vitp15.github.io" height="36"></a>
+</p>
+
+<p align="center">
   Full-stack software engineer in ${site.location}. Online as <code>${site.handle}</code>.<br>
   Shipping integrations and an Angular + Node.js platform at <strong>Colete-Online</strong> by day;
   mobile apps and games for Android and iOS under <strong>VitpApps</strong> the rest of the time.
 </p>
 
 <p align="center">
-  <a href="${SITE}">vitp15.github.io</a> ·
   <a href="${SITE}${site.cvPdf}">CV (PDF)</a> ·
   <a href="${site.linkedin}">LinkedIn</a> ·
   <a href="mailto:${site.email}">${site.email}</a>

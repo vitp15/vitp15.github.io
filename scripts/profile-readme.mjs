@@ -81,7 +81,6 @@ ${badges}
 
 if (process.argv.includes('--print')) { console.log(readme); process.exit(0); }
 const sha = execFileSync('gh', ['api', 'repos/vitp15/vitp15/contents/README.md', '--jq', '.sha']).toString().trim();
-const out = execFileSync('gh', ['api', '-X', 'PUT', 'repos/vitp15/vitp15/contents/README.md',
-  '-f', 'message=Profile: regenerate from the site data', '-f', `content=${Buffer.from(readme).toString('base64')}`, '-f', `sha=${sha}`,
-  '--jq', '.commit.sha']).toString().trim();
+const body = JSON.stringify({ message: 'Profile: regenerate from the site data', content: Buffer.from(readme).toString('base64'), sha });
+const out = execFileSync('gh', ['api', '-X', 'PUT', 'repos/vitp15/vitp15/contents/README.md', '--input', '-', '--jq', '.commit.sha'], { input: body }).toString().trim();
 console.log('profile README updated, commit', out);

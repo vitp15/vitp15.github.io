@@ -8,7 +8,7 @@ import { apps } from '../src/data/apps.ts';
 import { support } from '../src/data/support.ts';
 
 export const requiredPaths = [
-  '/', '/apps/', '/cv/', '/cv/CV_Vadim_Plamadeala.pdf', '/cv/CV_Vadim_Plamadeala_no_photo.pdf',
+  '/', '/apps/', '/cv/', '/cv/CV_Vadim_Plamadeala.pdf',
   '/.well-known/assetlinks.json', '/.well-known/apple-app-site-association', '/app-ads.txt',
   '/solvyx/duel/', '/huglet/i/',
   '/sliceward/config.json', '/sliceward/version.json',

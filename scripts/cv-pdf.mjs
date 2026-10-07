@@ -19,9 +19,13 @@ const fontDataUri = dataUri(join(root, 'public/fonts/Manrope-Variable.woff2'), '
 const photoDataUri = dataUri(join(root, 'public/img/photo-480.jpg'), 'image/jpeg');
 
 const work = mkdtempSync(join(tmpdir(), 'cv-'));
+// The photo version is published on the site; the version without a photo is
+// only for applications that ask for one, so it goes to cv-out/ (not deployed).
+const localDir = join(root, 'cv-out');
+mkdirSync(localDir, { recursive: true });
 const variants = [
-  { file: 'CV_Vadim_Plamadeala.pdf', withPhoto: true },
-  { file: 'CV_Vadim_Plamadeala_no_photo.pdf', withPhoto: false },
+  { file: 'CV_Vadim_Plamadeala.pdf', withPhoto: true, dir: outDir },
+  { file: 'CV_Vadim_Plamadeala_no_photo.pdf', withPhoto: false, dir: localDir },
 ];
 
 for (const v of variants) {
@@ -46,6 +50,6 @@ for (const v of variants) {
   doc.setCreationDate(now);
   doc.setModificationDate(now);
   const bytes = await doc.save({ updateMetadata: false });
-  writeFileSync(join(outDir, v.file), bytes);
+  writeFileSync(join(v.dir, v.file), bytes);
   console.log(`${v.file}: ${doc.getPageCount()} page(s), ${(bytes.length / 1024).toFixed(0)} KB`);
 }

@@ -13,7 +13,6 @@ export const site = {
   github: 'https://github.com/vitp15',
   linkedin: 'https://www.linkedin.com/in/vadim-plamadeala/',
   cvPdf: '/cv/CV_Vadim_Plamadeala.pdf',
-  cvPdfNoPhoto: '/cv/CV_Vadim_Plamadeala_no_photo.pdf',
   description:
     'Full-stack engineer in Romania. Shipping integrations and an Angular/Node.js platform at Colete-Online by day; mobile apps and games for Android and iOS under VitpApps.',
 };

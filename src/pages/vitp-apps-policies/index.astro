@@ -12,7 +12,7 @@ import { apps } from '../../data/apps';
       <div class="table">
         {apps.map((a) => (
           <div class="row" style={`--app-light:${a.color};--app-dark:${a.colorDark}`}>
-            <a class="name" href={`/vitp-apps-policies/${a.slug}/`}><img src={`/img/apps/${a.slug}/icon-256.png`} width="40" height="40" alt="" loading="lazy" />{a.name}</a>
+            <a class="name" href={`/vitp-apps-policies/${a.slug}/`}><img src={`/img/apps/${a.slug}/icon-256.png`} width="40" height="40" alt="" />{a.name}</a>
             <ul>{a.legal.map((d) => <li><a href={`/vitp-apps-policies/${a.slug}/${d.slug}`}>{d.title}</a></li>)}</ul>
           </div>
         ))}

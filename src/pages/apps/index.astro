@@ -14,7 +14,7 @@ import { apps } from '../../data/apps';
       <div class="list">
         {apps.map((a) => (
           <article class="row" style={`--app-light:${a.color};--app-dark:${a.colorDark};--tint-light:${a.tint};--tint-dark:${a.tintDark}`}>
-            <a class="icon" href={`/${a.slug}/`}><img src={`/img/apps/${a.slug}/icon-256.png`} width="96" height="96" alt="" loading="lazy" /></a>
+            <a class="icon" href={`/${a.slug}/`}><img src={`/img/apps/${a.slug}/icon-256.png`} width="96" height="96" alt="" /></a>
             <div class="body">
               <h2><a href={`/${a.slug}/`}>{a.name}</a></h2>
               <p class="tag">{a.tagline}</p>

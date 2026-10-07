@@ -7,7 +7,7 @@ const status = app.status === 'live' ? 'On Google Play' : app.status === 'beta' 
 ---
 
 <a class="card" href={`/${app.slug}/`} style={`--c-light:${app.color};--c-dark:${app.colorDark};--t-light:${app.tint};--t-dark:${app.tintDark};--i:${index}`}>
-  <img class="icon" src={`/img/apps/${app.slug}/icon-256.png`} width="72" height="72" alt="" loading="lazy" />
+  <img class="icon" src={`/img/apps/${app.slug}/icon-256.png`} width="72" height="72" alt="" />
   <div class="text">
     <h3>{app.name}</h3>
     <p class="tag">{app.tagline}</p>

@@ -168,7 +168,7 @@ export const otherProjects: OtherProject[] = [
   { name: 'LogoSimilarity', line: 'Unsupervised clustering of company logos by visual similarity (Python).', url: 'https://github.com/vitp15/LogoSimilarity' },
   { name: 'SnakeGame', line: 'Snake played inside the file explorer (Python).', url: 'https://github.com/vitp15/SnakeGame' },
   { name: 'RoomReserve', line: 'Microservice backend on Docker Swarm: Nginx gateway, Keycloak, Prometheus and Grafana (university).', url: '' },
-  { name: 'Systems coursework', line: 'Process scheduler in Rust, asynchronous web server and memory allocator in C, Halite game bot in C++.', url: '' },
+  { name: 'Systems coursework', line: 'Process scheduler in Rust, asynchronous web server and memory allocator in C, Halite game bot in C++ (university).', url: '' },
 ];
 
 export const skills: { group: string; items: string[] }[] = [

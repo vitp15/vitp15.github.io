@@ -45,7 +45,7 @@ export const experience: Job[] = [
       'Develop and maintain the shipping modules for WooCommerce, PrestaShop, Magento 2 and OpenCart and the shared PHP library behind them: pickup-point and locker selection on an embeddable map widget (TypeScript), address autocomplete, cash on delivery, AWB generation, multi-currency pricing.',
       'Full-stack work on the main platform (Angular, Node.js, TypeScript, Prisma, MySQL, Redis): public order and price API, shipping-point endpoints, API-key management, Redis pub/sub cache invalidation, payments and subscriptions.',
       'Set up CI/CD across the repositories: GitHub Actions on self-hosted runners, Playwright end-to-end suites with nightly runs over several platform versions, release packaging.',
-      'Ran all technical interviews for the 2026 interns and take part in infrastructure decisions.',
+      'Conducted technical interviews for the 2026 interns and take part in infrastructure decisions.',
       'Prototyped a parcel-locker scanning station in Python: camera capture, laser-line detection to measure parcels, tray and arm motion control, kiosk UI on a portrait touchscreen.',
       'C++ and embedded work on a real helicopter project.',
     ],

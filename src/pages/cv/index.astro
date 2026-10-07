@@ -41,6 +41,11 @@ import { person, summary, experience, productsIntro, products, education, otherP
         </section>
       ))}
 
+      <h2>Other projects</h2>
+      <ul>
+        {otherProjects.map((o) => <li>{o.url ? <a href={o.url}><strong>{o.name}</strong></a> : <strong>{o.name}</strong>}: {o.line}</li>)}
+      </ul>
+
       <h2>Education</h2>
       {education.map((e) => (
         <section class="job">
@@ -49,11 +54,6 @@ import { person, summary, experience, productsIntro, products, education, otherP
           {e.notes && <p>{e.notes}</p>}
         </section>
       ))}
-
-      <h2>Other projects</h2>
-      <ul>
-        {otherProjects.map((o) => <li>{o.url ? <a href={o.url}><strong>{o.name}</strong></a> : <strong>{o.name}</strong>}: {o.line}</li>)}
-      </ul>
 
       <h2>Skills</h2>
       <dl class="skills">

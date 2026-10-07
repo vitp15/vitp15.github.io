@@ -111,13 +111,13 @@ ${experience.map(job).join('')}
 <p class="summary" style="margin-bottom:1.8mm">${esc(productsIntro)}</p>
 ${products.map(product).join('')}
 
-<h2>Education</h2>
-${education.map(edu).join('')}
-
 <h2>Other projects</h2>
 <ul class="other">
 ${otherProjects.map((o) => `<li><strong>${esc(o.name)}</strong>: ${esc(o.line)}${o.url ? ` <span class="url">${esc(o.url.replace('https://', ''))}</span>` : ''}</li>`).join('\n')}
 </ul>
+
+<h2>Education</h2>
+${education.map(edu).join('')}
 
 <h2>Skills</h2>
 <dl class="skills">

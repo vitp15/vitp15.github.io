@@ -36,15 +36,13 @@ const accentVars = accent
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={new URL(image, Astro.site).href} />
-    <meta name="theme-color" content="#0a0d14" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#f5f6fa" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0d14" />
     <script is:inline>
-      // Theme: saved choice wins; otherwise follow the system; dark when neither says anything.
+      // Theme: dark for everyone; light only after the visitor picks it (saved).
       (function () {
         var t = 'dark';
         try {
-          var s = localStorage.getItem('theme');
-          t = s === 'light' || s === 'dark' ? s : matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+          if (localStorage.getItem('theme') === 'light') t = 'light';
         } catch (e) {}
         document.documentElement.dataset.theme = t;
       })();
@@ -72,12 +70,6 @@ const accentVars = accent
           t.style.setProperty('--mx', (e.clientX - r.left) + 'px');
           t.style.setProperty('--my', (e.clientY - r.top) + 'px');
         }, { passive: true });
-        try {
-          matchMedia('(prefers-color-scheme: light)').addEventListener('change', function (e) {
-            try { if (localStorage.getItem('theme')) return; } catch (err) {}
-            root.dataset.theme = e.matches ? 'light' : 'dark';
-          });
-        } catch (e) {}
       })();
     </script>
   </body>

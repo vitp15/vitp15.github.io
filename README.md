@@ -43,5 +43,5 @@ npm run check:urls   # verify dist/ has every required path
 npm run cv:pdf       # regenerate the CV PDFs (needs google-chrome)
 ```
 
-Theme: follows the system preference, can be switched from the header, and the
-choice is remembered in the browser. Dark when nothing says otherwise.
+Theme: dark for every visitor; switching to light from the header is remembered
+in the browser.

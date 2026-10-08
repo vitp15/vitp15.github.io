@@ -57,6 +57,7 @@ export const experience: Job[] = [
   {
     role: 'Software Engineer',
     company: 'BBMM Software',
+    url: 'https://www.bbmmsoftware.com',
     place: 'Remote',
     start: 'Apr 2025',
     end: 'Sep 2025',

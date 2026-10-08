@@ -60,7 +60,7 @@ export const experience: Job[] = [
     place: 'Remote',
     start: 'Apr 2025',
     end: 'Sep 2025',
-    blurb: 'Small team building a web product for GoAhead Venture, a US client.',
+    blurb: 'Small team building a web product for GoAhead Ventures, a US client.',
     bullets: [
       'Full-stack development: React front end, FastAPI (Python) services and SQL; Git-based CI/CD and direct contact with the client on scope and delivery.',
     ],

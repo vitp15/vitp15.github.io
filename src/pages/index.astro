@@ -26,7 +26,7 @@ const work = [
   },
   {
     job: experience[1],
-    text: 'A five-person team building a web product for GoAhead Venture, a US client found through freelancing: React on the front, FastAPI and SQL behind it, Git-based CI/CD, and direct contact with the client on scope and delivery.',
+    text: 'A five-person team building a web product for <a class="co" href="https://www.goaheadvc.com" rel="noopener">GoAhead Ventures</a>, a US venture capital firm and client found through freelancing: React on the front, FastAPI and SQL behind it, Git-based CI/CD, and direct contact with the client on scope and delivery.',
   },
   {
     job: experience[2],
@@ -111,7 +111,7 @@ const work = [
             <div class="when mono">{job.start} – {job.end}</div>
             <div class="what">
               <h3>{job.role}, {job.url ? <a class="co" href={job.url} rel="noopener">{job.company}</a> : job.company}</h3>
-              <p>{text}</p>
+              <p set:html={text} />
               <ul class="chips">{job.stack.map((s) => <li>{s}</li>)}</ul>
             </div>
           </li>

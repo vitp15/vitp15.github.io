@@ -29,7 +29,7 @@
       label, relationship, birth year) of anyone you choose to track — is stored
       <strong>only on your device</strong>. It is not uploaded to the Service
       Provider (unless you turn on the optional Cloud Backup, which uploads only an
-      encrypted copy the Service Provider cannot read) and is not sold or shared
+      encrypted copy — see "Optional Cloud Backup") and is not sold or shared
       for advertising. Naova shows <strong>no ads</strong>. The only information
       that may leave your device is described below (optional weather look-ups,
       anonymous diagnostics, optional encrypted Cloud Backup, and, if you
@@ -60,8 +60,8 @@
       transmitted to the Service Provider's servers in readable form, and it is
       never used for advertising or marketing. The only exception is the optional
       Cloud Backup feature (off by default): if you turn it on, your data is
-      uploaded only as an <strong>encrypted</strong> file that the Service Provider
-      cannot read — see "Optional Cloud Backup" below.
+      uploaded only as an <strong>encrypted</strong> file — see "Optional Cloud
+      Backup" below.
     </p>
     <p>
       <strong>Apple Health / Health Connect (optional):</strong> If you choose
@@ -122,18 +122,22 @@
       turn it on, Naova signs you in with <strong>Google or Apple</strong> (your
       choice, on either platform) — used only to link a backup to you — then
       <strong>encrypts your data on your device</strong> and stores the encrypted
-      file on Google Firebase Cloud Storage. The data is encrypted with a key
-      derived from a <strong>recovery phrase that only you hold</strong>; the
-      Service Provider does not have that key and therefore
-      <strong>cannot read the contents of your backup</strong>. A pseudonymous
+      file on Google Firebase Cloud Storage. By default the encryption key is
+      stored alongside it in your private, access-controlled backup space, so you
+      can restore on a new phone just by signing in; the Service Provider does
+      not open or use the contents of your backup. If you also turn on the
+      optional <strong>recovery code</strong>, the key is derived from a code
+      <strong>only you hold</strong>, the stored key is deleted, and the Service
+      Provider then <strong>cannot read the contents of your backup</strong>
+      (end-to-end encryption). A pseudonymous
       sign-in identifier is processed so your device can find and restore your own
       backup. Backups run automatically when you leave the app (and only if
       something changed) or when you tap "Back up now". You can turn Cloud Backup
       off and delete the stored backup at any time from within the app. If you
       never enable it, nothing is uploaded and the on-device-only behaviour above
-      applies. Please note that if you lose your recovery phrase, an encrypted
-      backup cannot be decrypted or recovered by anyone, including the Service
-      Provider.
+      applies. Please note that if you turned on the recovery code and lose it,
+      the encrypted backup cannot be decrypted or recovered by anyone, including
+      the Service Provider.
     </p>
 
     <br /><strong
@@ -360,7 +364,7 @@
       deemed acceptance of the changes.
     </p>
     <br />
-    <p>This privacy policy is effective as of 2026-08-12.</p>
+    <p>This privacy policy is effective as of 2026-10-13.</p>
 
     <br /><strong>How do you give your consent?</strong>
     <p>

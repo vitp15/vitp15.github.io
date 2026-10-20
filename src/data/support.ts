@@ -58,6 +58,17 @@ export const support: Record<string, Support> = {
       { q: 'My progress disappeared', a: 'Progress is stored on the device and in your system backup. Reinstalling restores it only if the backup was on.' },
     ],
   },
+  mathine: {
+    intro: 'If something is broken, unclear, or a request feels impossible, write to us. We read everything.',
+    feedbackNote: 'You can also send feedback from inside the game: <strong>Settings → Send feedback</strong>. It attaches your app version and device model, which makes bugs much faster to fix.',
+    faqs: [
+      { q: 'How do I play?', a: '<ul><li>Place an extractor on a number on the map and draw a belt from it to the hub in the middle.</li><li>The hub asks for a number and a quantity. Combine numbers on the way with machines: + − × ÷ and more unlock as you go.</li><li>Everything you deliver goes into the hub stock and pays for upgrades. Tap the hub to see what is missing.</li></ul>' },
+      { q: 'Do I need an account?', a: 'No. The game creates an anonymous account by itself, only to keep a cloud copy of your factory and for shared worlds. There is no sign-up and no e-mail.' },
+      { q: 'How do I play with friends?', a: 'With Pro, create a shared world and send its invite code to up to three friends. They join for free, from their own phones, and you build on the same factory in real time.' },
+      { q: 'I bought Pro but still see ads', a: 'Open Settings and tap <strong>Restore purchase</strong> while online. The purchase is tied to your store account.' },
+      { q: 'How do I delete my data?', a: `In the game: <strong>Settings → Delete my data from the server</strong>. If you can no longer open it, follow the <a href="${dd('mathine')}">data deletion page</a>.` },
+    ],
+  },
   'impossible-taxi': {
     intro: 'If something is broken, unclear, or a level feels unfair, write to us. We read everything.',
     faqs: [

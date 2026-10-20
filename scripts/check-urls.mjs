@@ -13,6 +13,7 @@ export const requiredPaths = [
   '/solvyx/duel/', '/huglet/i/',
   '/sliceward/config.json', '/sliceward/version.json',
   '/impossible-taxi/config.json', '/impossible-taxi/version.json',
+  '/mathine/config.json', '/mathine/version.json',
   '/vitp-apps-policies/',
   ...apps.flatMap((a) => [
     `/${a.slug}/`,

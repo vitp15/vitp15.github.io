@@ -1,0 +1,12 @@
+{
+  "ads_enabled": true,
+  "banner_enabled": true,
+  "banner_position": "bottom",
+  "banner_rollout_percent": 100,
+  "ads_grace_requests": 5,
+  "ads_grace_minutes": 15,
+  "interstitial_min_gap_s": 360,
+  "rewarded_per_hour_cap": 6,
+  "review_after_requests": 10,
+  "min_version": "0.0.0"
+}

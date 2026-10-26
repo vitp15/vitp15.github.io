@@ -3,7 +3,7 @@
       This privacy policy applies to the Mathine app (listed in the stores as "Mathine: Math Factory Puzzle",
       hereinafter "Application") for iOS and Android mobile devices, developed by Vadim Plămădeală (hereinafter
       "Service Provider") as an ad-supported game with an optional one-time purchase called Pro. This service is
-      provided "AS IS". Last updated: 20 October 2026.
+      provided "AS IS". Last updated: 26 October 2026.
     </p>
 
     <h2>What the Application collects</h2>
@@ -12,28 +12,23 @@
       Your factory, progress and settings are stored on your device.
     </p>
     <p>
-      To keep a copy of your factory in the cloud and to let you build together with friends, the Application
+      To let you build together with friends and verify access to online Pro features, the Application
       creates an <strong>anonymous account</strong> on the Service Provider's server the first time it connects:
       a random identifier and a secret key, kept in the Application. The server stores, linked to that identifier:
     </p>
     <ul>
-      <li>a copy of your saved factory (the buildings you placed, your progress, upgrades and statistics);</li>
+      <li>your shared factories, progress, upgrades and statistics; personal single-player factories are not uploaded;</li>
       <li>
         the shared worlds you create or join with an invite code: their factory, the building actions of every
         member and a generated player name (for example "Engineer 4821"). Members of a shared world see each
         other's generated names and constructions; nothing else about you is shown to them;
       </li>
-      <li>
-        the feedback messages you choose to send from the Application, together with the app version, your device
-        model and operating system version, so that the problem can be reproduced. They are delivered by e-mail to
-        the Service Provider.
-      </li>
+      <li>store purchase tokens or Apple-signed transaction proofs and their verification status, used to restore and
+        validate Pro access to online features. Payment details are not sent to the game server;</li>
     </ul>
     <p>
       The server runs on Cloudflare (Cloudflare, Inc.), which processes this data on the Service Provider's behalf.
-      Feedback e-mails are delivered by Resend. See
-      <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's</a> and
-      <a href="https://resend.com/legal/privacy-policy">Resend's</a> privacy policies.
+      See <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's privacy policy</a>.
     </p>
 
     <p>The Application also uses third-party services that may collect information used to identify your device:</p>
@@ -42,41 +37,44 @@
         <strong>Google AdMob</strong> (advertising). Serves banner, interstitial and optional rewarded ads (for
         example a short production boost you choose to watch an ad for). It may use your device's advertising
         identifier and your approximate location derived from the IP address. In the European Economic Area, the
-        United Kingdom and Switzerland a consent form is shown before any ad is loaded; in US states with privacy laws
+        United Kingdom and Switzerland the advertising consent flow is resolved before any ad is loaded; in US states with privacy laws
         you can opt out of the sale or sharing of personal information in the same form. On iPhone and iPad, Apple's
-        App Tracking Transparency prompt asks whether ads may use the advertising identifier. If you decline, you
-        still see ads, but they are not personalised.
+        App Tracking Transparency prompt asks whether ads may use the advertising identifier. Advertising availability depends on the choices and permissions you give. Declining tracking does not block gameplay.
         See <a href="https://policies.google.com/privacy">Google's privacy policy</a>.
       </li>
       <li>
-        <strong>GameAnalytics</strong> (gameplay statistics). Receives events such as "request 12 completed", the
-        time played, performance measurements (frame and simulation timings), the device model and OS version,
-        plus a random installation identifier, so that difficulty and performance can be tuned. It is started only
-        after the consent step above. See <a href="https://gameanalytics.com/privacy/">GameAnalytics' privacy policy</a>.
+        <strong>GameAnalytics</strong> (optional gameplay statistics). When you enable Usage statistics in Settings,
+        it receives fixed gameplay events such as a level starting or being completed and a reward being earned,
+        session information, device/app information and an installation identifier. Player circuit names, invitation
+        codes and account recovery keys are not included. This setting is off by default and can be disabled at any
+        time. See <a href="https://gameanalytics.com/privacy/">GameAnalytics' privacy policy</a>.
       </li>
       <li>
-        <strong>Sentry</strong> (crash reporting). If the Application crashes, a technical report (device model,
-        OS version, the crashing code path) is sent so the bug can be fixed. No personal data is attached.
+        <strong>Sentry</strong> (crash reporting). With Error reports enabled in Settings, technical reports such as the device model, OS and app versions,
+        error type and code path help diagnose failures. Screenshots, save files, game logs and script variable
+        values are not attached. You can turn this off at any time. Network providers may process your IP address.
         See <a href="https://sentry.io/privacy/">Sentry's privacy policy</a>.
       </li>
       <li>
-        <strong>Google Play Games Services / Apple Game Center</strong> (achievements and leaderboards). If you are
+        <strong>Google Play Games Services / Apple Game Center</strong> (achievements). If you are
         signed in to Play Games (Android) or Game Center (iPhone, iPad), the Application tells that service which
-        achievements you earned and your scores on leaderboards such as the daily puzzle, linked to your player
+        achievements you earned, linked to your player
         profile there. The Application itself does not receive your name or e-mail address.
         See <a href="https://policies.google.com/privacy">Google's</a> and
         <a href="https://www.apple.com/legal/privacy/">Apple's</a> privacy policies.
       </li>
       <li>
         <strong>Google Play Billing / Apple App Store</strong> (the optional Pro purchase). Payment is handled
-        entirely by the store; the Application only learns whether the purchase exists.
+        entirely by the store. The Application receives the product, localized price and purchase status, and sends
+        a purchase proof to the game server for verification with Google or Apple. It never receives card details.
       </li>
     </ul>
 
     <h2>Network requests made by the Application</h2>
     <p>
-      Besides the services above, the Application downloads two small public configuration files from the Service
-      Provider's website (ad settings and the latest version number). These requests contain no personal data.
+      Besides the services above, the Application downloads a small public configuration file from the Service
+      Provider's website (advertising settings). No account identifier is included in that request, but the website host processes
+      ordinary connection information such as IP addresses.
     </p>
 
     <h2>Age</h2>
@@ -95,27 +93,28 @@
       </li>
       <li>On iPhone and iPad, change the tracking permission in iOS Settings → Privacy &amp; Security → Tracking.</li>
       <li>Reset or delete your advertising identifier in your device settings.</li>
-      <li>Remove all ads with the one-time Pro purchase; the analytics and crash services remain active.</li>
+      <li>Remove advertising with Pro. Analytics and error reporting remain controlled by their separate settings.</li>
+      <li>Enable or disable an optional daily reminder in Settings and choose its time. Reminders are local device
+        notifications, with permission requested only when you enable them. Your chosen time and completion calendar
+        are stored on your device; no push-notification service receives them.</li>
       <li>
-        Delete everything the server holds about you from the Application: Settings → Delete my data from the
-        server. See <a href="data-deletion">Delete your data</a> for all the options, including without the app.
+        Delete everything the server holds about you from the Application: Together → Account and server data → Delete my server data. See <a href="data-deletion">Delete your data</a> for all the options, including without the app.
       </li>
     </ul>
 
     <h2>Retention</h2>
     <p>
-      Your anonymous account, cloud copy and memberships stay on the server until you delete them from the
-      Application or by e-mail, and are deleted automatically after 24 months without any connection. A shared world
-      is kept while it has members; when its owner deletes it, it is removed for everyone. Feedback e-mails are kept
-      for up to 12 months. Crash reports are kept by Sentry for up to 90 days. Gameplay statistics, advertising data
-      and achievement records are kept by GameAnalytics, Google and Apple under their own policies.
+      Anonymous accounts, memberships and shared factories remain until you delete them. When an owner deletes
+      a shared world, it is removed for every member. Purchase proofs are removed when no remaining server account
+      uses them; store purchase records remain with Google or Apple. Technical rate-limiting records and temporary
+      connection tickets expire automatically. Gameplay statistics, advertising data, error reports and achievement
+      records are retained by their respective providers under their policies and the configured service retention.
     </p>
 
     <h2>Security</h2>
     <p>
       All connections use encryption in transit (HTTPS / secure WebSockets). Only members of a shared world can
-      join it, the secret key of your anonymous account never leaves your device and the server, and the Service
-      Provider's credentials for the third-party services are kept on the server, not in the Application.
+      join it, the secret key of your anonymous account never leaves your device and the server, and administrative service credentials and store-verification keys are kept on the server, not in the Application.
     </p>
 
     <h2>Changes</h2>

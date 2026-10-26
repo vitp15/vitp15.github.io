@@ -48,5 +48,17 @@
         "E2:32:94:48:FA:0F:2F:C4:51:F6:4F:4F:7B:59:AF:D2:A5:DB:2C:D7:29:D6:E0:30:21:55:18:82:C5:7F:E3:2A"
       ]
     }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.vitpapps.mathine",
+      "sha256_cert_fingerprints": [
+        "F2:2D:BD:08:78:82:DD:D4:96:00:FB:87:D7:90:8E:3F:B2:3D:D7:13:03:F4:1E:E6:F9:61:B8:A6:50:22:FA:DC"
+      ]
+    }
   }
 ]

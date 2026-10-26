@@ -10,7 +10,7 @@ import { support } from '../src/data/support.ts';
 export const requiredPaths = [
   '/', '/apps/', '/cv/', '/cv/CV_Vadim_Plamadeala.pdf',
   '/.well-known/assetlinks.json', '/.well-known/apple-app-site-association', '/app-ads.txt',
-  '/solvyx/duel/', '/huglet/i/',
+  '/solvyx/duel/', '/huglet/i/', '/mathine/join/',
   '/sliceward/config.json', '/sliceward/version.json',
   '/impossible-taxi/config.json', '/impossible-taxi/version.json',
   '/mathine/config.json', '/mathine/version.json',

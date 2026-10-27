@@ -76,14 +76,204 @@
   // The invitation's label rides in the fragment after "~" (base64url JSON
   // {g: group, f: inviter}); the fragment never reaches any server.
   var T = {
-    en: {title: "You're invited to a group", titleG: "You're invited to {g}", titleF: "{f} invites you to {g}",
-      sub: "Shared accounts and budgets, synced and encrypted.", s1: "Install MoneyManager on your phone.",
-      s2: "Open this link again on that phone — the app opens the invitation.", play: "Get it on Google Play",
-      ios: "Download on the App Store", foot: "The link works for 7 days. Its secret stays in your browser: it is never sent to a server."},
-    ro: {title: "Ești invitat într-un grup", titleG: "Ești invitat în {g}", titleF: "{f} te invită în {g}",
-      sub: "Conturi și bugete comune, sincronizate și criptate.", s1: "Instalează MoneyManager pe telefon.",
-      s2: "Deschide din nou linkul pe acel telefon — aplicația deschide invitația.", play: "Descarcă din Google Play",
-      ios: "Descarcă din App Store", foot: "Linkul e valabil 7 zile. Secretul lui rămâne în browser: nu ajunge la niciun server."}
+    "en": {
+      "title": "You're invited to a group",
+      "titleG": "You're invited to {g}",
+      "titleF": "{f} invites you to {g}",
+      "sub": "Shared accounts and budgets, synced and encrypted.",
+      "s1": "Install MoneyManager on your phone.",
+      "s2": "Open this link again on that phone — the app opens the invitation.",
+      "play": "Get it on Google Play",
+      "ios": "Download on the App Store",
+      "foot": "The link works for 7 days. Its secret stays in your browser: it is never sent to a server."
+    },
+    "ro": {
+      "title": "Ești invitat într-un grup",
+      "titleG": "Ești invitat în {g}",
+      "titleF": "{f} te invită în {g}",
+      "sub": "Conturi și bugete comune, sincronizate și criptate.",
+      "s1": "Instalează MoneyManager pe telefon.",
+      "s2": "Deschide din nou linkul pe acel telefon — aplicația deschide invitația.",
+      "play": "Descarcă din Google Play",
+      "ios": "Descarcă din App Store",
+      "foot": "Linkul e valabil 7 zile. Secretul lui rămâne în browser: nu ajunge la niciun server."
+    },
+    "ar": {
+      "title": "تمت دعوتك إلى مجموعة",
+      "titleG": "تمت دعوتك إلى {g}",
+      "titleF": "{f} يدعوك إلى {g}",
+      "sub": "حسابات وميزانيات مشتركة، متزامنة ومشفّرة.",
+      "s1": "ثبّت MoneyManager على هاتفك.",
+      "s2": "افتح هذا الرابط مرة أخرى على ذلك الهاتف — سيفتح التطبيق الدعوة.",
+      "play": "احصل عليه من Google Play",
+      "ios": "نزّله من App Store",
+      "foot": "الرابط صالح لمدة 7 أيام. يبقى سرّه في متصفحك: لا يُرسل أبدًا إلى أي خادم."
+    },
+    "de": {
+      "title": "Du bist zu einer Gruppe eingeladen",
+      "titleG": "Du bist zu {g} eingeladen",
+      "titleF": "{f} lädt dich zu {g} ein",
+      "sub": "Gemeinsame Konten und Budgets, synchronisiert und verschlüsselt.",
+      "s1": "Installiere MoneyManager auf deinem Handy.",
+      "s2": "Öffne diesen Link auf dem Handy noch einmal – die App öffnet die Einladung.",
+      "play": "Jetzt bei Google Play",
+      "ios": "Laden im App Store",
+      "foot": "Der Link gilt 7 Tage. Sein Geheimnis bleibt in deinem Browser: Es wird nie an einen Server gesendet."
+    },
+    "es": {
+      "title": "Te invitan a un grupo",
+      "titleG": "Te invitan a {g}",
+      "titleF": "{f} te invita a {g}",
+      "sub": "Cuentas y presupuestos compartidos, sincronizados y cifrados.",
+      "s1": "Instala MoneyManager en tu teléfono.",
+      "s2": "Abre este enlace de nuevo en ese teléfono: la app abre la invitación.",
+      "play": "Disponible en Google Play",
+      "ios": "Descárgala en App Store",
+      "foot": "El enlace funciona durante 7 días. Su secreto se queda en tu navegador: nunca se envía a un servidor."
+    },
+    "fr": {
+      "title": "Tu es invité dans un groupe",
+      "titleG": "Tu es invité dans {g}",
+      "titleF": "{f} t’invite dans {g}",
+      "sub": "Comptes et budgets partagés, synchronisés et chiffrés.",
+      "s1": "Installe MoneyManager sur ton téléphone.",
+      "s2": "Rouvre ce lien sur ce téléphone — l’app ouvre l’invitation.",
+      "play": "Disponible sur Google Play",
+      "ios": "Télécharger dans l’App Store",
+      "foot": "Le lien est valable 7 jours. Son secret reste dans ton navigateur : il n’est jamais envoyé à un serveur."
+    },
+    "hi": {
+      "title": "तुम्हें एक ग्रुप में बुलाया गया है",
+      "titleG": "तुम्हें {g} में बुलाया गया है",
+      "titleF": "{f} ने तुम्हें {g} में बुलाया है",
+      "sub": "साझा खाते और बजट, सिंक और एन्क्रिप्टेड।",
+      "s1": "अपने फ़ोन में MoneyManager इंस्टॉल करो।",
+      "s2": "उसी फ़ोन पर यह लिंक दोबारा खोलो — ऐप न्योता खोल देगा।",
+      "play": "Google Play पर पाएँ",
+      "ios": "App Store से डाउनलोड करें",
+      "foot": "यह लिंक 7 दिन चलता है। इसका सीक्रेट तुम्हारे ब्राउज़र में ही रहता है: वह किसी सर्वर को नहीं भेजा जाता।"
+    },
+    "id": {
+      "title": "Kamu diundang ke sebuah grup",
+      "titleG": "Kamu diundang ke {g}",
+      "titleF": "{f} mengundangmu ke {g}",
+      "sub": "Akun dan anggaran bersama, tersinkron dan terenkripsi.",
+      "s1": "Pasang MoneyManager di ponselmu.",
+      "s2": "Buka tautan ini lagi di ponsel itu — aplikasi akan membuka undangannya.",
+      "play": "Dapatkan di Google Play",
+      "ios": "Unduh di App Store",
+      "foot": "Tautan berlaku 7 hari. Rahasianya tetap di browser-mu: tidak pernah dikirim ke server."
+    },
+    "it": {
+      "title": "Invito a entrare in un gruppo",
+      "titleG": "Invito per entrare in {g}",
+      "titleF": "{f} ti invita in {g}",
+      "sub": "Conti e budget condivisi, sincronizzati e cifrati.",
+      "s1": "Installa MoneyManager sul tuo telefono.",
+      "s2": "Riapri questo link su quel telefono: l’app apre l’invito.",
+      "play": "Scaricala su Google Play",
+      "ios": "Scarica dall’App Store",
+      "foot": "Il link funziona per 7 giorni. Il suo segreto resta nel tuo browser: non viene mai inviato a un server."
+    },
+    "ja": {
+      "title": "グループに招待されています",
+      "titleG": "{g}に招待されています",
+      "titleF": "{f}さんが{g}に招待しています",
+      "sub": "共有の口座と予算を、暗号化して同期します。",
+      "s1": "スマホにMoneyManagerをインストールします。",
+      "s2": "そのスマホでもう一度このリンクを開くと、アプリが招待を開きます。",
+      "play": "Google Playで手に入れよう",
+      "ios": "App Storeでダウンロード",
+      "foot": "リンクは7日間有効です。リンクの秘密情報はブラウザ内にとどまり、サーバーには送信されません。"
+    },
+    "ko": {
+      "title": "그룹에 초대받았어요",
+      "titleG": "{g}에 초대받았어요",
+      "titleF": "{f} 님이 {g}에 초대했어요",
+      "sub": "함께 쓰는 계좌와 예산, 동기화되고 암호화돼요.",
+      "s1": "휴대폰에 MoneyManager를 설치하세요.",
+      "s2": "그 휴대폰에서 이 링크를 다시 열면 앱이 초대를 열어요.",
+      "play": "Google Play에서 다운로드",
+      "ios": "App Store에서 다운로드",
+      "foot": "링크는 7일 동안 유효해요. 링크의 비밀 값은 브라우저에만 남고 서버로 전송되지 않아요."
+    },
+    "nl": {
+      "title": "Je bent uitgenodigd voor een groep",
+      "titleG": "Je bent uitgenodigd voor {g}",
+      "titleF": "{f} nodigt je uit voor {g}",
+      "sub": "Gedeelde rekeningen en budgetten, gesynchroniseerd en versleuteld.",
+      "s1": "Installeer MoneyManager op je telefoon.",
+      "s2": "Open deze link opnieuw op die telefoon — de app opent de uitnodiging.",
+      "play": "Ontdek het op Google Play",
+      "ios": "Download in de App Store",
+      "foot": "De link werkt 7 dagen. Het geheim blijft in je browser: het wordt nooit naar een server gestuurd."
+    },
+    "pl": {
+      "title": "Masz zaproszenie do grupy",
+      "titleG": "Masz zaproszenie do grupy {g}",
+      "titleF": "{f} zaprasza Cię do grupy {g}",
+      "sub": "Wspólne konta i budżety, zsynchronizowane i szyfrowane.",
+      "s1": "Zainstaluj MoneyManager na telefonie.",
+      "s2": "Otwórz ten link ponownie na tym telefonie — aplikacja otworzy zaproszenie.",
+      "play": "Pobierz z Google Play",
+      "ios": "Pobierz z App Store",
+      "foot": "Link działa przez 7 dni. Jego sekret zostaje w Twojej przeglądarce: nigdy nie trafia na serwer."
+    },
+    "pt": {
+      "title": "Convite para um grupo",
+      "titleG": "Convite para {g}",
+      "titleF": "{f} convida-te para {g}",
+      "sub": "Contas e orçamentos partilhados, sincronizados e cifrados.",
+      "s1": "Instala o MoneyManager no teu telemóvel.",
+      "s2": "Abre esta ligação outra vez nesse telemóvel — a app abre o convite.",
+      "play": "Disponível no Google Play",
+      "ios": "Transferir da App Store",
+      "foot": "A ligação funciona durante 7 dias. O seu segredo fica no teu navegador: nunca é enviado para um servidor."
+    },
+    "ru": {
+      "title": "Тебя пригласили в группу",
+      "titleG": "Тебя пригласили в {g}",
+      "titleF": "{f} приглашает тебя в {g}",
+      "sub": "Общие счета и бюджеты, синхронизация и шифрование.",
+      "s1": "Установи MoneyManager на телефон.",
+      "s2": "Открой эту ссылку ещё раз на том телефоне — приложение откроет приглашение.",
+      "play": "Доступно в Google Play",
+      "ios": "Загрузите в App Store",
+      "foot": "Ссылка действует 7 дней. Её секрет остаётся в твоём браузере: на сервер он не отправляется."
+    },
+    "th": {
+      "title": "คุณได้รับเชิญเข้ากลุ่ม",
+      "titleG": "คุณได้รับเชิญเข้า {g}",
+      "titleF": "{f} เชิญคุณเข้า {g}",
+      "sub": "บัญชีและงบประมาณที่ใช้ร่วมกัน ซิงก์และเข้ารหัส",
+      "s1": "ติดตั้ง MoneyManager บนโทรศัพท์ของคุณ",
+      "s2": "เปิดลิงก์นี้อีกครั้งบนโทรศัพท์เครื่องนั้น แอปจะเปิดคำเชิญให้",
+      "play": "ดาวน์โหลดบน Google Play",
+      "ios": "ดาวน์โหลดบน App Store",
+      "foot": "ลิงก์ใช้ได้ 7 วัน ความลับของลิงก์อยู่ในเบราว์เซอร์ของคุณเท่านั้น และจะไม่ถูกส่งไปยังเซิร์ฟเวอร์"
+    },
+    "tr": {
+      "title": "Bir gruba davetlisin",
+      "titleG": "{g} grubuna davetlisin",
+      "titleF": "{f} seni {g} grubuna davet ediyor",
+      "sub": "Ortak hesaplar ve bütçeler, eşitlenmiş ve şifreli.",
+      "s1": "MoneyManager’ı telefonuna yükle.",
+      "s2": "Bu bağlantıyı o telefonda tekrar aç — uygulama daveti açar.",
+      "play": "Google Play'den edinin",
+      "ios": "App Store'dan indirin",
+      "foot": "Bağlantı 7 gün geçerli. Sırrı tarayıcında kalır: hiçbir zaman sunucuya gönderilmez."
+    },
+    "zh": {
+      "title": "你被邀请加入一个群组",
+      "titleG": "你被邀请加入 {g}",
+      "titleF": "{f} 邀请你加入 {g}",
+      "sub": "共享的账户和预算，同步且加密。",
+      "s1": "在手机上安装 MoneyManager。",
+      "s2": "在那部手机上再次打开这个链接，应用会打开邀请。",
+      "play": "在 Google Play 上获取",
+      "ios": "在 App Store 下载",
+      "foot": "链接有效期为 7 天。它的密钥只保留在你的浏览器中，绝不会发送到服务器。"
+    }
   };
   var lang = (navigator.language || "en").slice(0, 2).toLowerCase();
   var t = T[lang] || T.en;

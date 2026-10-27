@@ -60,5 +60,29 @@
         "F2:2D:BD:08:78:82:DD:D4:96:00:FB:87:D7:90:8E:3F:B2:3D:D7:13:03:F4:1E:E6:F9:61:B8:A6:50:22:FA:DC"
       ]
     }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.vitpapps.moneymanager",
+      "sha256_cert_fingerprints": [
+        "A6:75:FF:5E:6A:44:55:BC:F0:3A:54:50:7A:CE:98:CC:B3:1E:35:0E:29:DE:D9:21:C3:E8:22:1B:77:89:88:79"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.vitpapps.moneymanager.dev",
+      "sha256_cert_fingerprints": [
+        "E2:32:94:48:FA:0F:2F:C4:51:F6:4F:4F:7B:59:AF:D2:A5:DB:2C:D7:29:D6:E0:30:21:55:18:82:C5:7F:E3:2A"
+      ]
+    }
   }
 ]

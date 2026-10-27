@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MoneyManager invitation</title>
+<meta name="description" content="You are invited to a shared group in MoneyManager. Open this link on a phone with MoneyManager installed.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F9FAF0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11140E" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Join my group in MoneyManager">
+<meta property="og:description" content="Shared expenses and budgets, synced and encrypted.">
+<style>
+  :root{
+    --ground:#F9FAF0; --surface:#EEF1E6; --surface2:#E1E4D9; --line:#C4C8BB;
+    --text:#191D16; --muted:#44483E; --brand:#476730; --on-brand:#FFFFFF;
+    --brand-container:#C7EEA9; --on-brand-container:#0A2000;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ground:#11140E; --surface:#1E221A; --surface2:#33362F; --line:#44483E;
+      --text:#E1E4D9; --muted:#B9BEB1; --brand:#ACD28F; --on-brand:#0A2000;
+      --brand-container:#304F1A; --on-brand-container:#C7EEA9;
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--ground); color:var(--text);
+    font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    display:flex; align-items:center; justify-content:center;
+    min-height:100dvh; padding:24px 16px;
+  }
+  main{width:100%; max-width:420px}
+  .mark{display:flex; align-items:center; gap:10px; justify-content:center;
+    font-weight:800; font-size:18px; margin-bottom:20px}
+  .coin{width:32px; height:32px; border-radius:16px; background:#E2CF2A;
+    border:3px solid #B59A12; display:flex; align-items:center; justify-content:center;
+    color:#6E5F0A; font-weight:800; font-size:16px}
+  .card{background:var(--surface); border-radius:20px; padding:28px 24px; text-align:center}
+  h1{font-size:23px; line-height:1.25; margin:0 0 8px; letter-spacing:-.01em}
+  .sub{color:var(--muted); margin:0 0 22px; font-size:15px}
+  .steps{text-align:start; margin:20px 0 4px; padding:0; list-style:none; counter-reset:s}
+  .steps li{counter-increment:s; position:relative; padding-inline-start:34px;
+    margin-bottom:12px; color:var(--muted); font-size:15px}
+  .steps li::before{content:counter(s); position:absolute; inset-inline-start:0; top:-1px;
+    width:24px; height:24px; border-radius:50%; background:var(--brand-container);
+    color:var(--on-brand-container); font-size:13px; font-weight:700;
+    display:flex; align-items:center; justify-content:center}
+  .stores{display:flex; flex-direction:column; gap:10px; margin-top:22px}
+  a.btn{display:block; padding:15px 20px; border-radius:28px; text-decoration:none;
+    font-weight:800; font-size:15px; background:var(--brand); color:var(--on-brand)}
+  a.btn.secondary{background:var(--surface2); color:var(--text)}
+  .foot{margin-top:20px; text-align:center; color:var(--muted); font-size:13px}
+</style>
+</head>
+<body>
+<main>
+  <div class="mark"><span class="coin" aria-hidden="true">$</span>MoneyManager</div>
+  <div class="card">
+    <h1 id="title">You're invited to a group</h1>
+    <p class="sub" id="sub">Shared accounts and budgets, synced and encrypted.</p>
+    <ol class="steps">
+      <li id="s1">Install MoneyManager on your phone.</li>
+      <li id="s2">Open this link again on that phone — the app opens the invitation.</li>
+    </ol>
+    <div class="stores">
+      <a class="btn" id="play" href="https://play.google.com/store/apps/details?id=com.vitpapps.moneymanager">Get it on Google Play</a>
+      <a class="btn secondary" id="ios" href="https://apps.apple.com/app/id6819592216">Download on the App Store</a>
+    </div>
+  </div>
+  <p class="foot" id="foot">The link works for 7 days. Its secret stays in your browser: it is never sent to a server.</p>
+</main>
+<script>
+(function () {
+  // The invitation's label rides in the fragment after "~" (base64url JSON
+  // {g: group, f: inviter}); the fragment never reaches any server.
+  var T = {
+    en: {title: "You're invited to a group", titleG: "You're invited to {g}", titleF: "{f} invites you to {g}",
+      sub: "Shared accounts and budgets, synced and encrypted.", s1: "Install MoneyManager on your phone.",
+      s2: "Open this link again on that phone — the app opens the invitation.", play: "Get it on Google Play",
+      ios: "Download on the App Store", foot: "The link works for 7 days. Its secret stays in your browser: it is never sent to a server."},
+    ro: {title: "Ești invitat într-un grup", titleG: "Ești invitat în {g}", titleF: "{f} te invită în {g}",
+      sub: "Conturi și bugete comune, sincronizate și criptate.", s1: "Instalează MoneyManager pe telefon.",
+      s2: "Deschide din nou linkul pe acel telefon — aplicația deschide invitația.", play: "Descarcă din Google Play",
+      ios: "Descarcă din App Store", foot: "Linkul e valabil 7 zile. Secretul lui rămâne în browser: nu ajunge la niciun server."}
+  };
+  var lang = (navigator.language || "en").slice(0, 2).toLowerCase();
+  var t = T[lang] || T.en;
+  document.documentElement.lang = T[lang] ? lang : "en";
+  if (lang === "ar") document.documentElement.dir = "rtl";
+  var label = {};
+  try {
+    var frag = decodeURIComponent(location.hash.slice(1));
+    var i = frag.indexOf("~");
+    if (i >= 0) {
+      var b = frag.slice(i + 1).replace(/-/g, "+").replace(/_/g, "/");
+      while (b.length % 4) b += "=";
+      var bytes = atob(b), arr = new Uint8Array(bytes.length);
+      for (var k = 0; k < bytes.length; k++) arr[k] = bytes.charCodeAt(k);
+      label = JSON.parse(new TextDecoder().decode(arr)) || {};
+    }
+  } catch (e) { label = {}; }
+  function clean(s) { return typeof s === "string" ? s.trim().slice(0, 60) : ""; }
+  var g = clean(label.g), f = clean(label.f);
+  var title = g && f ? t.titleF : g ? t.titleG : t.title;
+  document.getElementById("title").textContent = title.replace("{g}", g).replace("{f}", f);
+  ["sub", "s1", "s2", "play", "ios", "foot"].forEach(function (id) {
+    document.getElementById(id).textContent = t[id];
+  });
+  var ua = navigator.userAgent || "";
+  if (/iPhone|iPad|iPod/.test(ua)) {
+    var ios = document.getElementById("ios"), play = document.getElementById("play");
+    ios.className = "btn"; play.className = "btn secondary";
+    document.querySelector(".stores").prepend(ios);
+  }
+})();
+</script>
+</body>
+</html>

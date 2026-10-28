@@ -88,7 +88,7 @@ export const apps: App[] = [
     since: 2026,
     kind: 'app',
     status: 'beta',
-    statusLine: 'In closed testing on Google Play and TestFlight. Public release soon.',
+    statusLine: 'Live on Google Play. The App Store release is awaiting review.',
     color: '#9c5c7c',
     colorDark: '#cb8fad',
     tint: '#f6e9ef',

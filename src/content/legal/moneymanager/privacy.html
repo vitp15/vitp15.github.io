@@ -2,99 +2,207 @@
     <p>
       This privacy policy applies to the MoneyManager app (hereinafter
       "Application") for Android and iOS, developed by Vadim Plămădeală
-      (hereinafter "Service Provider") as a Freemium service. This service is
-      provided "AS IS". Last updated: 18 October 2026.
+      (hereinafter "Service Provider") as a Freemium service. The Service
+      Provider is responsible for the processing described here. This service
+      is provided "AS IS". Last updated: 2 November 2026.
     </p>
 
     <br /><strong>The short version</strong>
     <p>
       MoneyManager keeps your money data on your phone. You do not need an
-      account to use it. If you choose to turn on backup, sync between devices
-      or shared groups (PRO), your data is stored encrypted on our server in the
-      European Union. The free version shows ads on Android and iPhone; PRO removes them.
-      We never sell your data.
+      account to use it, and nothing about you is created on our server until
+      you sign in. If you sign in and turn on backup and sync (PRO) or use a
+      shared group, your data is stored on our server in the European Union,
+      with names, amounts and notes encrypted on your phone before they leave
+      it. The free version may show ads; PRO removes them. We never sell your
+      data.
     </p>
 
     <br /><strong>Accounts</strong>
     <p>
-      The Application works without registration. It creates an anonymous
-      technical account automatically so that backup and purchases can work if
-      you ever turn them on. You may optionally link a Google, Apple or e-mail
-      sign-in; we use it to restore your data on a new device, to let you join a
-      shared group and to recognise your PRO purchase. Older versions of the
-      Application also offered Facebook sign-in; accounts created that way
-      remain available until the older version is retired.
+      The Application works without registration and without an account on
+      our server. You may sign in with Google, with Apple or with your e-mail
+      address (we e-mail you a one-time code; there is no password). Signing in
+      lets you keep PRO on every phone, join shared groups and, with PRO, back
+      up and sync your data. For a signed-in account we store your e-mail
+      address (with Apple's "Hide My Email" this is a relay address), the
+      sign-in method, the profile details Google or Apple share with us (such
+      as your name), the account's creation date and the language of the
+      Application, so that sign-in e-mails reach you in your language. On
+      Android, signing in with Apple opens Apple's sign-in page in your
+      browser.
     </p>
 
     <br /><strong>What stays on your phone</strong>
     <p>
-      Your accounts, transactions, budgets, categories, templates, notes and
-      settings are stored in a database on your device. They leave the device
-      only in the cases described below. Uninstalling the Application removes
-      the local data; if you turned on PRO backup you can restore it by signing
-      in again.
+      Your accounts, transactions, budgets, categories, templates, loans,
+      notes and settings are stored in a database on your device. It is
+      excluded from the phone's own cloud backups (iCloud, Google backup); use
+      backup and sync (PRO) or <strong>Settings &gt; Export your data</strong>
+      to keep a copy. The following also never leave your phone: the app lock
+      PIN (stored only as a one-way hash), your fingerprint or Face ID (checked
+      by the phone's system, never seen by the Application), the summaries
+      shown by home-screen widgets, reminders and other local notifications,
+      and the files you export. Uninstalling the Application removes the local
+      data.
     </p>
 
     <br /><strong>What information we collect, and when</strong>
     <ul>
       <li>
-        <strong>Backup, sync and shared groups (PRO, only when you turn them
-        on):</strong> the data you enter (accounts, transactions, budgets,
-        notes) is stored encrypted on our server (Supabase, European Union).
-        Members of a shared group can see what the group's permissions allow.
+        <strong>Backup and sync (only when you sign in and have PRO):</strong>
+        your accounts, categories, transactions, budgets, loans, templates and
+        space settings are uploaded to our server (Supabase, European Union) so
+        that they are backed up and the same on all your phones. Before upload,
+        the Application encrypts on your phone (AES-256) the names of accounts,
+        categories and budgets, budget descriptions, all amounts and exchange
+        rates, notes, the names of the people in loans and the values of
+        settings. To sort, sync and apply permissions, our server sees,
+        unencrypted: dates, currencies, the type of each item (expense,
+        income, transfer…), colours and icons, the order of lists, and which
+        account, category or budget an item belongs to.
+      </li>
+      <li>
+        <strong>Encryption keys:</strong> each space (your personal data, each
+        group) has its own key, created on your phone. By default a copy of
+        your personal key is stored on our server, sealed with a separate
+        server secret that is not kept in the database, so that signing in on
+        a new phone restores your data. This means that the Service Provider
+        could technically open your data; it does not do so. If you turn on
+        <strong>Personal key</strong> (Settings), that copy is deleted and your
+        key is locked with a password and a recovery code that only you know;
+        then nobody else, including us, can open your data, and if you lose
+        both, the data in your account cannot be recovered. On the phone the
+        keys are kept in the system's secure storage (Keychain / Keystore).
+      </li>
+      <li>
+        <strong>Shared groups (spaces):</strong> creating a group needs PRO;
+        joining one needs only a signed-in account. A group's name and its
+        members' display names are encrypted with the group's key; members'
+        roles, colours and joining dates are not. Members see the group's
+        accounts and budgets according to the permissions the group's
+        administrators set (for example full, amounts only or private). The
+        administrators decide who is invited and what each member may see or
+        change. An invitation is a link or QR code that is valid for 7 days and
+        can be revoked; its secret part (after the "#") never reaches our
+        server. Entries you added stay in the group for its other members when
+        you leave; the group's data is then removed from your phone. A member
+        who is removed keeps what was already on their phone. If you delete
+        your account, your place in your groups is removed and, if you were the
+        only administrator, the role passes to another administrator or
+        partner member; if there is none, the group becomes read-only. Nothing
+        else in the group is deleted.
+      </li>
+      <li>
+        <strong>Group notifications:</strong> while you are signed in and a
+        member of a group, the Application stores on our server your device's
+        push token, its platform and language and whether you want "Group
+        activity" notifications. When another member adds transactions, our
+        server sends those who want them a generic notification ("new activity
+        in the group", no names or amounts) through Firebase Cloud Messaging
+        (and, on iPhone, Apple's push service). The token is deleted when you
+        sign out.
       </li>
       <li>
         <strong>Automatic capture of payments (optional):</strong> if you turn
-        it on, the Application reads notifications of the banking or payment
-        apps you choose (Android) or the payment details passed by an iPhone
-        Shortcuts automation. This is done on your phone. Only if you also
-        enable "Ask AI" (PRO), the text of a notification the Application
-        cannot read on its own is sent to our server function and from there to
-        Anthropic (Claude) to be read, with card numbers removed first. We keep
-        only daily counters tied to a hashed network address, for 7 days, to
+        it on, the Application reads the notifications of the banking or
+        payment apps you choose (Android) or the payment details passed by an
+        iPhone Shortcuts automation you set up. This is done on your phone.
+        Only if you also turn on "Ask AI" (PRO), the title and text of a
+        notification the Application cannot read on its own are sent to our
+        server function and from there to Anthropic (Claude), which reads the
+        amount, currency and merchant. Before sending, the Application replaces
+        card numbers, IBANs, phone and reference numbers, dates and times; it
+        also sends the identifier of the app that posted the notification and
+        your account's currency. We do not store the text; we keep only daily
+        counters tied to a salted hash of the network address, for 7 days, to
         limit abuse.
       </li>
       <li>
-        <strong>Feedback:</strong> if you send feedback, the message, the
-        optional e-mail address you add and, if you tick the box, your device
-        model, operating system and app version are stored on our server and
-        e-mailed to the Service Provider.
+        <strong>Feedback:</strong> if you send feedback, the message, its type,
+        the optional e-mail address you add, the Application's language and, if
+        you tick the box, your device model, operating system and version and
+        the app version are stored on our server and e-mailed to the Service
+        Provider. Feedback is not linked to your account.
+      </li>
+      <li>
+        <strong>Exchange rates:</strong> the Application downloads exchange
+        rates from our server about once a day. Our server gets them from an
+        exchange-rate provider (exchangeratesapi.io); nothing about you is sent
+        to it.
       </li>
       <li>
         <strong>Purchases:</strong> your PRO status is managed with RevenueCat
-        on top of Google Play Billing or the App Store. We do not see or store
-        your payment card details.
+        on top of Google Play Billing or the App Store, under a random
+        identifier and, once you sign in, your account's identifier. We do not
+        see or store your payment card details.
       </li>
       <li>
         <strong>Diagnostics and analytics:</strong> we use Firebase Crashlytics
-        and Google Analytics for Firebase to learn about crashes and which
-        features are used. This includes the device type, operating system,
-        app version and an app installation identifier.
+        to learn about crashes (the error, the device model, operating system,
+        app version, the screen that was open and an installation identifier)
+        and Google Analytics for Firebase to learn which features are used: the
+        screens opened, actions from a fixed list (for example a transaction,
+        budget or account created, a PRO feature tapped, an onboarding step,
+        the name of a built-in category chosen) and purchases with their price,
+        together with an app instance identifier, the device type, operating
+        system, app version and the country or region derived from the network
+        address. They never receive what you type, your amounts or your notes.
+        Analytics is set not to be used for advertising.
       </li>
       <li>
-        <strong>Advertising (Android and iPhone, free version):</strong> Google
-        AdMob shows ads and may use your device's advertising ID, approximate
-        location derived from the IP address and information about how you
-        interact with the ads. In the European Economic Area and other regions
-        that require it, a consent form is shown the first time you open the
-        Application, before any ad. On iPhone the Application then asks, through
-        Apple's App Tracking Transparency prompt, whether it may use your
-        advertising identifier for personalised ads; if you decline you see
-        non-personalised ads. You can change your choices any time in Settings,
-        under "Privacy options", and in iOS Settings. PRO removes the ads.
+        <strong>Remote settings and updates:</strong> Firebase Remote Config
+        lets us switch some features on or off without an update. The
+        Application asks Google Play or the App Store whether a newer version
+        exists and may ask you to rate it through their own review prompt.
       </li>
       <li>
-        <strong>Location:</strong> the Application does not ask for your
-        location and does not collect precise location.
+        <strong>Advertising (free version):</strong> Google AdMob may show ads
+        and may use your device's advertising ID, approximate location derived
+        from the IP address and information about how you interact with the
+        ads. In the European Economic Area, the United Kingdom, Switzerland and
+        other regions that require it, a consent form is shown before any ad.
+        On iPhone, Apple's App Tracking Transparency prompt then asks whether
+        your advertising identifier may be used for personalised ads; if you
+        decline you see non-personalised ads. You can change your choices any
+        time in <strong>Settings &gt; Privacy options</strong> and in the
+        phone's settings. Your amounts, accounts and notes are never used for
+        ads. PRO removes the ads.
+      </li>
+      <li>
+        <strong>Location, contacts, photos:</strong> the Application does not
+        ask for your location, does not read your contacts and does not browse
+        your photos; when you restore a backup it reads only the file you
+        choose.
       </li>
     </ul>
+
+    <br /><strong>Moving from the older version of MoneyManager</strong>
+    <p>
+      If you used the first version of MoneyManager with an account, your data
+      was stored in Google Firebase. So that you do not have to start again,
+      the Service Provider copies it once, on its side, from Firebase to our
+      server in the European Union, encrypted in the same way as described
+      above, together with your sign-in details (e-mail address, Firebase user
+      identifier and, for e-mail accounts, the one-way hash of your password,
+      never the password itself) and your PRO status. When you open the new
+      version on a phone where the older version was signed in, the Application
+      uses that sign-in to connect you to the copied data. The data in
+      Firebase is kept only while the older version is still in use (at most
+      about 12 months after the new version is released) and is then deleted.
+      If you delete your account in the new version, we keep only a one-way
+      hash of your e-mail address and of your old user identifier, so that the
+      copy is not created again.
+    </p>
 
     <br /><strong>Does the Application use Artificial Intelligence (AI)?</strong>
     <p>
       Only in the optional "Ask AI" feature described above, which is available
       to PRO users who turn it on. It reads the amount, currency and merchant
-      from a payment notification. It is not used to profile you or to show
-      ads.
+      from a payment notification. Anthropic processes the text only to return
+      that reading, under its commercial terms, which do not allow it to train
+      its models on this data. AI is not used to profile you or to show ads,
+      and MoneyManager does not give financial advice.
     </p>
 
     <br /><strong>Service providers that process data for us</strong>
@@ -104,13 +212,14 @@
       except Google AdMob for advertising.
     </p>
     <ul>
-      <li><a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase</a> (server, European Union)</li>
+      <li><a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase</a> (our server: accounts, backup, sync, groups, feedback; European Union)</li>
       <li><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Anthropic</a> (reading payment notifications, optional)</li>
       <li><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">RevenueCat</a> (purchases)</li>
-      <li><a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Resend</a> and <a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" rel="noopener noreferrer">Brevo</a> (sending e-mails: feedback notifications and sign-in e-mails)</li>
-      <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase</a> (Crashlytics, Analytics, remote settings)</li>
-      <li><a href="https://support.google.com/admob/answer/6128543?hl=en" target="_blank" rel="noopener noreferrer">Google AdMob</a> (ads, Android)</li>
-      <li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener noreferrer">Google Play Services</a> and <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple</a></li>
+      <li><a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" rel="noopener noreferrer">Brevo</a> (sign-in code e-mails) and <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Resend</a> (feedback e-mails to the Service Provider)</li>
+      <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase</a> (Crashlytics, Analytics, Remote Config, Cloud Messaging; the older version's data)</li>
+      <li><a href="https://support.google.com/admob/answer/6128543?hl=en" target="_blank" rel="noopener noreferrer">Google AdMob</a> (ads, Android and iPhone)</li>
+      <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub</a> (stores the encrypted weekly backup of our server database, which it cannot read)</li>
+      <li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener noreferrer">Google</a> (Google sign-in, Google Play) and <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Apple</a> (Sign in with Apple, App Store, push notifications)</li>
     </ul>
     <p>The Service Provider may also disclose information:</p>
     <ul>
@@ -127,29 +236,59 @@
 
     <br /><strong>Your rights and how to opt out</strong>
     <p>
-      You can use the Application without any server-side data by never turning
-      on backup, sync, groups or "Ask AI". You can turn each of them off in
-      Settings, withdraw the advertising consent in "Privacy options", and
-      uninstall the Application at any time. If you are in the European Economic
-      Area you also have the right to access, correct, export and delete your
-      data, to restrict or object to processing, and to complain to your data
-      protection authority. Use <strong>Settings &gt; Export data</strong> to get
-      a copy, or contact us.
+      You can use the Application without any data on our server by not
+      signing in and not using "Ask AI" or feedback. You can turn sync, group
+      notifications, automatic capture and "Ask AI" off in Settings, withdraw
+      the advertising consent in <strong>Settings &gt; Privacy options</strong>,
+      sign out, delete your account and uninstall the Application at any time.
+      If you are in the European Economic Area or the United Kingdom you also
+      have the right to access, correct, export and delete your data, to
+      restrict or object to processing, and to complain to your data
+      protection authority. Use <strong>Settings &gt; Export your data</strong>
+      to get a copy, or contact us.
     </p>
 
     <br /><strong>Data retention and deletion</strong>
-    <p>
-      Data on your phone stays until you delete it. Data on our server (backup,
-      sync, groups) stays until you delete your account and data. You can do
-      that in the Application under <strong>Settings &gt; Delete all data</strong>
-      or by e-mail; see
-      <a href="https://vitp15.github.io/vitp-apps-policies/moneymanager/data-deletion">the deletion page</a>.
-      Feedback messages are kept until handled and then deleted on request.
-      Abuse-limiting counters are kept for 7 days. Analytics and crash data are
-      kept according to Firebase's retention settings (up to 14 months).
-      Backups of the server database are kept for a short time and then
-      overwritten.
-    </p>
+    <ul>
+      <li>
+        Data on your phone stays until you delete it:
+        <strong>Settings &gt; Delete all data</strong> erases everything on the
+        phone (it does not delete your account).
+      </li>
+      <li>
+        Data on our server (account, backup, keys, group membership) stays
+        until you delete your account: <strong>Settings &gt; Delete
+        account</strong> (shown when you are signed in, also under
+        <strong>Settings &gt; Account and backup</strong>) or by e-mail; see
+        <a href="https://vitp15.github.io/vitp-apps-policies/moneymanager/data-deletion">the deletion page</a>.
+        Entries you added to a group stay in that group for its other members.
+        A subscription is cancelled in Google Play or the App Store; deleting
+        the account does not cancel it.
+      </li>
+      <li>
+        Items you delete are kept on the server as deletion markers for 90
+        days, so that your other phones remove them too; deleted spaces are
+        erased after 90 days.
+      </li>
+      <li>
+        The encrypted backups of our server database are made weekly and kept
+        for 35 days.
+      </li>
+      <li>
+        Feedback messages are kept until they are handled and are deleted on
+        request. Abuse-limiting counters are kept for 7 days.
+      </li>
+      <li>
+        Crash reports are kept by Firebase Crashlytics for up to 90 days and
+        analytics data according to the Firebase retention setting (14 months
+        at most). Purchase records are kept by Apple, Google and RevenueCat as
+        their rules and the law require.
+      </li>
+      <li>
+        The older version's data in Firebase: see "Moving from the older
+        version of MoneyManager" above.
+      </li>
+    </ul>
 
     <br /><strong>How does the Application address children's privacy?</strong>
     <p>
@@ -162,25 +301,30 @@
 
     <br /><strong>How is your information kept secure?</strong>
     <p>
-      Data sent to or from our server travels over encrypted connections. Data
-      stored on the server is encrypted. Access is limited to what is needed to
-      run the service. No system can prevent every breach, but we work to
-      provide reasonable protection.
+      Data sent to or from our server travels over encrypted connections
+      (TLS). Names, amounts and notes are encrypted on your phone before
+      upload, as described above, and the server only accepts them in
+      encrypted form. Access to the server is limited to what is needed to run
+      the service. You can lock the Application with a PIN, fingerprint or
+      Face ID. No system can prevent every breach, but we work to provide
+      reasonable protection.
     </p>
 
     <br /><strong>Purchases and payments</strong>
     <p>
-      PRO is bought through Google Play Billing or the App Store. Payment card
-      details go directly to Google or Apple and are never seen by us. RevenueCat
-      receives the purchase status so that PRO works on all your devices.
+      PRO is bought through Google Play Billing or the App Store, as a monthly
+      or yearly subscription or a one-time lifetime purchase. Payment card
+      details go directly to Google or Apple and are never seen by us.
+      RevenueCat receives the purchase status so that PRO works on all your
+      devices.
     </p>
 
     <br /><strong>International transfers</strong>
     <p>
-      Our server is in the European Union. Some providers (for example Anthropic,
-      Google, RevenueCat, Resend and Brevo) may process data outside the
-      European Economic Area under standard contractual clauses or equivalent
-      safeguards.
+      Our server is in the European Union. Some providers (for example
+      Anthropic, Google, Apple, GitHub, RevenueCat, Resend and Brevo) may
+      process data outside the European Economic Area under standard
+      contractual clauses or equivalent safeguards.
     </p>
 
     <br /><strong>How will you be informed of changes to this Privacy Policy?</strong>
@@ -193,9 +337,10 @@
     <br /><strong>How do you give your consent?</strong>
     <p>
       By using the Application you consent to the processing of your information
-      as described in this policy, as amended. Optional features (backup,
-      sync, groups, automatic capture, "Ask AI", ads personalisation) are
-      turned on only by you, and you can withdraw consent at any time.
+      as described in this policy, as amended. Optional features (signing in,
+      backup and sync, groups, group notifications, automatic capture, "Ask
+      AI", feedback, ads personalisation) are turned on only by you, and you can
+      withdraw consent at any time.
     </p>
 
     <br /><strong>How can you contact us?</strong>

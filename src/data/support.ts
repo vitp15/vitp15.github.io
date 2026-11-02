@@ -43,11 +43,12 @@ export const support: Record<string, Support> = {
   moneymanager: {
     intro: 'If a number looks wrong, a sync did not arrive or something is unclear, write to us. Include your phone model and, if you can, a screenshot.',
     faqs: [
-      { q: 'Where is my data stored?', a: 'On your device first. When you sign in, your data is backed up and kept in sync with your other devices, so a new phone shows the same accounts, budgets and transactions after you sign in with the same account.' },
-      { q: 'I changed phones. How do I get my data back?', a: 'Install MoneyManager and sign in with the same account you used before. Your data downloads automatically. If you never signed in, the data stayed only on the old phone.' },
+      { q: 'Where is my data stored?', a: 'On your phone. You do not need an account. With PRO and a signed-in account, your data is also backed up on our server in the EU, with names, amounts and notes encrypted on your phone first, and kept the same on all your phones. Details in the <a href="/vitp-apps-policies/moneymanager/privacy">privacy policy</a>.' },
+      { q: 'I changed phones. How do I get my data back?', a: 'With PRO, install MoneyManager on the new phone and sign in with the same account (<strong>Settings → Account and backup</strong>): your data downloads automatically. PRO can also make a file: <strong>Settings → Export your data → Full backup</strong> on the old phone, then <strong>Settings → Restore from a backup</strong> on the new one. Without PRO the data stays on the phone where you entered it. If you used the first version of MoneyManager with an account, update the app on the phone where you were signed in: your data comes with you.' },
       { q: 'How do budgets work?', a: 'A budget has a monthly amount and, optionally, linked expense categories. Expenses in those categories are counted against it automatically. You can also set a budget to receive a percentage of every income you add.' },
       { q: 'Can I keep accounts in different currencies?', a: 'Yes. Each account has its own currency, and transfers between accounts are converted with live exchange rates. Reports are shown in the currency you choose.' },
-      { q: 'How do I delete my account and data?', a: `In the app: <strong>Settings → Account → Delete account</strong>. If you can no longer open the app, follow the <a href="${dd('moneymanager')}">data deletion page</a>.` },
+      { q: 'How do I share a budget with my family?', a: 'Create a group in <strong>Settings → Spaces and groups</strong> (creating needs PRO), then send the invitation link or show its QR code. The person who joins needs only a free account. You choose what each member can see and change.' },
+      { q: 'How do I delete my account and data?', a: `In the app: <strong>Settings → Delete account</strong> (shown while you are signed in). <strong>Settings → Delete all data</strong> erases only the phone. If you can no longer open the app, follow the <a href="${dd('moneymanager')}">data deletion page</a>.` },
     ],
   },
   sliceward: {

@@ -1,35 +1,68 @@
 <h1>Request Account and Data Deletion</h1>
       <p>
-        If you want to delete your MoneyManager account and all associated data
-        , please follow one of the methods below:
+        You can delete your MoneyManager account and the data stored for it on
+        our server at any time, in the app or by e-mail.
       </p>
 
-      <h3>Method 1: In-App (Recommended)</h3>
+      <h3>Method 1: In the app (recommended)</h3>
       <p>
-        Go to <strong>Settings &gt; Delete all data</strong> within the mobile
-        app. This erases the data on your phone and, if you turned on backup,
-        sync or groups, the data stored for you on our server.
+        Open <strong>Settings &gt; Delete account</strong> (the row is shown
+        while you are signed in; it is also under <strong>Settings &gt; Account
+        and backup</strong>) and confirm. This deletes, on our server: your
+        account and sign-in details, your backup and synced data, your
+        encryption keys, the PRO status tied to the account, your devices'
+        notification tokens and your place in shared groups. You then choose
+        whether the data on the phone stays (without an account) or is erased
+        too. A subscription is cancelled in Google Play or the App Store;
+        deleting the account does not cancel it.
+      </p>
+      <p>
+        <strong>Settings &gt; Delete all data</strong> erases everything on the
+        phone only; it does not delete your account. If you never signed in,
+        your data lives only on the phone, and this (or uninstalling the app)
+        removes it.
       </p>
 
-      <h3>Method 2: Email Request</h3>
+      <h3>Method 2: E-mail request</h3>
       <p>
-        Send an email to
+        If you can no longer open the app, send an e-mail to
         <a
-          href="mailto:vitp.work@gmail.com?subject=MoneyManager%20Support"
+          href="mailto:vitp.work@gmail.com?subject=Account%20and%20Data%20Deletion%20Request"
           class="contact-button"
         >
           vitp.work@gmail.com</a
-        >. from the email address associated with your account. Use the subject:
-        <strong>Account and Data Deletion Request</strong>.
+        >
+        from the e-mail address of your account, with the subject
+        <strong>Account and Data Deletion Request</strong>. We reply to confirm
+        and delete the same data as Method 1.
       </p>
 
-      <p>
-        <strong>Note:</strong> Once processed, your account and all data stored
-        for you on our server (and, for users of older versions, your Firebase
-        sign-in record and the data stored in Firestore) will be permanently
-        deleted. Data that only lives on your phone is removed by uninstalling
-        the app or with Delete all data. This action cannot be undone.
-      </p>
+      <h3>What is kept, and for how long</h3>
+      <ul>
+        <li>
+          Entries you added to a shared group stay in that group for its other
+          members. If you were the group's only administrator, the role passes
+          to another administrator or partner member; if there is none, the
+          group becomes read-only.
+        </li>
+        <li>
+          Our encrypted database backups are overwritten within 35 days.
+        </li>
+        <li>
+          If you used the first version of MoneyManager, its copy of your data
+          in Google Firebase is deleted when that version is retired (at most
+          about 12 months after the new version is released), or earlier if you
+          ask by e-mail. We keep a one-way hash of your e-mail address and of
+          your old user identifier, so that the old data is not copied to your
+          deleted account again.
+        </li>
+        <li>
+          Purchase records are kept by Apple, Google and RevenueCat as their
+          rules and the law require. Feedback messages are not linked to your
+          account; ask by e-mail to have yours deleted.
+        </li>
+      </ul>
+      <p>This action cannot be undone.</p>
 
       <a
         href="mailto:vitp.work@gmail.com?subject=Account%20and%20Data%20Deletion%20Request"

@@ -108,15 +108,19 @@
         it on, the Application reads the notifications of the banking or
         payment apps you choose (Android) or the payment details passed by an
         iPhone Shortcuts automation you set up. This is done on your phone.
-        Only if you also turn on "Ask AI" (PRO), the title and text of a
-        notification the Application cannot read on its own are sent to our
-        server function and from there to Anthropic (Claude), which reads the
-        amount, currency and merchant. Before sending, the Application replaces
-        card numbers, IBANs, phone and reference numbers, dates and times; it
-        also sends the identifier of the app that posted the notification and
-        your account's currency. We do not store the text; we keep only daily
-        counters tied to a salted hash of the network address, for 7 days, to
-        limit abuse.
+        Only if you are signed in with PRO and either turn on "Ask AI" or tap
+        "Read with AI" on a notification waiting for your review, the title and
+        text of a notification the Application cannot read on its own, or that
+        names a shop it does not know yet, are sent to our server function and
+        from there to Anthropic (Claude), which reads the amount, currency and
+        merchant and picks one of your own categories and accounts. Before
+        sending, the Application replaces card numbers, IBANs, phone and
+        reference numbers, dates and times; it also sends the identifier of the
+        app that posted the notification, your account's currency and the names
+        of your categories and accounts in that space (never amounts or
+        balances). Our server checks your PRO before any reading. We do not
+        store the text; we keep only daily counters per user, for 7 days, to
+        limit cost and abuse.
       </li>
       <li>
         <strong>Feedback:</strong> if you send feedback, the message, its type,
@@ -198,8 +202,9 @@
     <br /><strong>Does the Application use Artificial Intelligence (AI)?</strong>
     <p>
       Only in the optional "Ask AI" feature described above, which is available
-      to PRO users who turn it on. It reads the amount, currency and merchant
-      from a payment notification. Anthropic processes the text only to return
+      to signed-in PRO users who turn it on (or tap "Read with AI" on one
+      notification). It reads the amount, currency and merchant from a payment
+      notification and picks one of your own categories and accounts by name. Anthropic processes the text only to return
       that reading, under its commercial terms, which do not allow it to train
       its models on this data. AI is not used to profile you or to show ads,
       and MoneyManager does not give financial advice.

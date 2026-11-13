@@ -4,7 +4,7 @@
       "Application") for Android and iOS, developed by Vadim Plămădeală
       (hereinafter "Service Provider") as a Freemium service. The Service
       Provider is responsible for the processing described here. This service
-      is provided "AS IS". Last updated: 2 November 2026.
+      is provided "AS IS". Last updated: 13 November 2026.
     </p>
 
     <br /><strong>The short version</strong>
@@ -108,8 +108,7 @@
         it on, the Application reads the notifications of the banking or
         payment apps you choose (Android) or the payment details passed by an
         iPhone Shortcuts automation you set up. This is done on your phone.
-        Only if you are signed in with PRO and either turn on "Ask AI" or tap
-        "Read with AI" on a notification waiting for your review, the title and
+        Only if you are signed in with PRO and turn on "Ask AI", the title and
         text of a notification the Application cannot read on its own, or that
         names a shop it does not know yet, are sent to our server function and
         from there to Anthropic (Claude), which reads the amount, currency and
@@ -118,9 +117,15 @@
         reference numbers, dates and times; it also sends the identifier of the
         app that posted the notification, your account's currency and the names
         of your categories and accounts in that space (never amounts or
-        balances). Our server checks your PRO before any reading. We do not
-        store the text; we keep only daily counters per user, for 7 days, to
-        limit cost and abuse.
+        balances). For a payment passed by the iPhone Shortcuts automation
+        (Apple Pay), the Application reads it on your phone and, with "Ask AI"
+        on, sends only the name of a shop it does not know yet and the
+        payment's amount and currency, with the names of your categories in
+        that space, so that Anthropic (Claude) picks one of your categories;
+        the card, the account names and your account's currency are never
+        sent. Our server checks your PRO before any reading. We do not store
+        the text; we keep only daily counters per user, for 7 days, to limit
+        cost and abuse.
       </li>
       <li>
         <strong>Feedback:</strong> if you send feedback, the message, its type,
@@ -202,11 +207,12 @@
     <br /><strong>Does the Application use Artificial Intelligence (AI)?</strong>
     <p>
       Only in the optional "Ask AI" feature described above, which is available
-      to signed-in PRO users who turn it on (or tap "Read with AI" on one
-      notification). It reads the amount, currency and merchant from a payment
-      notification and picks one of your own categories and accounts by name. Anthropic processes the text only to return
-      that reading, under its commercial terms, which do not allow it to train
-      its models on this data. AI is not used to profile you or to show ads,
+      to signed-in PRO users who turn it on. It reads the amount, currency and
+      merchant from a payment notification and picks one of your own
+      categories and accounts by name; for an Apple Pay payment on iPhone it
+      only picks one of your categories from the shop's name and the amount.
+      Anthropic processes the text only to return that reading, under its
+      commercial terms, which do not allow it to train its models on this data. AI is not used to profile you or to show ads,
       and MoneyManager does not give financial advice.
     </p>
 
@@ -218,7 +224,7 @@
     </p>
     <ul>
       <li><a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase</a> (our server: accounts, backup, sync, groups, feedback; European Union)</li>
-      <li><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Anthropic</a> (reading payment notifications, optional)</li>
+      <li><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Anthropic</a> (reading payment notifications and choosing categories, optional)</li>
       <li><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">RevenueCat</a> (purchases)</li>
       <li><a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" rel="noopener noreferrer">Brevo</a> (sign-in code e-mails) and <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Resend</a> (feedback e-mails to the Service Provider)</li>
       <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase</a> (Crashlytics, Analytics, Remote Config, Cloud Messaging; the older version's data)</li>

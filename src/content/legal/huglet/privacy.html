@@ -3,7 +3,7 @@
       This privacy policy applies to the Huglet app (hereinafter "Application")
       for iOS and Android mobile devices, developed by Vadim Plămădeală
       (hereinafter "Service Provider") as a Freemium service. This service is
-      provided "AS IS". Last updated: 18 October 2026.
+      provided "AS IS". Last updated: 25 November 2026.
     </p>
 
     <br /><strong>The short version</strong>
@@ -53,7 +53,9 @@
         you has Huglet Plus, a picture is removed from our server an hour after
         it is delivered (the recipient's phone keeps its copy). Content is visible
         only to you and the person you sent it to, except as described under
-        Reports below.
+        Reports below. Since version 1.0.7 this content is end-to-end encrypted
+        on your phone before it is sent, so our server keeps it only in a form
+        it cannot open (see End-to-end encryption below).
       </li>
       <li>
         <strong>Permissions you set</strong> — what each connected person may
@@ -62,8 +64,10 @@
       </li>
       <li>
         <strong>Reports</strong> — if you report something you received, we keep
-        the report and the reported item so we can review it and act on it. This
-        is the only case where we look at content you did not send to us.
+        the report and the reported item so we can review it and act on it. If
+        the item was end-to-end encrypted, your app sends us the key to that one
+        item only, so that we can open it. This is the only case where we look at
+        content you did not send to us.
       </li>
       <li>
         <strong>Push token</strong> — a Firebase Cloud Messaging / Apple Push
@@ -87,6 +91,35 @@
         guess codes by trying many of them.
       </li>
     </ul>
+
+    <br /><strong>End-to-end encryption</strong>
+    <p>
+      Drawings, notes, photos, touch patterns and wallpapers are encrypted on the
+      sender's phone and can be opened only on the phones of the two people in
+      the connection. Each account has its own pair of keys: the private key is
+      kept on your phone, and our server stores only the public key and the
+      encrypted content. The server still knows what it needs to deliver hugs:
+      who sends to whom and when, what kind of item it is and its size, and your
+      profile (display name and emoji).
+    </p>
+    <p>
+      <em>Your key on a new phone.</em> On the free plan we keep no copy of your
+      key: a new phone gets new keys, and encrypted hugs from before cannot be
+      opened there. With Huglet Plus we keep, by default, a copy of your key
+      locked with a key that exists only in the secret settings of our server
+      functions, not in our database, so that your history opens on a new
+      phone; someone with access to those secrets could open that copy. You can
+      choose a personal key instead: the copy is then locked with a password
+      and a recovery code that only you have and that we never receive, so
+      nobody, including us, can open it; if you lose both, your encrypted
+      history cannot be recovered. Your keys and their copies are deleted with
+      your account.
+    </p>
+    <p>
+      Older versions of the app do not encrypt. Hugs between you and someone
+      who still uses an older version are sent unencrypted until you both use a
+      version that encrypts.
+    </p>
 
     <br /><strong>Advertising</strong>
     <p>

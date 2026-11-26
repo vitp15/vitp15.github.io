@@ -9,6 +9,5 @@
   "banner_from_level": 21,
   "long_interstitial_every": 10,
   "promo_after_levels": 10,
-  "review_after_levels": 8,
-  "min_version": "0.0.0"
+  "review_after_levels": 8
 }

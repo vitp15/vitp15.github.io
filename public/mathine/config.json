@@ -7,6 +7,6 @@
   "ads_grace_minutes": 15,
   "interstitial_min_gap_s": 360,
   "rewarded_per_hour_cap": 6,
-  "review_after_requests": 10,
+  "review_after_requests": 5,
   "min_version": "0.0.0"
 }

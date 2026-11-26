@@ -51,6 +51,17 @@ export const support: Record<string, Support> = {
       { q: 'How do I delete my account and data?', a: `In the app: <strong>Settings → Delete account</strong> (shown while you are signed in). <strong>Settings → Delete all data</strong> erases only the phone. If you can no longer open the app, follow the <a href="${dd('moneymanager')}">data deletion page</a>.` },
     ],
   },
+  orewalk: {
+    intro: 'Orewalk is a walking game on the real map. If something is broken, unclear, or a walk was not counted, write to us with your phone model and roughly when it happened.',
+    faqs: [
+      { q: 'Do I need an account?', a: 'No. The game creates an anonymous account the first time you open it. Link it to Google or Apple in <strong>Settings</strong> to keep your progress on a new phone and to use the market and friends.' },
+      { q: 'How do I claim territory?', a: 'Start an <strong>expedition</strong>, put the phone away and walk outdoors on public roads and paths. The cells you walk through become yours for a few days. Nothing needs to be tapped while you walk, and nothing is counted above about 15 km/h.' },
+      { q: 'My walk was not counted.', a: 'Allow location for Orewalk ("While using the app" is enough) and keep the expedition running until you stop it. On some phones (for example Xiaomi), battery saving stops apps with the screen off: set Orewalk to <strong>No restrictions</strong> and allow autostart.' },
+      { q: 'Can other players see where I am?', a: 'No. Others see only how many players hold a cell, hours later. Your cells are shown only to mutual friends, also with a delay, and anonymous mode hides them from friends too. Nobody sees your live position or your routes.' },
+      { q: 'My account was restricted. What can I do?', a: 'The game shows the reason, how long it lasts and a reference code. Write to us with that code to appeal; a person reviews every appeal.' },
+      { q: 'How do I delete my account and data?', a: `In the app: <strong>Settings → Delete account</strong>. If you can no longer open the app, follow the <a href="${dd('orewalk')}">data deletion page</a>.` },
+    ],
+  },
   sliceward: {
     intro: 'If something is broken, unclear, or a level feels unfair, write to us. We read everything.',
     faqs: [

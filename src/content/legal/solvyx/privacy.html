@@ -3,7 +3,8 @@
       This privacy policy is applicable to the Solvyx app (hereinafter referred
       to as "Application") for mobile devices, which was developed by Vadim
       Plămădeală (hereinafter referred to as "Service Provider") as a Freemium
-      service. This service is provided "AS IS".
+      service. This service is provided "AS IS". Last updated: 26 November
+      2026.
     </p>
     <br /><strong
       >What information does the Application obtain and how is it used?</strong
@@ -11,21 +12,24 @@
       >What information do users provide to the Application?</strong
     >
     <p>
-      Solvyx works offline and does not require an account. Your game progress,
-      puzzle statistics, and coin balance are stored locally on your device. You
-      can play without providing any personal information.
+      Solvyx works offline and you never have to sign up. Your game progress,
+      puzzle statistics, and coin balance are stored on your device. You can
+      play without providing any personal information.
     </p>
     <p>
-      Some optional features — global leaderboards, asynchronous duels, and
-      syncing your progress across devices — use an online account. By default
-      this account is anonymous: it is a random identifier with no personal
-      information attached. If you choose to save your progress permanently, you
-      may create an account using your email address, which is verified with a
-      one-time code sent to that address — the Application never asks you for a
-      password — or by signing in with Google or Apple. You may also choose a display name that
-      is shown on leaderboards. Registration is not mandatory; however, some
-      online features are unavailable unless you create or sign in to an
-      account.
+      The global leaderboards, asynchronous duels, friends, and syncing your
+      progress across devices are online features. When your device is online,
+      the result of each level you solve (its score, time and stat values) is
+      sent to the global leaderboard under a guest account that the Application
+      creates automatically: a random identifier, with no email address or
+      other contact details. If you choose to save your progress permanently,
+      you may create an account with your email address and a password (the
+      address is confirmed with a one-time code sent to it; the password is
+      stored only in hashed form by our hosting provider), or by signing in
+      with Google or Apple. As a guest or with an account, you may choose a
+      display name that is shown on leaderboards, in duels and on your public
+      profile. Registration is not mandatory; however, some online features
+      are unavailable unless you create or sign in to an account.
     </p>
     <p>
       When you use these online features, the Service Provider stores your
@@ -41,8 +45,10 @@
     <p>
       If you allow it, the Application may send push notifications — for example
       when an opponent finishes a duel you are playing, or to remind you about the
-      daily challenge. Delivering these requires a device notification token, which
-      is stored with your account and is used for nothing else. You can withdraw
+      daily challenge. Duel and friend notifications require a device
+      notification token, which is stored with your account, passed to
+      Firebase Cloud Messaging to deliver them, and used for nothing else. The
+      daily reminder is scheduled on your device and needs no token. You can withdraw
       permission at any time in your device settings, which stops the notifications
       without affecting the rest of the Application.
     </p>
@@ -64,8 +70,11 @@
       you use, your mobile device's unique identifiers (such as the device ID
       and advertising identifier), the IP address of your mobile device, your
       mobile operating system, and information about the way you use the
-      Application. The IP address is also used to determine an approximate
-      country, which is shown next to leaderboard entries.
+      Application. An approximate country is also stored with your online
+      account and shown next to your leaderboard entries: to find it, the
+      Application asks Cloudflare's public trace service once, which sees your
+      IP address like any web request, and only the two-letter country code is
+      kept.
     </p>
     <br /><strong
       >Does the Application collect precise real time location information of
@@ -102,10 +111,12 @@
     </p>
     <p>
       <strong>Categories of data collected:</strong> Identifiers (device ID,
-      advertising identifier, IP address, and a pseudonymous app-instance ID);
-      account information (email address and any display name you choose); an
-      approximate country derived from your IP; app activity and usage; purchase
-      history; and crash / diagnostic data.
+      advertising identifier, IP address, a pseudonymous app-instance ID, the
+      guest or account identifier, and the push notification token if you allow
+      notifications); account information (email address, and any display name
+      you choose); an approximate country derived from your IP; game results,
+      duels, friends and blocked players; the reports and suggestions you send;
+      app activity and usage; purchase history; and crash / diagnostic data.
     </p>
     <div>
       <br />
@@ -118,10 +129,20 @@
       <ul>
         <li>
           <a
+            href="https://supabase.com/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Supabase (hosting of accounts, leaderboards, duels, friends and
+            reports)</a
+          >
+        </li>
+        <li>
+          <a
             href="https://www.google.com/policies/privacy/"
             target="_blank"
             rel="noopener noreferrer"
-            >Google Play Services</a
+            >Google Play Services (including Google Sign-In and Google Play
+            Games)</a
           >
         </li>
         <li>
@@ -145,7 +166,34 @@
             href="https://firebase.google.com/support/privacy/"
             target="_blank"
             rel="noopener noreferrer"
-            >Firebase Crashlytics</a
+            >Firebase Crashlytics, Cloud Messaging, Remote Config and In-App
+            Messaging</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.cloudflare.com/privacypolicy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Cloudflare (approximate country lookup)</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.brevo.com/legal/privacypolicy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Brevo (sends account emails: confirmation and password-reset
+            codes)</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://resend.com/legal/privacy-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Resend (delivers your in-app reports and suggestions, and player
+            reports, to the Service Provider by email)</a
           >
         </li>
         <li>
@@ -161,7 +209,8 @@
             href="https://www.apple.com/legal/privacy/"
             target="_blank"
             rel="noopener noreferrer"
-            >Apple (Sign in with Apple &amp; App Store purchases, iOS)</a
+            >Apple (Sign in with Apple, Game Center &amp; App Store purchases,
+            iOS)</a
           >
         </li>
       </ul>
@@ -199,9 +248,12 @@
       not sell personal information). If you have an account, you can request
       deletion of your account and all associated data at any time — see
       the <a href="data-deletion">Delete Account and Data</a> page — or by
-      contacting the Service Provider at the address below. Anonymous accounts
-      hold no personal information and can be discarded simply by uninstalling
-      the Application.
+      contacting the Service Provider at the address below. A guest account
+      holds no contact details, but its game data (results, approximate country,
+      any display name you chose) stays on our servers after you uninstall the
+      Application. To delete it, save the account in Settings → Account and then
+      choose Delete Account and Data, or email the Service Provider with your
+      display name.
     </p>
     <p>
       <strong>Legal bases (EEA / UK users):</strong> The Service Provider
@@ -253,7 +305,10 @@
       legal, tax, or fraud-prevention obligations). Automatically collected
       diagnostic and analytics information is retained for up to 24 months and
       thereafter may be kept only in aggregated form. Local data on your device
-      is removed when you uninstall the Application.
+      is removed when you uninstall the Application. The suggestions and problem
+      reports you send from Settings → Feedback are kept after your account is
+      deleted, without any link to it; the emails that delivered them, and any
+      player reports, to the Service Provider stay in its mailbox.
     </p>
     <br /><strong>International data transfers</strong>
     <p>
@@ -351,7 +406,8 @@
       approval of all changes.
     </p>
     <br />
-    <p>This privacy policy is effective as of 2026-07-01</p>
+    <p>This privacy policy is effective as of 2026-07-01 and was last updated on
+      2026-11-26.</p>
     <br /><strong>How do you give your consent?</strong>
     <p>
       By using the Application, you are giving your consent to the Service

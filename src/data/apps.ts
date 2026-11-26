@@ -133,12 +133,12 @@ export const apps: App[] = [
     storeName: 'MoneyManager: Expense Tracker',
     tagline: 'Expenses, budgets and 150+ currencies, in sync.',
     description:
-      'Track expenses and income in seconds, set monthly budgets linked to categories, keep accounts in different currencies with live rates, and see where the money goes in reports and forecasts. The first version shipped on Google Play in Java with Firebase sync. The second is a Flutter rewrite for Android and iOS with local-first sync, shared spaces for families and AI-assisted capture of transactions from bank notifications.',
+      'Track expenses and income in seconds, set monthly budgets linked to categories, keep accounts in different currencies with up-to-date rates, and see where the money goes in reports and forecasts. The first version shipped on Google Play in Java with Firebase sync. The second is a Flutter rewrite for Android and iOS with local-first sync, shared spaces for families and AI-assisted capture of transactions from bank notifications.',
     bullets: [
       'Shared spaces: a family or a couple keeps one budget, with per-member permissions.',
       'Transactions captured from bank notifications and confirmed with one tap, so nothing is typed twice.',
       'Budgets that follow categories, with auto-allocation of a share of each income.',
-      'Accounts in 150+ currencies, converted on transfer with live exchange rates; reports, charts and a month-end forecast.',
+      'Accounts in 150+ currencies, converted on transfer with exchange rates updated twice a day; reports, charts and a month-end forecast.',
     ],
     stack: ['Flutter', 'Dart', 'PostgreSQL', 'Local-first sync', 'Java (v1)', 'Firebase (v1)'],
     platforms: BOTH,

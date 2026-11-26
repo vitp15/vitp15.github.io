@@ -4,15 +4,16 @@
       "Application") for Android and iOS, developed by Vadim Plămădeală
       (hereinafter "Service Provider") as a Freemium service. The Service
       Provider is responsible for the processing described here. This service
-      is provided "AS IS". Last updated: 13 November 2026.
+      is provided "AS IS". Last updated: 26 November 2026.
     </p>
 
     <br /><strong>The short version</strong>
     <p>
       MoneyManager keeps your money data on your phone. You do not need an
       account to use it, and nothing about you is created on our server until
-      you sign in. If you sign in and turn on backup and sync (PRO) or use a
-      shared group, your data is stored on our server in the European Union,
+      you sign in. If you sign in with PRO (backup and sync then work on their
+      own) or use a shared group, your data is stored on our server in the
+      European Union,
       with names, amounts and notes encrypted on your phone before they leave
       it. The free version may show ads; PRO removes them. We never sell your
       data.
@@ -38,8 +39,8 @@
       Your accounts, transactions, budgets, categories, templates, loans,
       notes and settings are stored in a database on your device. It is
       excluded from the phone's own cloud backups (iCloud, Google backup); use
-      backup and sync (PRO) or <strong>Settings &gt; Export your data</strong>
-      to keep a copy. The following also never leave your phone: the app lock
+      backup and sync or <strong>Settings &gt; Export your data</strong> (both
+      PRO) to keep a copy. The following also never leave your phone: the app lock
       PIN (stored only as a one-way hash), your fingerprint or Face ID (checked
       by the phone's system, never seen by the Application), the summaries
       shown by home-screen widgets, reminders and other local notifications,
@@ -55,12 +56,14 @@
         space settings are uploaded to our server (Supabase, European Union) so
         that they are backed up and the same on all your phones. Before upload,
         the Application encrypts on your phone (AES-256) the names of accounts,
-        categories and budgets, budget descriptions, all amounts and exchange
-        rates, notes, the names of the people in loans and the values of
-        settings. To sort, sync and apply permissions, our server sees,
+        categories, budgets and templates, budget descriptions, all amounts and
+        exchange rates, notes, the names of the people in loans and the values
+        of settings. To sort, sync and apply permissions, our server sees,
         unencrypted: dates, currencies, the type of each item (expense,
-        income, transfer…), colours and icons, the order of lists, and which
-        account, category or budget an item belongs to.
+        income, transfer…), colours and icons, the order of lists, which
+        account, category or budget an item belongs to, how often a template
+        repeats, the percentage of each income a budget receives and whether a
+        transaction was added by automatic capture.
       </li>
       <li>
         <strong>Encryption keys:</strong> each space (your personal data, each
@@ -105,19 +108,20 @@
       </li>
       <li>
         <strong>Automatic capture of payments (optional):</strong> if you turn
-        it on, the Application reads the notifications of the banking or
-        payment apps you choose (Android) or the payment details passed by an
-        iPhone Shortcuts automation you set up. This is done on your phone.
+        it on, the Application reads the notifications of the apps you choose,
+        for example your bank's app, a payment app or your text messages app
+        (Android), or the payment details passed by an iPhone Shortcuts
+        automation you set up. This is done on your phone.
         Only if you are signed in with PRO and turn on "Ask AI", the title and
         text of a notification the Application cannot read on its own, or that
         names a shop it does not know yet, are sent to our server function and
         from there to Anthropic (Claude), which reads the amount, currency and
         merchant and picks one of your own categories and accounts. Before
         sending, the Application replaces card numbers, IBANs, phone and
-        reference numbers, dates and times; it also sends the identifier of the
-        app that posted the notification, your account's currency and the names
-        of your categories and accounts in that space (never amounts or
-        balances). For a payment passed by the iPhone Shortcuts automation
+        reference numbers, dates and times; it also sends the name and
+        identifier of the app that posted the notification, your account's
+        currency and the names of your categories and accounts in that space,
+        with the currency of each account (never their amounts or balances). For a payment passed by the iPhone Shortcuts automation
         (Apple Pay), the Application reads it on your phone and, with "Ask AI"
         on, sends only the name of a shop it does not know yet and the
         payment's amount and currency, with the names of your categories in
@@ -128,15 +132,20 @@
         cost and abuse.
       </li>
       <li>
-        <strong>Feedback:</strong> if you send feedback, the message, its type,
-        the optional e-mail address you add, the Application's language and, if
-        you tick the box, your device model, operating system and version and
-        the app version are stored on our server and e-mailed to the Service
-        Provider. Feedback is not linked to your account.
+        <strong>Feedback:</strong> if you send feedback, it is stored on our
+        server (Supabase) and reaches the Service Provider as a plain-text
+        e-mail sent through Resend, our e-mail provider. The message and the
+        e-mail contain: your text, its type (idea, problem or other), the
+        e-mail address you add, only if you add one (so that we can reply),
+        the Application's language, when it was written and received, a random
+        message identifier and, only if you turn on the option to include
+        device details, the app version and your device's operating system and
+        its version, model and build type. Feedback carries no account or user
+        identifier and is not linked to your account.
       </li>
       <li>
         <strong>Exchange rates:</strong> the Application downloads exchange
-        rates from our server about once a day. Our server gets them from an
+        rates from our server about twice a day. Our server gets them from an
         exchange-rate provider (exchangeratesapi.io); nothing about you is sent
         to it.
       </li>
@@ -149,13 +158,16 @@
       <li>
         <strong>Diagnostics and analytics:</strong> we use Firebase Crashlytics
         to learn about crashes (the error, the device model, operating system,
-        app version, the screen that was open and an installation identifier)
-        and Google Analytics for Firebase to learn which features are used: the
-        screens opened, actions from a fixed list (for example a transaction,
-        budget or account created, a PRO feature tapped, an onboarding step,
-        the name of a built-in category chosen) and purchases with their price,
-        together with an app instance identifier, the device type, operating
-        system, app version and the country or region derived from the network
+        app version, the screens opened and the actions from a fixed list just
+        before it, and an installation identifier) and Google Analytics for
+        Firebase to learn which features are used: the screens opened, actions
+        from a fixed list (for example a transaction, budget or account
+        created, a PRO feature tapped, an onboarding step, the name of a
+        built-in category chosen), for automatic capture how each notification
+        was handled and, for a banking app on our built-in list, which app it
+        came from (any other app is reported only as "other"), and purchases
+        with their price, together with an app instance identifier, the device
+        type, operating system, app version and the country or region derived from the network
         address. They never receive what you type, your amounts or your notes.
         Analytics is set not to be used for advertising.
       </li>
@@ -168,14 +180,15 @@
       <li>
         <strong>Advertising (free version):</strong> Google AdMob may show ads
         and may use your device's advertising ID, approximate location derived
-        from the IP address and information about how you interact with the
-        ads. In the European Economic Area, the United Kingdom, Switzerland and
-        other regions that require it, a consent form is shown before any ad.
-        On iPhone, Apple's App Tracking Transparency prompt then asks whether
-        your advertising identifier may be used for personalised ads; if you
-        decline you see non-personalised ads. You can change your choices any
-        time in <strong>Settings &gt; Privacy options</strong> and in the
-        phone's settings. Your amounts, accounts and notes are never used for
+        from the IP address, information about how you interact with the ads
+        and diagnostic information about the performance of the app and of its
+        ad software. In the European Economic Area, the United Kingdom,
+        Switzerland and other regions that require it, a consent form is shown
+        before any ad. On iPhone, Apple's App Tracking Transparency prompt then
+        asks whether your advertising identifier may be used for personalised
+        ads; if you decline, it is not used. Where a consent form applies, you
+        can change your choices any time in <strong>Settings &gt; Privacy
+        options</strong>; you can also limit ads in the phone's settings. Your amounts, accounts and notes are never used for
         ads. PRO removes the ads.
       </li>
       <li>
@@ -196,9 +209,12 @@
       identifier and, for e-mail accounts, the one-way hash of your password,
       never the password itself) and your PRO status. When you open the new
       version on a phone where the older version was signed in, the Application
-      uses that sign-in to connect you to the copied data. The data in
-      Firebase is kept only while the older version is still in use (at most
-      about 12 months after the new version is released) and is then deleted.
+      uses that sign-in to connect you to the copied data. The older version
+      was retired when the new version was released on 16 November 2026. The
+      older version's data and sign-in records in Firebase are kept only so
+      that such a phone can still connect to the copied data, at most until
+      16 November 2027, and are then deleted; ask us by e-mail to have yours
+      deleted earlier.
       If you delete your account in the new version, we keep only a one-way
       hash of your e-mail address and of your old user identifier, so that the
       copy is not created again.
@@ -226,7 +242,8 @@
       <li><a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase</a> (our server: accounts, backup, sync, groups, feedback; European Union)</li>
       <li><a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">Anthropic</a> (reading payment notifications and choosing categories, optional)</li>
       <li><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">RevenueCat</a> (purchases)</li>
-      <li><a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" rel="noopener noreferrer">Brevo</a> (sign-in code e-mails) and <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Resend</a> (feedback e-mails to the Service Provider)</li>
+      <li><a href="https://www.brevo.com/legal/privacypolicy/" target="_blank" rel="noopener noreferrer">Brevo</a> (sign-in code e-mails)</li>
+      <li><a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Resend</a> (sends your feedback to the Service Provider by e-mail)</li>
       <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase</a> (Crashlytics, Analytics, Remote Config, Cloud Messaging; the older version's data)</li>
       <li><a href="https://support.google.com/admob/answer/6128543?hl=en" target="_blank" rel="noopener noreferrer">Google AdMob</a> (ads, Android and iPhone)</li>
       <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub</a> (stores the encrypted weekly backup of our server database, which it cannot read)</li>
@@ -248,15 +265,17 @@
     <br /><strong>Your rights and how to opt out</strong>
     <p>
       You can use the Application without any data on our server by not
-      signing in and not using "Ask AI" or feedback. You can turn sync, group
-      notifications, automatic capture and "Ask AI" off in Settings, withdraw
-      the advertising consent in <strong>Settings &gt; Privacy options</strong>,
-      sign out, delete your account and uninstall the Application at any time.
-      If you are in the European Economic Area or the United Kingdom you also
-      have the right to access, correct, export and delete your data, to
-      restrict or object to processing, and to complain to your data
-      protection authority. Use <strong>Settings &gt; Export your data</strong>
-      to get a copy, or contact us.
+      signing in and not using feedback. You can turn group notifications,
+      automatic capture and "Ask AI" off in Settings, withdraw the advertising
+      consent in <strong>Settings &gt; Privacy options</strong> (shown where a
+      consent form applies), sign out (which stops sync from that phone),
+      delete your account and uninstall the Application at any time. If you
+      are in the European Economic Area or the United Kingdom you also have
+      the right to access, correct, export and delete your data, to restrict
+      or object to processing, and to complain to your data protection
+      authority. With PRO, <strong>Settings &gt; Export your data</strong>
+      makes a copy on your phone; anyone can ask us by e-mail for a copy of
+      the data we hold.
     </p>
 
     <br /><strong>Data retention and deletion</strong>
@@ -286,8 +305,9 @@
         for 35 days.
       </li>
       <li>
-        Feedback messages are kept until they are handled and are deleted on
-        request. Abuse-limiting counters are kept for 7 days.
+        Feedback messages, on our server and in the Service Provider's
+        mailbox, are kept until they are handled and are deleted on request.
+        Abuse-limiting counters are kept for 7 days.
       </li>
       <li>
         Crash reports are kept by Firebase Crashlytics for up to 90 days and

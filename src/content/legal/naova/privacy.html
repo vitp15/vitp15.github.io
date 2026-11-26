@@ -32,7 +32,8 @@
       encrypted copy — see "Optional Cloud Backup") and is not sold or shared
       for advertising. Naova shows <strong>no ads</strong>. The only information
       that may leave your device is described below (optional weather look-ups,
-      anonymous diagnostics, optional encrypted Cloud Backup, and, if you
+      pseudonymous usage statistics and crash reports, optional encrypted Cloud
+      Backup, feedback you choose to send, and, if you
       subscribe, purchase validation).
     </p>
 
@@ -43,8 +44,8 @@
       entered by you and kept locally in the app's on-device database. You may
       export a backup file yourself (see "Backups" below); you choose where that
       file goes. The one exception is the optional Cloud Backup feature (Naova
-      Plus), which asks you to sign in with Google (on Android) or Apple (on iOS)
-      only so your encrypted backup can be linked to you — see "Optional Cloud
+      Pro), which asks you to sign in with Google or Apple (your choice, on
+      either platform) only so your encrypted backup can be linked to you — see "Optional Cloud
       Backup" below.
     </p>
 
@@ -147,8 +148,14 @@
       To keep the Application stable and understand which features are used, the
       Service Provider uses Google Firebase (Firebase Analytics and Firebase
       Crashlytics). This may collect a pseudonymous app-instance identifier,
-      your device model and operating-system version, general app-usage events,
-      performance data, and crash/diagnostic logs. This information is
+      your device model and operating-system version, your approximate location
+      (country and region, which Google derives from your IP address), app-usage
+      events (for example that an attack or a check-in was saved, a report was
+      exported or the subscription screen was shown, never what you wrote in
+      it), performance data, and crash/diagnostic logs. On Android, version
+      1.0.0 also lets Firebase read the device's advertising ID, used only for
+      analytics and never for advertising; version 1.0.1 and later do not
+      access it. This information is
       <strong>not</strong> used to identify you personally, and your logged
       health content is <strong>not</strong> included in it. This diagnostic and
       usage data is the main information that leaves your device, and it is
@@ -207,10 +214,11 @@
     <p>
       The Service Provider does not sell your personal information. Your logged
       health data is not shared with third parties in readable form; if you enable
-      Cloud Backup it is uploaded only in an <strong>encrypted</strong> form that
-      the storage provider cannot read. Limited data is processed by the service
+      Cloud Backup it is uploaded only in <strong>encrypted</strong> form (see
+      "Optional Cloud Backup" for who holds the key). Limited data is processed by the service
       providers strictly needed to run optional features — a weather provider
-      (coordinates only, when you use weather), anonymous diagnostics (Firebase),
+      (coordinates only, when you use weather), pseudonymous usage statistics
+      and crash reports (Firebase),
       purchase management (RevenueCat and the app stores, if you subscribe),
       e-mail delivery of feedback to the developer (Resend, only if you send
       feedback), and,
@@ -312,7 +320,7 @@
       Health/Health Connect import, reminders, Cloud Backup — each of which you
       switch on yourself and can withdraw at any time), on its
       <strong>legitimate interest</strong> to keep the app stable and secure
-      (anonymous diagnostics/crash reporting), on <strong>contract</strong> (to
+      (pseudonymous usage statistics and crash reporting), on <strong>contract</strong> (to
       provide a subscription you purchase), and on <strong>legal obligation</strong>
       where applicable. For special-category (health) data processed by the
       Service Provider, processing is based on your explicit consent.
@@ -323,9 +331,10 @@
       Data you log stays on your device until you delete it or uninstall the
       Application. The Service Provider does not hold your health data on any
       server in readable form. If you enable Cloud Backup, your
-      <strong>encrypted</strong> backup is retained until you delete it or turn
-      the feature off (the Service Provider keeps only the most recent few
-      encrypted copies so a bad backup can be recovered). Pseudonymous diagnostic
+      <strong>encrypted</strong> backup is retained until you delete it. Only the
+      latest encrypted copy is kept: when it is replaced or deleted, the storage
+      provider keeps the previous copy for 7 more days as a safety window and
+      then erases it. Pseudonymous diagnostic
       and analytics information is retained for up to 14 months and thereafter may
       be kept only in aggregated form.
     </p>
@@ -364,8 +373,9 @@
       You can stop all collection of information by uninstalling the Application
       using your device's standard uninstall process. You can also individually
       turn off optional features (weather/location, Health import, reminders,
-      Cloud Backup) in the app at any time. Turning Cloud Backup off also deletes
-      the encrypted backup stored for you.
+      Cloud Backup) in the app at any time. When you turn Cloud Backup off, you
+      choose whether to keep the encrypted backup for later or to delete it
+      together with your Naova sign-in account.
     </p>
 
     <br /><strong>Changes to this Privacy Policy</strong>
@@ -376,7 +386,7 @@
       deemed acceptance of the changes.
     </p>
     <br />
-    <p>This privacy policy is effective as of 2026-10-18.</p>
+    <p>This privacy policy is effective as of 2026-11-26.</p>
 
     <br /><strong>How do you give your consent?</strong>
     <p>
